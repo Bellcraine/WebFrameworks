@@ -9,22 +9,22 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Java class for inputPayloadLogin complex type.
+ * <p>Java-Klasse für inputPayloadLogin complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>Das folgende Schemafragment gibt den erwarteten Content an, der in dieser Klasse enthalten ist.
  * 
  * <pre>
- * &lt;complexType name="inputPayloadLogin"&gt;
- *   &lt;complexContent&gt;
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *       &lt;sequence&gt;
- *         &lt;element name="loginDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
- *         &lt;element name="password" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *         &lt;element name="username" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *       &lt;/sequence&gt;
- *     &lt;/restriction&gt;
- *   &lt;/complexContent&gt;
- * &lt;/complexType&gt;
+ * &lt;complexType name="inputPayloadLogin">
+ *   &lt;complexContent>
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;sequence>
+ *         &lt;element name="loginDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
+ *         &lt;element name="password" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="username" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *       &lt;/sequence>
+ *     &lt;/restriction>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
  * </pre>
  * 
  * 
@@ -43,7 +43,7 @@ public class InputPayloadLogin {
     protected String username;
 
     /**
-     * Gets the value of the loginDate property.
+     * Ruft den Wert der loginDate-Eigenschaft ab.
      * 
      * @return
      *     possible object is
@@ -55,7 +55,7 @@ public class InputPayloadLogin {
     }
 
     /**
-     * Sets the value of the loginDate property.
+     * Legt den Wert der loginDate-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is
@@ -67,7 +67,7 @@ public class InputPayloadLogin {
     }
 
     /**
-     * Gets the value of the password property.
+     * Ruft den Wert der password-Eigenschaft ab.
      * 
      * @return
      *     possible object is
@@ -79,7 +79,7 @@ public class InputPayloadLogin {
     }
 
     /**
-     * Sets the value of the password property.
+     * Legt den Wert der password-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is
@@ -91,7 +91,7 @@ public class InputPayloadLogin {
     }
 
     /**
-     * Gets the value of the username property.
+     * Ruft den Wert der username-Eigenschaft ab.
      * 
      * @return
      *     possible object is
@@ -103,7 +103,7 @@ public class InputPayloadLogin {
     }
 
     /**
-     * Sets the value of the username property.
+     * Legt den Wert der username-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is

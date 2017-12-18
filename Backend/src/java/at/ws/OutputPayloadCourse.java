@@ -22,6 +22,7 @@ public class OutputPayloadCourse {
     private Integer course_pk;
     private String title;
     private String description;
+    private Integer duration;
     
     private ArrayList<Course> courses = new ArrayList<>();
 
@@ -77,6 +78,23 @@ public class OutputPayloadCourse {
     public void addCourse(Course c) {
         this.courses.add(c);
     }
+    
+        public Integer getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Integer duration) {
+        this.duration = duration;
+    }
+
+    public String getSemester() {
+        return semester;
+    }
+
+    public void setSemester(String semester) {
+        this.semester = semester;
+    }
+    private String semester;
     
     
 }

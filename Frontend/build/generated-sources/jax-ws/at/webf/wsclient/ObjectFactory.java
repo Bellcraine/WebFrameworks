@@ -24,18 +24,42 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _GetCourses_QNAME = new QName("http://ws.at/", "getCourses");
     private final static QName _GetCoursesResponse_QNAME = new QName("http://ws.at/", "getCoursesResponse");
     private final static QName _Login_QNAME = new QName("http://ws.at/", "login");
-    private final static QName _LoginResponse_QNAME = new QName("http://ws.at/", "loginResponse");
     private final static QName _OutputPayloadCourse_QNAME = new QName("http://ws.at/", "outputPayloadCourse");
     private final static QName _OutputPayloadLogin_QNAME = new QName("http://ws.at/", "outputPayloadLogin");
+    private final static QName _LoginResponse_QNAME = new QName("http://ws.at/", "loginResponse");
+    private final static QName _GetCourses_QNAME = new QName("http://ws.at/", "getCourses");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: at.webf.wsclient
      * 
      */
     public ObjectFactory() {
+    }
+
+    /**
+     * Create an instance of {@link OutputPayloadCourse }
+     * 
+     */
+    public OutputPayloadCourse createOutputPayloadCourse() {
+        return new OutputPayloadCourse();
+    }
+
+    /**
+     * Create an instance of {@link OutputPayloadLogin }
+     * 
+     */
+    public OutputPayloadLogin createOutputPayloadLogin() {
+        return new OutputPayloadLogin();
+    }
+
+    /**
+     * Create an instance of {@link LoginResponse }
+     * 
+     */
+    public LoginResponse createLoginResponse() {
+        return new LoginResponse();
     }
 
     /**
@@ -63,30 +87,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link LoginResponse }
-     * 
-     */
-    public LoginResponse createLoginResponse() {
-        return new LoginResponse();
-    }
-
-    /**
-     * Create an instance of {@link OutputPayloadCourse }
-     * 
-     */
-    public OutputPayloadCourse createOutputPayloadCourse() {
-        return new OutputPayloadCourse();
-    }
-
-    /**
-     * Create an instance of {@link OutputPayloadLogin }
-     * 
-     */
-    public OutputPayloadLogin createOutputPayloadLogin() {
-        return new OutputPayloadLogin();
-    }
-
-    /**
      * Create an instance of {@link Course }
      * 
      */
@@ -100,15 +100,6 @@ public class ObjectFactory {
      */
     public InputPayloadLogin createInputPayloadLogin() {
         return new InputPayloadLogin();
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetCourses }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://ws.at/", name = "getCourses")
-    public JAXBElement<GetCourses> createGetCourses(GetCourses value) {
-        return new JAXBElement<GetCourses>(_GetCourses_QNAME, GetCourses.class, null, value);
     }
 
     /**
@@ -130,15 +121,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link LoginResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://ws.at/", name = "loginResponse")
-    public JAXBElement<LoginResponse> createLoginResponse(LoginResponse value) {
-        return new JAXBElement<LoginResponse>(_LoginResponse_QNAME, LoginResponse.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link OutputPayloadCourse }{@code >}}
      * 
      */
@@ -154,6 +136,24 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://ws.at/", name = "outputPayloadLogin")
     public JAXBElement<OutputPayloadLogin> createOutputPayloadLogin(OutputPayloadLogin value) {
         return new JAXBElement<OutputPayloadLogin>(_OutputPayloadLogin_QNAME, OutputPayloadLogin.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link LoginResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ws.at/", name = "loginResponse")
+    public JAXBElement<LoginResponse> createLoginResponse(LoginResponse value) {
+        return new JAXBElement<LoginResponse>(_LoginResponse_QNAME, LoginResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetCourses }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ws.at/", name = "getCourses")
+    public JAXBElement<GetCourses> createGetCourses(GetCourses value) {
+        return new JAXBElement<GetCourses>(_GetCourses_QNAME, GetCourses.class, null, value);
     }
 
 }

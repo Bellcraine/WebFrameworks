@@ -71,6 +71,7 @@ public class StudyServices {
 
     /**
      * Web service operation
+     * get all Couses regardless of users id (old version)
      */
     @WebMethod(operationName = "getCourses")
     public OutputPayloadCourse getCourses() {
@@ -112,6 +113,57 @@ public class StudyServices {
             //     opl.setErrorMessage("Failure!");
             // }
             tx.commit();            //Transaktion durchführen
+        } catch (Exception e) {
+
+            if (tx != null) {
+                tx.rollback();      //Bei Fehlerfall => Rollback!
+            }
+        } finally {
+            s.close();              //Session schließen egal ob Erfolg oder Fehler
+        }
+
+        //Hibernate
+        return opl;
+    }
+
+    /**
+     * Web service operation
+     * shows courses according to a persons id
+     */
+    @WebMethod(operationName = "showCourseList")
+    public OutputPayloadCourse showCourseList(@WebParam(name = "parameter") InputPayloadCourse parameter) {
+
+        OutputPayloadCourse opl = new OutputPayloadCourse();
+
+        //Hibernate 
+        SessionFactory sf = HibernateUtil.getSessionFactory();  //Initialisierung der SessionFactory
+        Session s = sf.openSession();                           //Öffne eine Session 
+        Transaction tx = null;
+
+        try {
+
+            tx = s.beginTransaction();                          //Beginne Transaktion
+            String hql = "FROM Course C LEFT JOIN C.personCourseMembership CPM WHERE CPM.person.personPk = :id";
+            Query query = s.createQuery(hql);                   //HQL Query zuweisen
+            query.setParameter("id", parameter.getPerson_fk()); //Wert für den namen einfügen (gegen SQL Injection!)
+            List results = query.list();                        //Abfrage durchführen
+
+            for (int i = 0; i < results.size(); i++) {
+                
+                Course courseFromDb = (Course) results.get(i);   //Resultat in person casten
+
+                Course c = new Course();
+                   c.setCoursePk(courseFromDb.getCoursePk());
+                   c.setTitle(courseFromDb.getTitle());
+                   c.setDescription(courseFromDb.getDescription());
+                   c.setDuration(courseFromDb.getDuration());
+                   c.setSemester(courseFromDb.getSemester());
+
+                   opl.addCourse(c);
+            }
+
+            tx.commit();            //Transaktion durchführen
+        
         } catch (Exception e) {
 
             if (tx != null) {

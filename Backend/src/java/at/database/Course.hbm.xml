@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 26.09.2017 18:50:15 by Hibernate Tools 4.3.1 -->
+<!-- Generated 18.12.2017 13:26:16 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="at.database.Course" table="course" catalog="web" optimistic-lock="version">
         <id name="coursePk" type="java.lang.Integer">
@@ -13,6 +13,12 @@
         </property>
         <property name="description" type="string">
             <column name="description" length="500" not-null="true" />
+        </property>
+        <property name="duration" type="int">
+            <column name="duration" not-null="true" />
+        </property>
+        <property name="semester" type="string">
+            <column name="semester" length="10" not-null="true" />
         </property>
         <set name="personCourseMemberships" table="person_course_membership" inverse="true" lazy="true" fetch="select">
             <key>

@@ -1,5 +1,5 @@
 package at.database;
-// Generated 26.09.2017 18:50:13 by Hibernate Tools 4.3.1
+// Generated 18.12.2017 13:26:15 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -14,6 +14,8 @@ public class Person  implements java.io.Serializable {
      private Integer personPk;
      private String username;
      private String password;
+     private String name;
+     private String lastname;
      private String role;
      private Set personCourseMemberships = new HashSet(0);
 
@@ -21,14 +23,18 @@ public class Person  implements java.io.Serializable {
     }
 
 	
-    public Person(String username, String password, String role) {
+    public Person(String username, String password, String name, String lastname, String role) {
         this.username = username;
         this.password = password;
+        this.name = name;
+        this.lastname = lastname;
         this.role = role;
     }
-    public Person(String username, String password, String role, Set personCourseMemberships) {
+    public Person(String username, String password, String name, String lastname, String role, Set personCourseMemberships) {
        this.username = username;
        this.password = password;
+       this.name = name;
+       this.lastname = lastname;
        this.role = role;
        this.personCourseMemberships = personCourseMemberships;
     }
@@ -53,6 +59,20 @@ public class Person  implements java.io.Serializable {
     
     public void setPassword(String password) {
         this.password = password;
+    }
+    public String getName() {
+        return this.name;
+    }
+    
+    public void setName(String name) {
+        this.name = name;
+    }
+    public String getLastname() {
+        return this.lastname;
+    }
+    
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
     public String getRole() {
         return this.role;

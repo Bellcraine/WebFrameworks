@@ -10,23 +10,23 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for course complex type.
+ * <p>Java-Klasse für course complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>Das folgende Schemafragment gibt den erwarteten Content an, der in dieser Klasse enthalten ist.
  * 
  * <pre>
- * &lt;complexType name="course"&gt;
- *   &lt;complexContent&gt;
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *       &lt;sequence&gt;
- *         &lt;element name="coursePk" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
- *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *         &lt;element name="personCourseMemberships" type="{http://www.w3.org/2001/XMLSchema}anyType" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="title" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *       &lt;/sequence&gt;
- *     &lt;/restriction&gt;
- *   &lt;/complexContent&gt;
- * &lt;/complexType&gt;
+ * &lt;complexType name="course">
+ *   &lt;complexContent>
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;sequence>
+ *         &lt;element name="coursePk" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="personCourseMemberships" type="{http://www.w3.org/2001/XMLSchema}anyType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="title" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *       &lt;/sequence>
+ *     &lt;/restriction>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
  * </pre>
  * 
  * 
@@ -47,7 +47,7 @@ public class Course {
     protected String title;
 
     /**
-     * Gets the value of the coursePk property.
+     * Ruft den Wert der coursePk-Eigenschaft ab.
      * 
      * @return
      *     possible object is
@@ -59,7 +59,7 @@ public class Course {
     }
 
     /**
-     * Sets the value of the coursePk property.
+     * Legt den Wert der coursePk-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is
@@ -71,7 +71,7 @@ public class Course {
     }
 
     /**
-     * Gets the value of the description property.
+     * Ruft den Wert der description-Eigenschaft ab.
      * 
      * @return
      *     possible object is
@@ -83,7 +83,7 @@ public class Course {
     }
 
     /**
-     * Sets the value of the description property.
+     * Legt den Wert der description-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is
@@ -124,7 +124,7 @@ public class Course {
     }
 
     /**
-     * Gets the value of the title property.
+     * Ruft den Wert der title-Eigenschaft ab.
      * 
      * @return
      *     possible object is
@@ -136,7 +136,7 @@ public class Course {
     }
 
     /**
-     * Sets the value of the title property.
+     * Legt den Wert der title-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is

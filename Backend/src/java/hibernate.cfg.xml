@@ -44,9 +44,10 @@ Contributor(s):
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/web?zeroDateTimeBehavior=convertToNull</property>
-    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.username">beb</property>
+    <property name="hibernate.connection.password">beb</property>
+    <mapping resource="at/database/PersonCourseMembership.hbm.xml"/>
     <mapping resource="at/database/Person.hbm.xml"/>
     <mapping resource="at/database/Course.hbm.xml"/>
-    <mapping resource="at/database/PersonCourseMembership.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

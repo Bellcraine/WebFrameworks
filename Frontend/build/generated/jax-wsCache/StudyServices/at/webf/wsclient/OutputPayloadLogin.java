@@ -7,22 +7,22 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for outputPayloadLogin complex type.
+ * <p>Java-Klasse für outputPayloadLogin complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>Das folgende Schemafragment gibt den erwarteten Content an, der in dieser Klasse enthalten ist.
  * 
  * <pre>
- * &lt;complexType name="outputPayloadLogin"&gt;
- *   &lt;complexContent&gt;
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *       &lt;sequence&gt;
- *         &lt;element name="fehlerbeschreibung" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *         &lt;element name="fehlercode" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
- *         &lt;element name="userid" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
- *       &lt;/sequence&gt;
- *     &lt;/restriction&gt;
- *   &lt;/complexContent&gt;
- * &lt;/complexType&gt;
+ * &lt;complexType name="outputPayloadLogin">
+ *   &lt;complexContent>
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;sequence>
+ *         &lt;element name="fehlerbeschreibung" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="fehlercode" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="userid" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *       &lt;/sequence>
+ *     &lt;/restriction>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
  * </pre>
  * 
  * 
@@ -40,7 +40,7 @@ public class OutputPayloadLogin {
     protected Integer userid;
 
     /**
-     * Gets the value of the fehlerbeschreibung property.
+     * Ruft den Wert der fehlerbeschreibung-Eigenschaft ab.
      * 
      * @return
      *     possible object is
@@ -52,7 +52,7 @@ public class OutputPayloadLogin {
     }
 
     /**
-     * Sets the value of the fehlerbeschreibung property.
+     * Legt den Wert der fehlerbeschreibung-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is
@@ -64,7 +64,7 @@ public class OutputPayloadLogin {
     }
 
     /**
-     * Gets the value of the fehlercode property.
+     * Ruft den Wert der fehlercode-Eigenschaft ab.
      * 
      * @return
      *     possible object is
@@ -76,7 +76,7 @@ public class OutputPayloadLogin {
     }
 
     /**
-     * Sets the value of the fehlercode property.
+     * Legt den Wert der fehlercode-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is
@@ -88,7 +88,7 @@ public class OutputPayloadLogin {
     }
 
     /**
-     * Gets the value of the userid property.
+     * Ruft den Wert der userid-Eigenschaft ab.
      * 
      * @return
      *     possible object is
@@ -100,7 +100,7 @@ public class OutputPayloadLogin {
     }
 
     /**
-     * Sets the value of the userid property.
+     * Legt den Wert der userid-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is
