@@ -5,7 +5,6 @@
  */
 package at.ws;
 
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -18,6 +17,7 @@ public class OutputPayloadLogin {
     private Integer fehlercode;
     private String fehlerbeschreibung;
     private Integer userid;
+    private String role;
 
     public Integer getFehlercode() {
         return fehlercode;
@@ -43,6 +43,12 @@ public class OutputPayloadLogin {
         this.userid = userid;
     }
     
-    
+        public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
     
 }

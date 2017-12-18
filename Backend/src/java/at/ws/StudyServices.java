@@ -177,4 +177,50 @@ public class StudyServices {
         return opl;
     }
 
+    /**
+     * Web service operation
+     * returns all person data for specific person (via personPk)
+     */
+    @WebMethod(operationName = "showPersonData")
+    public at.ws.OutputPayloadPerson showPersonData(@WebParam(name = "parameter") InputPayloadPerson parameter) {
+        
+        OutputPayloadPerson opl = new OutputPayloadPerson();
+
+        //Hibernate 
+        SessionFactory sf = HibernateUtil.getSessionFactory();  //Initialisierung der SessionFactory
+        Session s = sf.openSession();                           //Öffne eine Session 
+        Transaction tx = null;
+
+        try {
+
+            tx = s.beginTransaction();                          //Beginne Transaktion
+            String hql = "FROM Person P WHERE P.personPk = :id";
+            Query query = s.createQuery(hql);                   //HQL Query zuweisen
+            query.setParameter("id", parameter.getPersonPk()); //Wert für den namen einfügen (gegen SQL Injection!)
+            List results = query.list();                        //Abfrage durchführen
+                
+            Person personFromDb = (Person) results.get(0);       //Resultat in person casten
+
+                opl.setPersonPk(personFromDb.getPersonPk());
+                opl.setUsername(personFromDb.getUsername());
+                opl.setPassword(personFromDb.getPassword());
+                opl.setName(personFromDb.getName());
+                opl.setLastname(personFromDb.getLastname());
+                opl.setRole(personFromDb.getRole());
+            
+            tx.commit();            //Transaktion durchführen
+        
+        } catch (Exception e) {
+
+            if (tx != null) {
+                tx.rollback();      //Bei Fehlerfall => Rollback!
+            }
+        } finally {
+            s.close();              //Session schließen egal ob Erfolg oder Fehler
+        }
+
+        //Hibernate
+        return opl;  
+    }
+
 }

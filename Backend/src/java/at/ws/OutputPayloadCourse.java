@@ -23,6 +23,7 @@ public class OutputPayloadCourse {
     private String title;
     private String description;
     private Integer duration;
+    private String semester;
     
     private ArrayList<Course> courses = new ArrayList<>();
 
@@ -94,7 +95,6 @@ public class OutputPayloadCourse {
     public void setSemester(String semester) {
         this.semester = semester;
     }
-    private String semester;
     
     
 }
