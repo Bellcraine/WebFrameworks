@@ -8,7 +8,10 @@ package at.ws;
 import at.database.Course;
 import at.database.HibernateUtil;
 import at.database.Person;
+import at.database.PersonCourseMembership;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -19,13 +22,15 @@ import org.hibernate.Transaction;
 
 /**
  *
- * @author PU
+ * @author Judith
  */
 @WebService(serviceName = "StudyServices")
 public class StudyServices {
 
     /**
-     * Web service operation
+     * login
+     * input: person.username, person.password
+     * output: person.personPk
      */
     @WebMethod(operationName = "login")
     public OutputPayloadLogin login(@WebParam(name = "parameter") InputPayloadLogin parameter) {
@@ -70,8 +75,8 @@ public class StudyServices {
     }
 
     /**
-     * Web service operation
-     * get all Couses regardless of users id (old version)
+     * Web getCourses
+     * get all Couses regardless of users id (old version, do not use anymore)
      */
     @WebMethod(operationName = "getCourses")
     public OutputPayloadCourse getCourses() {
@@ -103,15 +108,6 @@ public class StudyServices {
                
                opl.addCourse(c);
             }
-            //if(courseFromDb.getPassword().equals(parameter.getPassword())){             //Überprüfen des Passworts und entsprechend Response mit Sccuess/Failure info befüllen
-            //opl.setErrorMessage("Success!");
-            //opl.setTitle(courseFromDb.getTitle());
-          //  opl.setCourse_pk(courseFromDb.getCoursePk());
-           // opl.setDescription(courseFromDb.getDescription());
-
-            // } else {
-            //     opl.setErrorMessage("Failure!");
-            // }
             tx.commit();            //Transaktion durchführen
         } catch (Exception e) {
 
@@ -127,30 +123,30 @@ public class StudyServices {
     }
 
     /**
-     * Web service operation
-     * shows courses according to a persons id
+     * loadCourseList (for students and lecturers)
+     * input: parameter.personFk
+     * output: course ArrayList
      */
-    @WebMethod(operationName = "showCourseList")
-    public OutputPayloadCourse showCourseList(@WebParam(name = "parameter") InputPayloadCourse parameter) {
+    @WebMethod(operationName = "loadCourseList")
+    public OutputPayloadCourse loadCourseList(@WebParam(name = "parameter") InputPayloadCourse parameter) {
 
         OutputPayloadCourse opl = new OutputPayloadCourse();
 
-        //Hibernate 
-        SessionFactory sf = HibernateUtil.getSessionFactory();  //Initialisierung der SessionFactory
-        Session s = sf.openSession();                           //Öffne eine Session 
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session s = sf.openSession();
         Transaction tx = null;
 
         try {
 
-            tx = s.beginTransaction();                          //Beginne Transaktion
-            String hql = "FROM Course C LEFT JOIN C.personCourseMembership CPM WHERE CPM.person.personPk = :id";
-            Query query = s.createQuery(hql);                   //HQL Query zuweisen
-            query.setParameter("id", parameter.getPerson_fk()); //Wert für den namen einfügen (gegen SQL Injection!)
-            List results = query.list();                        //Abfrage durchführen
+            tx = s.beginTransaction();
+            String hql = "SELECT C FROM PersonCourseMembership M LEFT JOIN M.course C WHERE M.person.personPk = :id";
+            Query query = s.createQuery(hql);
+            query.setParameter("id", parameter.getPersonFk());
+            List results = query.list();
 
-            for (int i = 0; i < results.size(); i++) {
+           for (int i = 0; i < results.size(); i++) {
                 
-                Course courseFromDb = (Course) results.get(i);   //Resultat in person casten
+                Course courseFromDb = (Course) results.get(i);
 
                 Course c = new Course();
                    c.setCoursePk(courseFromDb.getCoursePk());
@@ -158,71 +154,204 @@ public class StudyServices {
                    c.setDescription(courseFromDb.getDescription());
                    c.setDuration(courseFromDb.getDuration());
                    c.setSemester(courseFromDb.getSemester());
-
                    opl.addCourse(c);
             }
 
-            tx.commit();            //Transaktion durchführen
+            tx.commit();
         
         } catch (Exception e) {
 
             if (tx != null) {
-                tx.rollback();      //Bei Fehlerfall => Rollback!
+                tx.rollback();
             }
         } finally {
-            s.close();              //Session schließen egal ob Erfolg oder Fehler
+            s.close();
         }
 
-        //Hibernate
         return opl;
     }
 
     /**
-     * Web service operation
-     * returns all person data for specific person (via personPk)
+     * loadPersonData
+     * input: parameter.personPk
+     * output: person Object
      */
-    @WebMethod(operationName = "showPersonData")
-    public OutputPayloadPerson showPersonData(@WebParam(name = "parameter") InputPayloadPerson parameter) {
+    @WebMethod(operationName = "loadPersonData")
+    public OutputPayloadPerson loadPersonData(@WebParam(name = "parameter") InputPayloadPerson parameter) {
         
         OutputPayloadPerson opl = new OutputPayloadPerson();
 
-        //Hibernate 
-        SessionFactory sf = HibernateUtil.getSessionFactory();  //Initialisierung der SessionFactory
-        Session s = sf.openSession();                           //Öffne eine Session 
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session s = sf.openSession(); 
         Transaction tx = null;
 
         try {
 
-            tx = s.beginTransaction();                          //Beginne Transaktion
+            tx = s.beginTransaction();
             String hql = "FROM Person P WHERE P.personPk = :id";
-            Query query = s.createQuery(hql);                  //HQL Query zuweisen
-            query.setParameter("id", 7); //Wert für den namen einfügen (gegen SQL Injection!)
-
-            //query.setParameter("id", parameter.getPersonPk()); //Wert für den namen einfügen (gegen SQL Injection!)
-            List results = query.list();                        //Abfrage durchführen
+            Query query = s.createQuery(hql);
+            query.setParameter("id", parameter.getPersonPk());
+            List results = query.list();
                 
-            Person personFromDb = (Person) results.get(0);       //Resultat in person casten
-
-                opl.setPersonPk(personFromDb.getPersonPk());
-                opl.setUsername(personFromDb.getUsername());
-                opl.setPassword(personFromDb.getPassword());
-                opl.setName(personFromDb.getName());
-                opl.setLastname(personFromDb.getLastname());
-                opl.setRole(personFromDb.getRole());
+            Person personFromDb = (Person) results.get(0);
+            opl.setPersonPk(personFromDb.getPersonPk());
+            opl.setUsername(personFromDb.getUsername());
+            opl.setPassword(personFromDb.getPassword());
+            opl.setName(personFromDb.getName());
+            opl.setLastname(personFromDb.getLastname());
+            opl.setRole(personFromDb.getRole());
             
-            tx.commit();            //Transaktion durchführen
+            tx.commit();
         
         } catch (Exception e) {
 
             if (tx != null) {
-                tx.rollback();      //Bei Fehlerfall => Rollback!
+                tx.rollback();
             }
         } finally {
-            s.close();              //Session schließen egal ob Erfolg oder Fehler
+            s.close();
         }
 
-        //Hibernate
         return opl;  
     }
+    
+    /**
+     * loadCourseDetails
+     * input: course.coursePk
+     * output: course object
+     */
+    @WebMethod(operationName = "loadCourseDetails")
+    public OutputPayloadCourse loadCourseDetails(@WebParam(name = "parameter") InputPayloadCourse parameter) {
+        
+        OutputPayloadCourse opl = new OutputPayloadCourse();
 
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session s = sf.openSession(); 
+        Transaction tx = null;
+        
+        try {
+            tx = s.beginTransaction();  
+            String hql= "FROM Course C WHERE C.coursePk = :id";
+            Query query = s.createQuery(hql);                   //HQL Query zuweisen
+            query.setParameter("id", parameter.getCoursePk());                    //Wert für die id einfügen (gegen SQL Injection!)
+            List results = query.list();
+
+            Course courseFromDb = (Course) results.get(0);
+            opl.setCoursePk(courseFromDb.getCoursePk());
+            opl.setTitle(courseFromDb.getTitle());
+            opl.setDescription(courseFromDb.getDescription());
+            opl.setDuration(courseFromDb.getDuration());
+            opl.setSemester(courseFromDb.getSemester());
+            
+        } catch (Exception e) {
+
+            if (tx != null) {
+                tx.rollback();
+            }
+            
+        } finally {
+            s.close();
+        }
+        return opl;
+    }
+
+    /**
+     * addOrUpdateCourse
+     * input: course object (title, description, duration, semester), person.personPk
+     * output: true or false
+     */
+    @WebMethod(operationName = "addOrUpdateCourse")
+    public boolean addOrUpdateCourse (@WebParam(name = "courseParam") InputPayloadCourse courseParam, @WebParam(name = "personParam") InputPayloadPerson personParam) {
+        
+        boolean done = false;
+        OutputPayloadCourse opl = new OutputPayloadCourse();
+
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session s = sf.openSession();
+        Transaction tx = null;
+        
+        Course c = new Course();
+        c.setTitle(courseParam.getTitle());
+        c.setDescription(courseParam.getDescription());
+        c.setDuration(courseParam.getDuration());
+        c.setSemester(courseParam.getSemester());
+        
+        Person p = new Person();
+        p.setPersonPk(personParam.getPersonPk());
+        
+        PersonCourseMembership m = new PersonCourseMembership();
+        m.setCourse(c);
+        m.setPerson(p);
+ 
+        try {
+            
+           // this works for just the course table
+           tx = s.beginTransaction();
+            if (courseParam.getCoursePk() != null) {
+                c.setCoursePk(courseParam.getCoursePk());
+            }
+            s.saveOrUpdate(c);
+            tx.commit();
+            
+           // this does not work
+            /*tx = s.beginTransaction();
+            s.saveOrUpdate(m);
+            tx.commit();*/
+            
+            done = true;
+
+                   
+        } catch (Exception e) {
+
+            if (tx != null) {
+                tx.rollback();
+                done = false;
+            }
+            
+        } finally {
+            s.close();
+        }
+        
+        return done;
+    }
+
+    /**
+     * deleteCourse
+     * input: course.coursePk
+     * Output: true or false
+     */
+    @WebMethod(operationName = "deleteCourse")
+    public Boolean deleteCourse(@WebParam(name = "parameter") InputPayloadCourse parameter) {
+        
+        boolean done = false;
+
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session s = sf.openSession();
+        Transaction tx = null;
+        
+        Course c = new Course();
+        c.setCoursePk(parameter.getCoursePk());
+        
+        try {
+
+            tx = s.beginTransaction();
+            s.delete(c);
+            tx.commit();
+            done = true;
+                   
+        } catch (Exception e) {
+
+            if (tx != null) {
+                tx.rollback();
+                done = false;
+            }
+            
+        } finally {
+            s.close();
+        }
+         
+        return done;
+        
+    }
+    
 }

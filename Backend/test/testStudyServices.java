@@ -4,9 +4,11 @@
  * and open the template in the editor.
  */
 
+import at.ws.InputPayloadCourse;
 import at.ws.InputPayloadLogin;
 import at.ws.OutputPayloadLogin;
 import at.ws.InputPayloadPerson;
+import at.ws.OutputPayloadCourse;
 import at.ws.OutputPayloadPerson;
 import at.ws.StudyServices;
 import org.junit.Before;
@@ -17,7 +19,7 @@ import org.junit.rules.ExpectedException;
 /**
  *
  * @author Judith
- * not working
+ * testing backend methods
  */
 public class testStudyServices {
     StudyServices ss;
@@ -37,16 +39,61 @@ public class testStudyServices {
         parameter.setPassword("1234");
         parameter.setUsername("urbauer");
         OutputPayloadLogin result = ss.login(parameter);
-        assertEquals(expected, result.getUserid(), 0.1);
+        assertEquals(expected, result.getUserid());
 
     }
     @Test
-    public void testShowPersonData() throws Exception {
-        String expected = "Ecki";
+    public void testLoadPersonData() throws Exception {
+        String expectedUsername = "judith";
+        Integer expectedPersonPk = 9;
         InputPayloadPerson parameter = new InputPayloadPerson();
-        parameter.setPersonPk(8);
-        OutputPayloadPerson result = ss.showPersonData(parameter);
-        assertEquals(expected, result.getUsername(), 0.1);
+        parameter.setPersonPk(9);
+        OutputPayloadPerson result = ss.loadPersonData(parameter);
+        assertEquals(expectedUsername, result.getUsername());
+        assertEquals(expectedPersonPk, result.getPersonPk());
+    }
+    
+    @Test
+    public void testLoadCourseList() throws Exception {
+        Integer expectedCoursePk = 7;
+        String expectedCourseTitle = "Web Frameworks";
+        InputPayloadCourse parameter = new InputPayloadCourse();
+        parameter.setPersonFk(7);
+        OutputPayloadCourse result = ss.loadCourseList(parameter);
+        assertEquals(expectedCoursePk, result.getCourses().get(0).getCoursePk());
+        assertEquals(expectedCourseTitle, result.getCourses().get(0).getTitle());
+    }
+    
+    @Test
+    public void testAddOrUpdateCourse() throws Exception {
+        String title = "Test";
+        String description = "TestDesc";
+        Integer duration = 12;
+        String semester = "SS17";
+        Integer ecki = 8;
         
+        InputPayloadCourse courseParam = new InputPayloadCourse();
+        courseParam.setTitle(title);
+        courseParam.setDescription(description);
+        courseParam.setDuration(duration);
+        courseParam.setSemester(semester);
+        // courseParam.setCoursePk(9);  // test update
+        
+        InputPayloadPerson personParam = new InputPayloadPerson();
+        personParam.setPersonPk(ecki);
+        
+        boolean result = ss.addOrUpdateCourse(courseParam, personParam);
+        assertEquals(true, result);
+
+    }
+    
+    @Test
+    public void testDeleteCourse() throws Exception {
+        Integer coursePk = 36;
+        InputPayloadCourse parameter = new InputPayloadCourse();
+        parameter.setCoursePk(coursePk);
+        
+        boolean result = ss.deleteCourse(parameter);
+        assertEquals(true, result);
     }
 }

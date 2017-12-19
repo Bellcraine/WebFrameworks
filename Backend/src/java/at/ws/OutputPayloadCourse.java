@@ -19,7 +19,7 @@ public class OutputPayloadCourse {
     private Integer errorCode;
     private String errorMessage;
         
-    private Integer course_pk;
+    private Integer coursePk;
     private String title;
     private String description;
     private Integer duration;
@@ -34,13 +34,17 @@ public class OutputPayloadCourse {
     public void setCourses(ArrayList<Course> courses) {
         this.courses = courses;
     }
+        
+    public void addCourse(Course c) {
+        this.courses.add(c);
+    }
     
-    public Integer getCourse_pk() {
-        return course_pk;
+    public Integer getCoursePk() {
+        return coursePk;
     }
 
-    public void setCourse_pk(Integer course_pk) {
-        this.course_pk = course_pk;
+    public void setCoursePk(Integer coursePk) {
+        this.coursePk = coursePk;
     }
 
     public Integer getErrorCode() {
@@ -74,13 +78,8 @@ public class OutputPayloadCourse {
     public void setDescription(String description) {
         this.description = description;
     }
-    
-    
-    public void addCourse(Course c) {
-        this.courses.add(c);
-    }
-    
-        public Integer getDuration() {
+   
+    public Integer getDuration() {
         return duration;
     }
 

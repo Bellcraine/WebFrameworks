@@ -11,28 +11,28 @@ package at.ws;
  */
 public class InputPayloadCourse {
     
-    private Integer course_pk;
+    private Integer coursePk;
     private String title;
     private String description;
     private Integer duration;
     private String semester;
     
-    private Integer person_fk;
+    private Integer personFk;
 
-    public Integer getPerson_fk() {
-        return person_fk;
+    public Integer getPersonFk() {
+        return personFk;
     }
 
-    public void setPerson_fk(Integer person_fk) {
-        this.person_fk = person_fk;
+    public void setPersonFk(Integer personFk) {
+        this.personFk = personFk;
     }
 
-    public Integer getCourse_pk() {
-        return course_pk;
+    public Integer getCoursePk() {
+        return coursePk;
     }
 
-    public void setCourse_pk(Integer course_pk) {
-        this.course_pk = course_pk;
+    public void setCoursePk(Integer coursePk) {
+        this.coursePk = coursePk;
     }
 
     public Integer getDuration() {
