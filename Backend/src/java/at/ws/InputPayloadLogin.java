@@ -14,7 +14,7 @@ import java.util.Date;
 public class InputPayloadLogin {
     
     private String username;
-    private String password;
+    private String password;   
     private Date loginDate;
 
     public String getUsername() {

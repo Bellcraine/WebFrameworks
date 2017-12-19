@@ -182,7 +182,7 @@ public class StudyServices {
      * returns all person data for specific person (via personPk)
      */
     @WebMethod(operationName = "showPersonData")
-    public at.ws.OutputPayloadPerson showPersonData(@WebParam(name = "parameter") InputPayloadPerson parameter) {
+    public OutputPayloadPerson showPersonData(@WebParam(name = "parameter") InputPayloadPerson parameter) {
         
         OutputPayloadPerson opl = new OutputPayloadPerson();
 
@@ -195,8 +195,10 @@ public class StudyServices {
 
             tx = s.beginTransaction();                          //Beginne Transaktion
             String hql = "FROM Person P WHERE P.personPk = :id";
-            Query query = s.createQuery(hql);                   //HQL Query zuweisen
-            query.setParameter("id", parameter.getPersonPk()); //Wert für den namen einfügen (gegen SQL Injection!)
+            Query query = s.createQuery(hql);                  //HQL Query zuweisen
+            query.setParameter("id", 7); //Wert für den namen einfügen (gegen SQL Injection!)
+
+            //query.setParameter("id", parameter.getPersonPk()); //Wert für den namen einfügen (gegen SQL Injection!)
             List results = query.list();                        //Abfrage durchführen
                 
             Person personFromDb = (Person) results.get(0);       //Resultat in person casten
