@@ -30,12 +30,12 @@ public class StudyServices {
     /**
      * login
      * input: person.username, person.password
-     * output: person.personPk
+     * output: person object
      */
     @WebMethod(operationName = "login")
-    public OutputPayloadLogin login(@WebParam(name = "parameter") InputPayloadLogin parameter) {
+    public OutputPayloadPerson login(@WebParam(name = "parameter") InputPayloadPerson parameter) {
 
-        OutputPayloadLogin opl = new OutputPayloadLogin();
+        OutputPayloadPerson opl = new OutputPayloadPerson();
 
         //Hibernate 
         SessionFactory sf = HibernateUtil.getSessionFactory();  //Initialisierung der SessionFactory
@@ -53,11 +53,12 @@ public class StudyServices {
             Person personFromDb = (Person) results.get(0);       //Resultat in person casten
 
             if (personFromDb.getPassword().equals(parameter.getPassword())) {             //Überprüfen des Passworts und entsprechend Response mit Sccuess/Failure info befüllen
-                opl.setFehlerbeschreibung("Success!");
-                opl.setUserid(personFromDb.getPersonPk());
+                opl.setPersonPk(personFromDb.getPersonPk());
+                opl.setRole(personFromDb.getRole());
+                opl.setUsername(personFromDb.getUsername());
+                opl.setName(personFromDb.getName());
+                opl.setLastname(personFromDb.getLastname());
 
-            } else {
-                opl.setFehlerbeschreibung("Failure!");
             }
 
             tx.commit();            //Transaktion durchführen
@@ -124,11 +125,11 @@ public class StudyServices {
 
     /**
      * loadCourseList (for students and lecturers)
-     * input: parameter.personFk
-     * output: course ArrayList
+     * input: person.personPk, person.role
+     * output: course ArrayList // [students: with personCourseMembership.grade]
      */
     @WebMethod(operationName = "loadCourseList")
-    public OutputPayloadCourse loadCourseList(@WebParam(name = "parameter") InputPayloadCourse parameter) {
+    public OutputPayloadCourse loadCourseList(@WebParam(name = "parameter") InputPayloadPerson parameter) {
 
         OutputPayloadCourse opl = new OutputPayloadCourse();
 
@@ -139,9 +140,10 @@ public class StudyServices {
         try {
 
             tx = s.beginTransaction();
+            // change query / add new query to get M.grade
             String hql = "SELECT C FROM PersonCourseMembership M LEFT JOIN M.course C WHERE M.person.personPk = :id";
             Query query = s.createQuery(hql);
-            query.setParameter("id", parameter.getPersonFk());
+            query.setParameter("id", parameter.getPersonPk());
             List results = query.list();
 
            for (int i = 0; i < results.size(); i++) {
@@ -154,6 +156,9 @@ public class StudyServices {
                    c.setDescription(courseFromDb.getDescription());
                    c.setDuration(courseFromDb.getDuration());
                    c.setSemester(courseFromDb.getSemester());
+                   /*if (parameter.getRole().equalsIgnoreCase("student")) {
+                   // setGrade
+                   } */
                    opl.addCourse(c);
             }
 
@@ -172,12 +177,12 @@ public class StudyServices {
     }
 
     /**
-     * loadPersonData
-     * input: parameter.personPk
+     * loadPersonDetails
+     * input: person.personPk
      * output: person Object
      */
-    @WebMethod(operationName = "loadPersonData")
-    public OutputPayloadPerson loadPersonData(@WebParam(name = "parameter") InputPayloadPerson parameter) {
+    @WebMethod(operationName = "loadPersonDetails")
+    public OutputPayloadPerson loadPersonDetails(@WebParam(name = "parameter") InputPayloadPerson parameter) {
         
         OutputPayloadPerson opl = new OutputPayloadPerson();
 
