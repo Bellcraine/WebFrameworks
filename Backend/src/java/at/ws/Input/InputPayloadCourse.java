@@ -3,7 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package at.ws;
+package at.ws.Input;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
@@ -16,16 +19,16 @@ public class InputPayloadCourse {
     private String description;
     private Integer duration;
     private String semester;
-    
-    private Integer personFk;
+    private Set personCourseMemberships = new HashSet(0);
 
-    public Integer getPersonFk() {
-        return personFk;
+    public Set getPersonCourseMemberships() {
+        return personCourseMemberships;
     }
 
-    public void setPersonFk(Integer personFk) {
-        this.personFk = personFk;
+    public void setPersonCourseMemberships(Set personCourseMemberships) {
+        this.personCourseMemberships = personCourseMemberships;
     }
+
 
     public Integer getCoursePk() {
         return coursePk;

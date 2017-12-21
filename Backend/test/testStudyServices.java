@@ -4,12 +4,11 @@
  * and open the template in the editor.
  */
 
-import at.ws.InputPayloadCourse;
-import at.ws.InputPayloadLogin;
-import at.ws.OutputPayloadLogin;
-import at.ws.InputPayloadPerson;
-import at.ws.OutputPayloadCourse;
-import at.ws.OutputPayloadPerson;
+import at.ws.Input.InputPayloadCourse;
+import at.ws.Input.InputPayloadPerson;
+import at.ws.Output.OutputPayloadCourse;
+import at.ws.Output.OutputPayloadPerson;
+import at.ws.Output.OutputPayloadPersonCourseMembership;
 import at.ws.StudyServices;
 import org.junit.Before;
 import static org.junit.Assert.*;
@@ -57,30 +56,33 @@ public class testStudyServices {
     public void testLoadCourseList() throws Exception {
         Integer expectedCoursePk = 7;
         String expectedCourseTitle = "Web Frameworks";
+        //Integer expectedGrade = 1;        // inside Hashset -> read via Iterator?
         InputPayloadPerson parameter = new InputPayloadPerson();
         parameter.setPersonPk(7);
+        parameter.setRole("student");
         OutputPayloadCourse result = ss.loadCourseList(parameter);
         assertEquals(expectedCoursePk, result.getCourses().get(0).getCoursePk());
         assertEquals(expectedCourseTitle, result.getCourses().get(0).getTitle());
+
     }
     
 /*    @Test
     public void testAddOrUpdateCourse() throws Exception {
-        String title = "Test";
-        String description = "TestDesc";
+        String title = "Web Frameworks";
+        String description = "Java Frameworks Hibernate and Primefaces";
         Integer duration = 12;
-        String semester = "SS17";
-        Integer ecki = 8;
+        String semester = "WS17";
+        Integer personPk = 7;
         
         InputPayloadCourse courseParam = new InputPayloadCourse();
         courseParam.setTitle(title);
         courseParam.setDescription(description);
         courseParam.setDuration(duration);
         courseParam.setSemester(semester);
-        // courseParam.setCoursePk(9);  // test update
-        
+        //courseParam.setCoursePk(7);  // test update
+                
         InputPayloadPerson personParam = new InputPayloadPerson();
-        personParam.setPersonPk(ecki);
+        personParam.setPersonPk(personPk);
         
         boolean result = ss.addOrUpdateCourse(courseParam, personParam);
         assertEquals(true, result);
@@ -109,5 +111,18 @@ public class testStudyServices {
         assertEquals(expectedName, result.getName());
         assertEquals(expectedId, result.getPersonPk());
         assertEquals(expectedRole, result.getRole());
+    }
+    
+        @Test
+        public void testStudentGetGrade() throws Exception {
+        Integer expectedGrade = 1;
+        Integer personPk = 9;  // values to test: tommy+feb(10,8)->exp:1, judith+frameworks(9, 7)->exp: 1, urbauer+frameworks(7, 7)->exp: null
+        Integer coursePk = 7;
+        InputPayloadPerson p = new InputPayloadPerson();
+        p.setPersonPk(personPk);
+        InputPayloadCourse c = new InputPayloadCourse();
+        c.setCoursePk(coursePk);
+        OutputPayloadPersonCourseMembership result = ss.studentGetGrade(p, c);
+        assertEquals(expectedGrade, result.getGrade());
     }
 }

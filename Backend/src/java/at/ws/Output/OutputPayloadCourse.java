@@ -3,10 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package at.ws;
+package at.ws.Output;
 
 import at.database.Course;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -24,6 +26,15 @@ public class OutputPayloadCourse {
     private String description;
     private Integer duration;
     private String semester;
+    private Set personCourseMemberships = new HashSet(0);
+
+    public Set getPersonCourseMemberships() {
+        return personCourseMemberships;
+    }
+
+    public void setPersonCourseMemberships(Set personCourseMemberships) {
+        this.personCourseMemberships = personCourseMemberships;
+    }
     
     private ArrayList<Course> courses = new ArrayList<>();
 

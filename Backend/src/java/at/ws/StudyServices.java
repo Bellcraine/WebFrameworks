@@ -5,10 +5,16 @@
  */
 package at.ws;
 
+import at.ws.Output.OutputPayloadPersonCourseMembership;
+import at.ws.Output.OutputPayloadPerson;
+import at.ws.Output.OutputPayloadCourse;
+import at.ws.Input.InputPayloadPerson;
+import at.ws.Input.InputPayloadCourse;
 import at.database.Course;
 import at.database.HibernateUtil;
 import at.database.Person;
 import at.database.PersonCourseMembership;
+import at.database.PersonCourseMembershipId;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -77,7 +83,7 @@ public class StudyServices {
 
     /**
      * Web getCourses
-     * get all Couses regardless of users id (old version, do not use anymore)
+     * get all Couses regardless of users id (old version, please do not use anymore!)
      */
     @WebMethod(operationName = "getCourses")
     public OutputPayloadCourse getCourses() {
@@ -140,7 +146,6 @@ public class StudyServices {
         try {
 
             tx = s.beginTransaction();
-            // change query / add new query to get M.grade
             String hql = "SELECT C FROM PersonCourseMembership M LEFT JOIN M.course C WHERE M.person.personPk = :id";
             Query query = s.createQuery(hql);
             query.setParameter("id", parameter.getPersonPk());
@@ -149,16 +154,16 @@ public class StudyServices {
            for (int i = 0; i < results.size(); i++) {
                 
                 Course courseFromDb = (Course) results.get(i);
-
                 Course c = new Course();
                    c.setCoursePk(courseFromDb.getCoursePk());
                    c.setTitle(courseFromDb.getTitle());
                    c.setDescription(courseFromDb.getDescription());
                    c.setDuration(courseFromDb.getDuration());
                    c.setSemester(courseFromDb.getSemester());
-                   /*if (parameter.getRole().equalsIgnoreCase("student")) {
-                   // setGrade
-                   } */
+                   if (parameter.getRole().equalsIgnoreCase("student")) {
+                      c.setPersonCourseMemberships(courseFromDb.getPersonCourseMemberships());
+                   }
+                   
                    opl.addCourse(c);
             }
 
@@ -262,14 +267,15 @@ public class StudyServices {
 
     /**
      * addOrUpdateCourse
-     * input: course object (title, description, duration, semester), person.personPk
+     * input: course object ([coursePk], title, description, duration, semester), person.personPk
+     * if update: give course.coursePk
+     * if create: leave course.coursePk empty or set null (will be auto increment in db)
      * output: true or false
      */
     @WebMethod(operationName = "addOrUpdateCourse")
     public boolean addOrUpdateCourse (@WebParam(name = "courseParam") InputPayloadCourse courseParam, @WebParam(name = "personParam") InputPayloadPerson personParam) {
         
         boolean done = false;
-        OutputPayloadCourse opl = new OutputPayloadCourse();
 
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session s = sf.openSession();
@@ -280,13 +286,10 @@ public class StudyServices {
         c.setDescription(courseParam.getDescription());
         c.setDuration(courseParam.getDuration());
         c.setSemester(courseParam.getSemester());
+        c.setPersonCourseMemberships(courseParam.getPersonCourseMemberships());
         
         Person p = new Person();
         p.setPersonPk(personParam.getPersonPk());
-        
-        PersonCourseMembership m = new PersonCourseMembership();
-        m.setCourse(c);
-        m.setPerson(p);
  
         try {
             
@@ -294,17 +297,24 @@ public class StudyServices {
            tx = s.beginTransaction();
             if (courseParam.getCoursePk() != null) {
                 c.setCoursePk(courseParam.getCoursePk());
-            }
+            }  
             s.saveOrUpdate(c);
             tx.commit();
             
-           // this does not work
-            /*tx = s.beginTransaction();
+            PersonCourseMembershipId id = new PersonCourseMembershipId();
+            id.setCourseFk(c.getCoursePk());
+            id.setPersonFk(personParam.getPersonPk());
+        
+            PersonCourseMembership m = new PersonCourseMembership();
+            m.setId(id);
+            m.setCourse(c);
+            m.setPerson(p);
+                    
+            tx = s.beginTransaction();
             s.saveOrUpdate(m);
-            tx.commit();*/
+            tx.commit();
             
             done = true;
-
                    
         } catch (Exception e) {
 
@@ -357,6 +367,47 @@ public class StudyServices {
          
         return done;
         
+    }
+    
+    /**
+     * studentGetGrade
+     * maybe not needed (if you can deal with the hashset in course object)
+     * input: person.personPk, course.coursePk
+     * Output: personCourseMembership.grade
+     */
+    @WebMethod(operationName = "studentGetGrade")
+    public OutputPayloadPersonCourseMembership studentGetGrade(@WebParam(name = "personParam") InputPayloadPerson personParam, @WebParam(name = "courseParam") InputPayloadCourse courseParam) {
+        
+        OutputPayloadPersonCourseMembership opl = new OutputPayloadPersonCourseMembership();
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session s = sf.openSession();
+        Transaction tx = null;
+        
+        try {
+
+            tx = s.beginTransaction();
+            String hql= "FROM PersonCourseMembership M WHERE M.course.coursePk = :cid AND M.person.personPk = :pid";
+            Query query = s.createQuery(hql);                   //HQL Query zuweisen
+            query.setParameter("cid", courseParam.getCoursePk());                    //Wert für die id einfügen (gegen SQL Injection!)
+            query.setParameter("pid", personParam.getPersonPk());
+            List results = query.list();
+
+            PersonCourseMembership membershipFromDb = (PersonCourseMembership) results.get(0);
+            opl.setCourse(membershipFromDb.getCourse());
+            opl.setPerson(membershipFromDb.getPerson());
+            opl.setGrade(membershipFromDb.getGrade());
+                   
+        } catch (Exception e) {
+
+            if (tx != null) {
+                tx.rollback();
+            }
+            
+        } finally {
+            s.close();
+        }
+        
+        return opl;
     }
     
 }

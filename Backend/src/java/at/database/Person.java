@@ -17,7 +17,7 @@ public class Person  implements java.io.Serializable {
      private String name;
      private String lastname;
      private String role;
-     private Set <Integer>personCourseMemberships = new HashSet<>();
+     private Set personCourseMemberships = new HashSet();
 
     public Person() {
     }

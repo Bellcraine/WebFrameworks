@@ -3,12 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package at.ws;
+package at.ws.Output;
+
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author Judith
  */
+@XmlRootElement
 public class OutputPayloadPerson {
     
     private String username;
