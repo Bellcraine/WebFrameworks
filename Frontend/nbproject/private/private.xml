@@ -3,17 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WEBF_Project/Frontend/src/java/at/webf/wsclient/coursesListMB.java</file>
-            <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WEBF_Project/Frontend/src/conf/MANIFEST.MF</file>
-            <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WEBF_Project/Frontend/web/Home.xhtml</file>
-            <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WEBF_Project/Frontend/web/coursesList.xhtml</file>
-            <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WEBF_Project/Frontend/web/WEB-INF/faces-config.xml</file>
-            <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WEBF_Project/Frontend/src/java/at/webf/wsclient/LoginFrontend.java</file>
-            <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WEBF_Project/Frontend/src/java/at/webf/wsclient/Home.java</file>
-            <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WEBF_Project/Frontend/web/index.xhtml</file>
-            <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WEBF_Project/Frontend/web/WEB-INF/jax-ws-catalog.xml</file>
-            <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WEBF_Project/Frontend/src/conf/xml-resources/web-service-references/StudyServices/wsdl/localhost_8080/Backend/StudyServices.wsdl</file>
-            <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WEBF_Project/Frontend/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/Bellacraine/WebDevelopment/NetBeans/WebFrameworks/Frontend/web/resources/loginTemplate.xhtml</file>
+            <file>file:/C:/Users/Bellacraine/WebDevelopment/NetBeans/WebFrameworks/Frontend/src/java/at/webf/wsclient/courseListMB.java</file>
+            <file>file:/C:/Users/Bellacraine/WebDevelopment/NetBeans/WebFrameworks/Frontend/src/java/at/webf/wsclient/userInfoMB.java</file>
+            <file>file:/C:/Users/Bellacraine/WebDevelopment/NetBeans/WebFrameworks/Frontend/web/resources/basicTemplate.xhtml</file>
+            <file>file:/C:/Users/Bellacraine/WebDevelopment/NetBeans/WebFrameworks/Frontend/web/resources/css/cssLayout.css</file>
+            <file>file:/C:/Users/Bellacraine/WebDevelopment/NetBeans/WebFrameworks/Frontend/web/WEB-INF/faces-config.xml</file>
+            <file>file:/C:/Users/Bellacraine/WebDevelopment/NetBeans/WebFrameworks/Frontend/web/resources/css/default.css</file>
+            <file>file:/C:/Users/Bellacraine/WebDevelopment/NetBeans/WebFrameworks/Frontend/web/index.xhtml</file>
+            <file>file:/C:/Users/Bellacraine/WebDevelopment/NetBeans/WebFrameworks/Frontend/src/conf/MANIFEST.MF</file>
+            <file>file:/C:/Users/Bellacraine/WebDevelopment/NetBeans/WebFrameworks/Frontend/src/java/at/webf/wsclient/loginMB.java</file>
+            <file>file:/C:/Users/Bellacraine/WebDevelopment/NetBeans/WebFrameworks/Frontend/src/conf/xml-resources/web-service-references/StudyServices/wsdl/localhost_8080/Backend/StudyServices.wsdl</file>
+            <file>file:/C:/Users/Bellacraine/WebDevelopment/NetBeans/WebFrameworks/Frontend/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/Bellacraine/WebDevelopment/NetBeans/WebFrameworks/Frontend/web/courseList.xhtml</file>
+            <file>file:/C:/Users/Bellacraine/WebDevelopment/NetBeans/WebFrameworks/Frontend/web/userInfo.xhtml</file>
         </group>
     </open-files>
 </project-private>
