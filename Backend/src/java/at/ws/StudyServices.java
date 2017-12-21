@@ -274,7 +274,7 @@ public class StudyServices {
      * output: true or false
      */
     @WebMethod(operationName = "addOrUpdateCourse")
-    public boolean addOrUpdateCourse (@WebParam(name = "courseParam") InputPayloadCourse courseParam, @WebParam(name = "personParam") InputPayloadPerson personParam) {
+    public Boolean addOrUpdateCourse (@WebParam(name = "courseParam") InputPayloadCourse courseParam, @WebParam(name = "personParam") InputPayloadPerson personParam) {
         
         boolean done = false;
 
