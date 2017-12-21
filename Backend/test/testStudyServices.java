@@ -87,8 +87,7 @@ public class testStudyServices {
         boolean result = ss.addOrUpdateCourse(courseParam, personParam);
         assertEquals(true, result);
 
-    } */
-    
+    }*/
 /*    @Test
     public void testDeleteCourse() throws Exception {
         Integer coursePk = 36;
@@ -97,7 +96,7 @@ public class testStudyServices {
         
         boolean result = ss.deleteCourse(parameter);
         assertEquals(true, result);
-    } */
+    }*/
     
     @Test
     public void testLogin() throws Exception {
@@ -113,16 +112,44 @@ public class testStudyServices {
         assertEquals(expectedRole, result.getRole());
     }
     
-        @Test
-        public void testStudentGetGrade() throws Exception {
+    @Test
+    public void testStudentGetGrade() throws Exception {
         Integer expectedGrade = 1;
         Integer personPk = 9;  // values to test: tommy+feb(10,8)->exp:1, judith+frameworks(9, 7)->exp: 1, urbauer+frameworks(7, 7)->exp: null
         Integer coursePk = 7;
-        InputPayloadPerson p = new InputPayloadPerson();
-        p.setPersonPk(personPk);
-        InputPayloadCourse c = new InputPayloadCourse();
-        c.setCoursePk(coursePk);
-        OutputPayloadPersonCourseMembership result = ss.studentGetGrade(p, c);
+        InputPayloadPerson personParam = new InputPayloadPerson();
+        personParam.setPersonPk(personPk);
+        InputPayloadCourse courseParam = new InputPayloadCourse();
+        courseParam.setCoursePk(coursePk);
+        OutputPayloadPersonCourseMembership result = ss.studentGetGrade(courseParam, personParam);
         assertEquals(expectedGrade, result.getGrade());
     }
+        
+/*    @Test
+    public void testAddPersonToCourse() throws Exception {
+        Integer personPk = 13;
+        Integer coursePk = 8;
+        
+        InputPayloadCourse courseParam = new InputPayloadCourse();
+        courseParam.setCoursePk(coursePk);
+        InputPayloadPerson personParam = new InputPayloadPerson();
+        personParam.setPersonPk(personPk);
+        
+        boolean result = ss.addPersonToCourse(courseParam, personParam);
+        assertEquals(true, result);
+    }*/
+
+/*    @Test
+    public void testDeletePersonFromCourse() throws Exception {
+        Integer personPk = 7;
+        Integer coursePk = 8;
+        
+        InputPayloadCourse courseParam = new InputPayloadCourse();
+        courseParam.setCoursePk(coursePk);
+        InputPayloadPerson personParam = new InputPayloadPerson();
+        personParam.setPersonPk(personPk);
+        
+        boolean result = ss.deletePersonFromCourse(courseParam, personParam);
+        assertEquals(true, result);
+    }*/
 }

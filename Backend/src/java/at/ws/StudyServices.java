@@ -82,7 +82,7 @@ public class StudyServices {
     }
 
     /**
-     * Web getCourses
+     * getCourses
      * get all Couses regardless of users id (old version, please do not use anymore!)
      */
     @WebMethod(operationName = "getCourses")
@@ -252,6 +252,7 @@ public class StudyServices {
             opl.setDescription(courseFromDb.getDescription());
             opl.setDuration(courseFromDb.getDuration());
             opl.setSemester(courseFromDb.getSemester());
+            tx.commit();
             
         } catch (Exception e) {
 
@@ -268,8 +269,8 @@ public class StudyServices {
     /**
      * addOrUpdateCourse
      * input: course object ([coursePk], title, description, duration, semester), person.personPk
-     * if update: give course.coursePk
-     * if create: leave course.coursePk empty or set null (will be auto increment in db)
+     * on update: give course.coursePk
+     * on create: leave course.coursePk empty or set null (will be auto increment in db)
      * output: true or false
      */
     @WebMethod(operationName = "addOrUpdateCourse")
@@ -372,11 +373,11 @@ public class StudyServices {
     /**
      * studentGetGrade
      * maybe not needed (if you can deal with the hashset in course object)
-     * input: person.personPk, course.coursePk
+     * input: course.coursePk, person.personPk
      * Output: personCourseMembership.grade
      */
     @WebMethod(operationName = "studentGetGrade")
-    public OutputPayloadPersonCourseMembership studentGetGrade(@WebParam(name = "personParam") InputPayloadPerson personParam, @WebParam(name = "courseParam") InputPayloadCourse courseParam) {
+    public OutputPayloadPersonCourseMembership studentGetGrade(@WebParam(name = "courseParam") InputPayloadCourse courseParam, @WebParam(name = "personParam") InputPayloadPerson personParam) {
         
         OutputPayloadPersonCourseMembership opl = new OutputPayloadPersonCourseMembership();
         SessionFactory sf = HibernateUtil.getSessionFactory();
@@ -408,6 +409,115 @@ public class StudyServices {
         }
         
         return opl;
+    }
+
+    /**
+     * addPersonToCourse
+     * input: course.coursePk, person.personPk
+     * output: true / false (returns false if person or course have pks that do not exist in their tables!)
+     */
+    @WebMethod(operationName = "addPersonToCourse")
+    public Boolean addPersonToCourse(@WebParam(name = "courseParam") InputPayloadCourse courseParam, @WebParam(name = "personParam") InputPayloadPerson personParam) {
+        
+        boolean done = false;
+
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session s = sf.openSession();
+        Transaction tx = null;
+        
+        Course c = new Course();
+        c.setCoursePk(courseParam.getCoursePk());
+        
+        Person p = new Person();
+        p.setPersonPk(personParam.getPersonPk());
+        
+        PersonCourseMembershipId mid = new PersonCourseMembershipId();
+        mid.setCourseFk(courseParam.getCoursePk());
+        mid.setPersonFk(personParam.getPersonPk());
+
+        PersonCourseMembership m = new PersonCourseMembership();
+        m.setId(mid);
+        m.setCourse(c);
+        m.setPerson(p);
+        
+        try {
+
+            tx = s.beginTransaction();
+            s.saveOrUpdate(m);  // saves new combination, does not add same combination
+            tx.commit();
+            done = true;
+                   
+        } catch (Exception e) {
+
+            if (tx != null) {
+                tx.rollback();
+                done = false;   // returns false, if neither personPk or coursePk exist
+            }
+            
+        } finally {
+            s.close();
+        }
+         
+        return done;
+    }
+
+    /**
+     * deletePersonFromCourse
+     * input: course.coursePk, person.personPk
+     * output: true / false (gives also true, if person-course combination does not exist in membership table -> i will try to fix this)
+     */
+    @WebMethod(operationName = "deletePersonFromCourse")
+    public Boolean deletePersonFromCourse(@WebParam(name = "courseParam") InputPayloadCourse courseParam, @WebParam(name = "personParam") InputPayloadPerson personParam) {
+        
+        boolean done = false;
+
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session s = sf.openSession();
+        Transaction tx = null;
+        
+        Course c = new Course();
+        c.setCoursePk(courseParam.getCoursePk());
+        
+        Person p = new Person();
+        p.setPersonPk(personParam.getPersonPk());
+        
+        PersonCourseMembershipId mid = new PersonCourseMembershipId();
+        mid.setCourseFk(courseParam.getCoursePk());
+        mid.setPersonFk(personParam.getPersonPk());
+
+        PersonCourseMembership m = new PersonCourseMembership();
+        m.setId(mid);
+        m.setCourse(c);
+        m.setPerson(p);
+        
+        try {
+
+            tx = s.beginTransaction();
+            //s.delete(m);
+            /*String hql= "DELETE PersonCourseMembership M WHERE M.course.coursePk = :cid AND M.person.personPk = :pid";
+            Query query = s.createQuery(hql);                   //HQL Query zuweisen
+            query.setParameter("cid", courseParam.getCoursePk());
+            query.setParameter("pid", personParam.getPersonPk());
+            List results = query.list();
+            if (results.size() == 1) {
+                done = true;
+            } */
+            s.delete(m);
+            tx.commit();
+            done = true;
+                   
+        } catch (Exception e) {
+
+            if (tx != null) {
+                tx.rollback();
+                done = false;
+            }
+            
+        } finally {
+            s.close();
+        }
+         
+        return done;
     }
     
 }
