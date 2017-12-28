@@ -22,11 +22,11 @@
 
                         </div>
                         <div class="col-sm-6 text-center">
-                            <h:outputLabel for="role">You are logged in as #{loginMB.userid}</h:outputLabel>
+                            <h:outputLabel for="role">You are logged in as #{loginBean.userid}</h:outputLabel>
                         </div>
 
                         <div class="col-sm-3 text-right">
-                            <h:commandButton value="Logout" action="#{loginMB.logout()}" />
+                            <h:commandButton value="Logout" action="#{loginBean.logout()}" />
                         </div>
                     </div>
                     <ui:insert name="top">Top</ui:insert>

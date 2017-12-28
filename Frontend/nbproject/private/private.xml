@@ -2,6 +2,7 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group>
             <file>file:/C:/Users/Bellacraine/WebDevelopment/NetBeans/WebFrameworks/Frontend/web/resources/loginTemplate.xhtml</file>
             <file>file:/C:/Users/Bellacraine/WebDevelopment/NetBeans/WebFrameworks/Frontend/src/java/at/webf/wsclient/courseListMB.java</file>
@@ -18,5 +19,8 @@
             <file>file:/C:/Users/Bellacraine/WebDevelopment/NetBeans/WebFrameworks/Frontend/web/courseList.xhtml</file>
             <file>file:/C:/Users/Bellacraine/WebDevelopment/NetBeans/WebFrameworks/Frontend/web/userInfo.xhtml</file>
         </group>
+=======
+        <group/>
+>>>>>>> 327ac6e0125da78292cd2cd19e1874264ddd428e
     </open-files>
 </project-private>

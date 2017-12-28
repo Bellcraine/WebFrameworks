@@ -21,7 +21,9 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence&gt;
  *         &lt;element name="coursePk" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
  *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="duration" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
  *         &lt;element name="personCourseMemberships" type="{http://www.w3.org/2001/XMLSchema}anyType" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *         &lt;element name="semester" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="title" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
@@ -35,15 +37,19 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "course", propOrder = {
     "coursePk",
     "description",
+    "duration",
     "personCourseMemberships",
+    "semester",
     "title"
 })
 public class Course {
 
     protected Integer coursePk;
     protected String description;
+    protected int duration;
     @XmlElement(nillable = true)
     protected List<Object> personCourseMemberships;
+    protected String semester;
     protected String title;
 
     /**
@@ -95,6 +101,22 @@ public class Course {
     }
 
     /**
+     * Gets the value of the duration property.
+     * 
+     */
+    public int getDuration() {
+        return duration;
+    }
+
+    /**
+     * Sets the value of the duration property.
+     * 
+     */
+    public void setDuration(int value) {
+        this.duration = value;
+    }
+
+    /**
      * Gets the value of the personCourseMemberships property.
      * 
      * <p>
@@ -121,6 +143,30 @@ public class Course {
             personCourseMemberships = new ArrayList<Object>();
         }
         return this.personCourseMemberships;
+    }
+
+    /**
+     * Gets the value of the semester property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getSemester() {
+        return semester;
+    }
+
+    /**
+     * Sets the value of the semester property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setSemester(String value) {
+        this.semester = value;
     }
 
     /**

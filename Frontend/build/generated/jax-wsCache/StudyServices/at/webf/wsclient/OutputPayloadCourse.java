@@ -19,11 +19,14 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="course_pk" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
+ *         &lt;element name="coursePk" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
  *         &lt;element name="courses" type="{http://ws.at/}course" maxOccurs="unbounded" minOccurs="0"/&gt;
  *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="duration" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
  *         &lt;element name="errorCode" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
  *         &lt;element name="errorMessage" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="personCourseMemberships" type="{http://www.w3.org/2001/XMLSchema}anyType" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *         &lt;element name="semester" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="title" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
@@ -38,19 +41,25 @@ import javax.xml.bind.annotation.XmlType;
     "coursePk",
     "courses",
     "description",
+    "duration",
     "errorCode",
     "errorMessage",
+    "personCourseMemberships",
+    "semester",
     "title"
 })
 public class OutputPayloadCourse {
 
-    @XmlElement(name = "course_pk")
     protected Integer coursePk;
     @XmlElement(nillable = true)
     protected List<Course> courses;
     protected String description;
+    protected Integer duration;
     protected Integer errorCode;
     protected String errorMessage;
+    @XmlElement(nillable = true)
+    protected List<Object> personCourseMemberships;
+    protected String semester;
     protected String title;
 
     /**
@@ -131,6 +140,30 @@ public class OutputPayloadCourse {
     }
 
     /**
+     * Gets the value of the duration property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getDuration() {
+        return duration;
+    }
+
+    /**
+     * Sets the value of the duration property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setDuration(Integer value) {
+        this.duration = value;
+    }
+
+    /**
      * Gets the value of the errorCode property.
      * 
      * @return
@@ -176,6 +209,59 @@ public class OutputPayloadCourse {
      */
     public void setErrorMessage(String value) {
         this.errorMessage = value;
+    }
+
+    /**
+     * Gets the value of the personCourseMemberships property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the personCourseMemberships property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getPersonCourseMemberships().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link Object }
+     * 
+     * 
+     */
+    public List<Object> getPersonCourseMemberships() {
+        if (personCourseMemberships == null) {
+            personCourseMemberships = new ArrayList<Object>();
+        }
+        return this.personCourseMemberships;
+    }
+
+    /**
+     * Gets the value of the semester property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getSemester() {
+        return semester;
+    }
+
+    /**
+     * Sets the value of the semester property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setSemester(String value) {
+        this.semester = value;
     }
 
     /**

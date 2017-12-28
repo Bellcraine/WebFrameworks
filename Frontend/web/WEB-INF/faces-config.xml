@@ -5,18 +5,18 @@
               xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
                                 
     <managed-bean>
-            <managed-bean-name>loginMB</managed-bean-name>
-            <managed-bean-class>at.webf.wsclient.loginMB</managed-bean-class>
+            <managed-bean-name>loginBean</managed-bean-name>
+            <managed-bean-class>at.webf.wsclient.loginBean</managed-bean-class>
             <managed-bean-scope>session</managed-bean-scope></managed-bean>
     
     <managed-bean>
-            <managed-bean-name>userInfoMB</managed-bean-name>
-            <managed-bean-class>at.webf.wsclient.userInfoMB</managed-bean-class>
+            <managed-bean-name>userInfoBean</managed-bean-name>
+            <managed-bean-class>at.webf.wsclient.userInfoBean</managed-bean-class>
             <managed-bean-scope>session</managed-bean-scope></managed-bean>
     
     <managed-bean>
-            <managed-bean-name>courseListMB</managed-bean-name>
-            <managed-bean-class>at.webf.wsclient.courseListMB</managed-bean-class>
+            <managed-bean-name>courseListBean</managed-bean-name>
+            <managed-bean-class>at.webf.wsclient.courseListBean</managed-bean-class>
             <managed-bean-scope>session</managed-bean-scope></managed-bean>
     
 </faces-config>

@@ -1,5 +1,5 @@
 package at.database;
-// Generated 26.09.2017 18:50:13 by Hibernate Tools 4.3.1
+// Generated 21.12.2017 18:52:49 by Hibernate Tools 4.3.1
 
 
 

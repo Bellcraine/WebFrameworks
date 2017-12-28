@@ -12,16 +12,18 @@
         <div class="text-center">
             <br />
             <div>  
-                <h:outputLabel for="username">Username:</h:outputLabel> <br />
-                <h:inputText id="username" value="#{loginMB.username}"/>
+                <h:outputLabel for="username">Username:</h:outputLabel>
+                <br />
+                <h:inputText id="username" value="#{loginBean.username}"/>
             </div> 
             <br />
             <div>  
-                <h:outputLabel for="password">Password:</h:outputLabel><br />
-                <h:inputText id="password" value="#{loginMB.password}"/>
+                <h:outputLabel for="password">Password:</h:outputLabel>
+                <br />
+                <h:inputText id="password" value="#{loginBean.password}"/>
             </div>  
             <br />
-            <h:commandButton value="Login" action="#{loginMB.login}"/>
+            <h:commandButton value="Login" action="#{loginBean.login}"/>
 
         </div>
     </ui:define>
