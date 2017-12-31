@@ -23,14 +23,23 @@ public class loginBean implements Serializable {
     private String password;
 
     // Output
-    private Integer userid;
+    private Integer personPk;
+    private String role;
 
-    public Integer getUserid() {
-        return userid;
+    public String getRole() {
+        return role;
     }
 
-    public void setUserid(Integer userid) {
-        this.userid = userid;
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public Integer getPersonPk() {
+        return personPk;
+    }
+
+    public void setPersonPk(Integer personPk) {
+        this.personPk = personPk;
     }
 
     public String getUsername() {
@@ -65,24 +74,33 @@ public class loginBean implements Serializable {
 
         StudyServices_Service service = new StudyServices_Service(); //Verbindungsaufbau zum Backend über WebServices
         StudyServices port = service.getStudyServicesPort();
+
         parameter = new InputPayloadPerson();
-//
-        parameter.setUsername(username);      //Vorbereitung der Daten welche über das WS transportiert werden sollen
+        parameter.setUsername(username);      // Vorbereitung der Daten welche über das WS transportiert werden sollen
         parameter.setPassword(password);
-//
+
         OutputPayloadPerson opl = port.login(parameter); //Der eigentliche Aufruf des WebServices (Synchron)
-//
-//        String fehlerbeschreibung = opl.getFehlerbeschreibung(); //Auslesen der Resultate
-        userid = opl.getPersonPk();
-//
+
+        personPk = opl.getPersonPk();
+        username = opl.getUsername();
+        role = opl.getRole();
+
         FacesContext context = FacesContext.getCurrentInstance();
         HttpSession session = (HttpSession) context.getExternalContext().getSession(true);
-        session.setAttribute("userid", userid);
 
-//        SET OTHER SESSION VARIABLES HERE
-//        session.setAttribute("userid", userid)
-//        session.setAttribute("userid", userid);
-        return "userInfo";
+        if (opl != null && opl.getRole().equals("lecturer")) { //Auslesen der Resultate
+            session.setAttribute("personPk", personPk);
+            session.setAttribute("username", username);
+            session.setAttribute("role", role);
+            return "lecturerUserInfo";
+        } else if (opl != null && opl.getRole().equals("student")) {
+            session.setAttribute("personPk", personPk);
+            session.setAttribute("username", username);
+            session.setAttribute("role", role);
+            return "userInfo";
+        } else {
+            return "index";
+        }
     }
 
     public String logout() {

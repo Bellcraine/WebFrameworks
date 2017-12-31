@@ -160,9 +160,9 @@ public class StudyServices {
                    c.setDescription(courseFromDb.getDescription());
                    c.setDuration(courseFromDb.getDuration());
                    c.setSemester(courseFromDb.getSemester());
-                   if (parameter.getRole().equalsIgnoreCase("student")) {
-                      c.setPersonCourseMemberships(courseFromDb.getPersonCourseMemberships());
-                   }
+//                   if (parameter.getRole().equalsIgnoreCase("student")) {
+//                      c.setPersonCourseMemberships(courseFromDb.getPersonCourseMemberships());
+//                   }
                    
                    opl.addCourse(c);
             }

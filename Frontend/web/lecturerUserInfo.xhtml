@@ -3,16 +3,16 @@
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="./resources/basicTemplate.xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns="http://www.w3.org/1999/xhtml"
-                >
+                xmlns="http://www.w3.org/1999/xhtml">
 
     <ui:define name="top">
 
     </ui:define>
 
     <ui:define name="left">
-        <h:commandButton value="My courses" action="courseList" />
-        <h:commandButton value="Personal data" action="personalData"  />
+        <h:commandButton value="My courses" action="lecturerCourseList" />
+        <h:commandButton value="Create new Course" action="lecturerCourseForm" />    
+        <h:commandButton value="Personal data" action="lecturerPersonalData"  />
     </ui:define>
 
     <ui:define name="content">

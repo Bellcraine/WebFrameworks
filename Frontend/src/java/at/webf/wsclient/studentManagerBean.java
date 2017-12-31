@@ -5,30 +5,24 @@
  */
 package at.webf.wsclient;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Tommy
+ * @author Bellacraine
  */
-@Named
-public class userInfoBean implements Serializable {
+@Named(value = "studentManagerBean")
+@RequestScoped
+public class studentManagerBean {
 
-    private Integer personPk;
+    /**
+     * Creates a new instance of studentManagerBean
+     */
     private String username;
-    private String role;
-
-    public Integer getPersonPk() {
-        return personPk;
-    }
-
-    public void setPersonPk(Integer personPk) {
-        this.personPk = personPk;
-    }
+    private Course course;
 
     public String getUsername() {
         return username;
@@ -38,20 +32,21 @@ public class userInfoBean implements Serializable {
         this.username = username;
     }
 
-    public String getRole() {
-        return role;
+    public Course getCourse() {
+        return course;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setCourse(Course course) {
+        this.course = course;
     }
 
-    public userInfoBean() {
+    public studentManagerBean() {
         FacesContext context = FacesContext.getCurrentInstance();
         HttpSession session = (HttpSession) context.getExternalContext().getSession(true);
-        personPk = (Integer) session.getAttribute("personPk");
+        course = (Course) session.getAttribute("course");
         username = (String) session.getAttribute("username");
-        role = (String) session.getAttribute("role");
     }
+
+   
 
 }

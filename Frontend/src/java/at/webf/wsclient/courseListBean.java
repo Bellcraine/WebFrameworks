@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
-import javax.faces.bean.SessionScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
@@ -18,15 +18,58 @@ import javax.servlet.http.HttpSession;
  *
  * @author Tommy
  */
-@Named(value = "coursesListMB")
-@SessionScoped
+@Named(value = "courseListBean")
+@RequestScoped
 public class courseListBean implements Serializable {
 
-    private Integer course_pk;
-    private String title;
-    private String description;
+    private Integer personPk;
+    private String username;
+    private String role;
 
+    private Course course;
     private ArrayList<Course> courses;
+
+    private Integer grade;
+
+    public Integer getGrade() {
+        return grade;
+    }
+
+    public void setGrade(Integer grade) {
+        this.grade = grade;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public Integer getPersonPk() {
+        return personPk;
+    }
+
+    public void setPersonPk(Integer personPk) {
+        this.personPk = personPk;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 
     public ArrayList<Course> getCourses() {
         return courses;
@@ -40,35 +83,97 @@ public class courseListBean implements Serializable {
      * Creates a new instance of coursesListMB
      */
     public courseListBean() {
-//        FacesContext context = FacesContext.getCurrentInstance();
-//        HttpSession session = (HttpSession) context.getExternalContext().getSession(true);
-//        courses = (ArrayList<Course>) session.getAttribute("courses");
-            loadCourses();
+        FacesContext context = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession) context.getExternalContext().getSession(true);
+        personPk = (Integer) session.getAttribute("personPk");
+        username = (String) session.getAttribute("username");
+        role = (String) session.getAttribute("role");
+        loadCourseList();
     }
-    
+
+    //--------------------------------------- Container für Username & Passwort
+    private InputPayloadPerson parameter;
+
+    public InputPayloadPerson getParameter() {
+        return parameter;
+    }
+
+    public void setParameter(InputPayloadPerson parameter) {
+        this.parameter = parameter;
+    }
+
+    private InputPayloadCourse courseParams;
+
+    public InputPayloadCourse getCourseParams() {
+        return courseParams;
+    }
+
+    public void setCourseParams(InputPayloadCourse courseParams) {
+        this.courseParams = courseParams;
+    }
+
     //---------------------------------------
-    public void loadCourses() { //Login-methode, wird ausgeführt wenn der Button in index.xhtml geklickt wird.
+    private void loadCourseList() { //Login-methode, wird ausgeführt wenn der Button in index.xhtml geklickt wird.
 
         StudyServices_Service service = new StudyServices_Service(); //Verbindungsaufbau zum Backend über WebServices
         StudyServices port = service.getStudyServicesPort();
-        // parameter = new InputPayloadLogin();
 
-        //parameter.setUsername(username);      //Vorbereitung der Daten welche über das WS transportiert werden sollen
-        // parameter.setPassword(password);
-        OutputPayloadCourse opl = port.getCourses(); //Der eigentliche Aufruf des WebServices (Synchron)
+        parameter = new InputPayloadPerson();
+        parameter.setPersonPk(personPk);      //Vorbereitung der Daten welche über das WS transportiert werden sollen
+        parameter.setRole(role);
 
-        //String fehlerbeschreibung = opl.getFehlerbeschreibung(); //Auslesen der Resultate
-        //userid = opl.getUserid();
-//        course_pk = opl.getCoursePk();
-//        title = opl.getTitle();
-//        description = opl.getDescription();
+        OutputPayloadCourse opl = port.loadCourseList(parameter); //Der eigentliche Aufruf des WebServices (Synchron)
+
         courses = (ArrayList<Course>) opl.getCourses();
-
-//        FacesContext context = FacesContext.getCurrentInstance();
-//        HttpSession session = (HttpSession) context.getExternalContext().getSession(true);
-////        session.setAttribute("userid", userid);
-//            session.setAttribute("courses", courses);
     }
 
+    public String showCourseDetails(Course course) {
+        FacesContext context = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession) context.getExternalContext().getSession(true);
+        session.setAttribute("course", course);
+        if (session.getAttribute("role").equals("lecturer")) {
+            return "lecturerCourseDetails";
+        } else {
+            return "courseDetails";
+        }
+    }
+
+    public String deleteCourse(Course course) {
+        StudyServices_Service service = new StudyServices_Service(); //Verbindungsaufbau zum Backend über WebServices
+        StudyServices port = service.getStudyServicesPort();
+
+        courseParams = new InputPayloadCourse();
+        courseParams.setCoursePk(course.getCoursePk()); //Vorbereitung der Daten welche über das WS transportiert werden sollen
+
+        Boolean opl = port.deleteCourse(courseParams); //Der eigentliche Aufruf des WebServices (Synchron)
+        return "courseList";
+    }
+
+    public void showGrade(Course course) {
+        StudyServices_Service service = new StudyServices_Service(); //Verbindungsaufbau zum Backend über WebServices
+        StudyServices port = service.getStudyServicesPort();
+
+        parameter = new InputPayloadPerson();
+        courseParams = new InputPayloadCourse();
+
+        parameter.setPersonPk(personPk);      //Vorbereitung der Daten welche über das WS transportiert werden sollen
+        courseParams.setCoursePk(course.getCoursePk());
+
+        OutputPayloadPersonCourseMembership opl = port.studentGetGrade(courseParams, parameter); //Der eigentliche Aufruf des WebServices (Synchron)
+
+        grade = (Integer) opl.getGrade();
+//        loadCourseList();
+        // studentGetGrade
+        // maybe not needed (if you can deal with the hashset in course object)
+        // input: course.coursePk, person.personPk
+        // Output: personCourseMembership.grade
+    }
+
+    public String showStudentManager(Course course) {
+        FacesContext context = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession) context.getExternalContext().getSession(true);
+        session.setAttribute("course", course);
+        return "lecturerStudentManager";
+    }
 
 }
