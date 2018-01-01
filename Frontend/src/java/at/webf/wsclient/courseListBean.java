@@ -11,6 +11,7 @@ import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
@@ -147,6 +148,13 @@ public class courseListBean implements Serializable {
 
         Boolean opl = port.deleteCourse(courseParams); //Der eigentliche Aufruf des WebServices (Synchron)
         loadCourseList();
+        showMessage(FacesMessage.SEVERITY_INFO, "SUCCESS", "Course was deleted successfully.");
+
+    }
+
+    public void showMessage(FacesMessage.Severity severity, String title, String details) {
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage(severity, title, details));
     }
 
     public void showGrade(Course course) {

@@ -7,6 +7,7 @@ package at.webf.wsclient;
 
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.application.ViewHandler;
 import javax.faces.component.UIViewRoot;
 import javax.faces.context.FacesContext;
@@ -116,15 +117,30 @@ public class courseFormBean {
         parameter2 = new InputPayloadPerson();
 
         parameter1.setTitle(title);
+//        if(parameter1.getTitle().equals("")) {
+//            showErrorMessage();
+//            return "lecturerCourseForm";
+//        }
         parameter1.setDescription(description);
         parameter1.setDuration(duration);
         parameter1.setSemester(semester);
 
-        parameter2.setPersonPk(personPk);     // Vorbereitung der Daten welche über das WS transportiert werden sollen
+        parameter2.setPersonPk(personPk);     //Vorbereitung der Daten welche über das WS transportiert werden sollen
 
-        port.addOrUpdateCourse(parameter1, parameter2); //Der eigentliche Aufruf des WebServices (Synchron)
+        Boolean opl = port.addOrUpdateCourse(parameter1, parameter2); //Der eigentliche Aufruf des WebServices (Synchron)
 
-        return "lecturerCourseList";
+        if (opl == true) {
+            showMessage(FacesMessage.SEVERITY_INFO, "SUCCESS", "New course was added successfully.");
+            return "lecturerCourseList";
+        } else {
+            showMessage(FacesMessage.SEVERITY_ERROR, "FAILURE", "New course could not be added.");
+            return "lecturerCourseForm";
+        }
+    }
+
+    public void showMessage(FacesMessage.Severity severity, String title, String details) {
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage(severity, title, details));
     }
 
 //    public void refresh() {
@@ -135,5 +151,4 @@ public class courseFormBean {
 //        root.setViewId(viewId);
 //        context.setViewRoot(root);
 //    }
-
 }

@@ -6,6 +6,7 @@
 package at.webf.wsclient;
 
 import java.io.Serializable;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
@@ -92,20 +93,28 @@ public class loginBean implements Serializable {
             session.setAttribute("personPk", personPk);
             session.setAttribute("username", username);
             session.setAttribute("role", role);
+            showMessage(FacesMessage.SEVERITY_INFO, "SUCCESS", "You were logged in successfully.");
             return "lecturerUserInfo";
         } else if (opl != null && opl.getRole().equals("student")) {
             session.setAttribute("personPk", personPk);
             session.setAttribute("username", username);
             session.setAttribute("role", role);
+            showMessage(FacesMessage.SEVERITY_INFO, "SUCCESS", "You were logged in successfully.");
             return "userInfo";
         } else {
+            showMessage(FacesMessage.SEVERITY_ERROR, "FAILURE", "You were not able to log in.");
             return "index";
         }
     }
 
     public String logout() {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        showMessage(FacesMessage.SEVERITY_INFO, "SUCCESS", "You were logged out successfully.");
         return "index";
     }
 
+    public void showMessage(FacesMessage.Severity severity, String title, String details) {
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage(severity, title, details));
+    }
 }

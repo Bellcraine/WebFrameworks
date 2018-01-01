@@ -23,6 +23,9 @@
         <h3>Course List</h3>
         <p:separator />
 
+        <p:messages id="messages" showDetail="true" autoUpdate="true" />
+        <p:spacer height="20" />
+        
         <h:dataTable class="table table-striped table-hover" value="#{courseListBean.courses}" var="aCourse">
 
             <h:column>

@@ -9,6 +9,7 @@ import java.io.Serializable;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
 
 import javax.faces.context.FacesContext;
 
@@ -147,12 +148,23 @@ public class courseDetailsBean implements Serializable {
 
         Boolean opl = port.addOrUpdateCourse(parameter1, parameter2); //Der eigentliche Aufruf des WebServices (Synchron)
 
-        return "lecturerCourseList";
+        if (opl == true) {
+            showMessage(FacesMessage.SEVERITY_INFO, "SUCCESS", "Course was updated successfully.");
+            return "lecturerCourseList";
+        } else {
+            showMessage(FacesMessage.SEVERITY_ERROR, "FAILURE", "Course could not be updated.");
+            return "lecturerCourseList";
+        }
+        // addOrUpdateCourse
+        // input: course object ([coursePk], title, description, duration, semester), person.personPk
+        // on update: give course.coursePk
+        // on create: leave course.coursePk empty or set null (will be auto increment in db)
+        // output: true or false
     }
 
-//     addOrUpdateCourse
-// input: course object ([coursePk], title, description, duration, semester), person.personPk
-// on update: give course.coursePk
-// on create: leave course.coursePk empty or set null (will be auto increment in db)
-// output: true or false
+    public void showMessage(FacesMessage.Severity severity, String title, String details) {
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage(severity, title, details));
+    }
+
 }
