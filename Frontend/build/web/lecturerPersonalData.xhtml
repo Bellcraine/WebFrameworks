@@ -5,60 +5,70 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:p="http://primefaces.org/ui"
                 >
 
     <ui:define name="top">
-        
+
     </ui:define>
 
     <ui:define name="left">
-        <h:commandButton value="My courses" action="lecturerCourseList" />
-        <h:commandButton value="Create new Course" action="lecturerCourseForm" />    
-        <h:commandButton value="Personal data" action="lecturerPersonalData"  />
+        <p:commandButton value="Course List" action="lecturerCourseList" class="btn btn-block btn-sm btn-info" icon="ui-icon-folder-open" />
+        <p:commandButton value="New Course" action="lecturerCourseForm" class="btn btn-block btn-sm btn-info" icon="ui-icon-circle-plus" />    
+        <p:commandButton value="Personal Data" action="lecturerPersonalData" class="btn btn-block btn-sm btn-info" icon="ui-icon-person" />
     </ui:define>
 
     <ui:define name="content">
         <h3>Personal Data</h3>
-        <br />
+        <p:separator />
+        
+        <p:spacer height="20" />
 
-        <ul>
-            <li>
-                <h:outputText value="ID: #{personalDataBean.personPk}" />
-            </li>
-            <li>
-                <h:outputText value="Username: " />
-                <h:inputText value="#{personalDataBean.username}" />
-            </li>
-            <li>
-                <h:outputText value="First Name: " />
-                <h:inputText value="#{personalDataBean.firstName}" />
-            </li>
-            <li>
-                <h:outputText value="Last Name: " />
-                <h:inputText value="#{personalDataBean.lastName}" />
-            </li>
-            <li>
-                <h:outputText value="Role: #{personalDataBean.role}" />       
-            </li>  
-            <br />
-            <li>
-                <h:outputText value="New Password: " />
-                <h:inputSecret value=" " />
-            </li>
-            <li>
-                <h:outputText value="Confirm Password: " />
-                <h:inputSecret value=" " />
-            </li>
-        </ul>
+        <p:messages id="messages" showDetail="true" autoUpdate="true" />
 
-        <h:commandButton value="Back" action="lecturerUserInfo" />        
-        <h:commandButton value="Update" action="#{personalDataBean.updatePersonalData()}">
-            <f:setPropertyActionListener target="#{personalDataBean.personPk}" value="#{personalDataBean.personPk}" />
-            <f:setPropertyActionListener target="#{personalDataBean.username}" value="#{personalDataBean.username}" />
-            <f:setPropertyActionListener target="#{personalDataBean.firstName}" value="#{personalDataBean.firstName}" />
-            <f:setPropertyActionListener target="#{personalDataBean.lastName}" value="#{personalDataBean.lastName}" />
-            <f:setPropertyActionListener target="#{personalDataBean.role}" value="#{personalDataBean.role}" />
-        </h:commandButton>
+        <p:spacer height="20" />
+
+        <h:panelGrid columns="2" cellpadding="5">
+            <h:outputLabel value="ID: " />
+            <h:outputText value="#{personalDataBean.personPk}" />
+
+            <h:outputLabel value="Username: " />
+            <p:inputText value="#{personalDataBean.username}" />
+
+            <h:outputLabel value="First Name: " />
+            <p:inputText value="#{personalDataBean.firstName}" />
+
+            <h:outputLabel value="Last Name: " />
+            <p:inputText value="#{personalDataBean.lastName}" />
+
+            <h:outputLabel value="Role: " />   
+            <h:outputText value="#{personalDataBean.role}" />    
+
+            <p:spacer height="20" />
+            <p:spacer height="20" />
+
+            <h:outputLabel value="New Password: " />
+            <p:password value=" " />
+
+            <h:outputLabel value="Confirm Password: " />
+            <p:password value=" " />
+
+            <p:spacer height="20" />
+            <p:spacer height="20" />
+
+            <p:commandButton value="Back" action="userInfo" class="btn btn-sm btn-info" icon="ui-icon-close" />        
+            <p:commandButton value="Save" action="#{personalDataBean.updatePersonalData()}" class="btn btn-sm btn-info" icon="ui-icon-check">
+                <f:setPropertyActionListener target="#{personalDataBean.personPk}" value="#{personalDataBean.personPk}" />
+                <f:setPropertyActionListener target="#{personalDataBean.username}" value="#{personalDataBean.username}" />
+                <f:setPropertyActionListener target="#{personalDataBean.firstName}" value="#{personalDataBean.firstName}" />
+                <f:setPropertyActionListener target="#{personalDataBean.lastName}" value="#{personalDataBean.lastName}" />
+                <f:setPropertyActionListener target="#{personalDataBean.role}" value="#{personalDataBean.role}" />
+            </p:commandButton>
+        </h:panelGrid>
+
+
+
+
     </ui:define>
 
 </ui:composition>

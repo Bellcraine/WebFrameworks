@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
       >
 
     <h:head>
@@ -23,11 +24,11 @@
 
                         </div>
                         <div class="col-sm-6 text-center">
-                            <h:outputLabel for="role">You are logged in as #{loginBean.username} (#{loginBean.role})</h:outputLabel>
+                            <h:outputLabel for="role">You are logged in as <span id="user"> #{loginBean.username} (#{loginBean.role}) </span></h:outputLabel>
                         </div>
 
                         <div class="col-sm-3 text-right">
-                            <h:commandButton value="Logout" action="#{loginBean.logout()}" />
+                            <p:commandButton value="Logout" action="#{loginBean.logout()}" class="btn btn-sm btn-danger" icon="ui-icon-extlink" />
                         </div>
                     </div>
                     <ui:insert name="top">Top</ui:insert>

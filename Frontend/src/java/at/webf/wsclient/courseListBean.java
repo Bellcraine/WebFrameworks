@@ -138,7 +138,7 @@ public class courseListBean implements Serializable {
         }
     }
 
-    public String deleteCourse(Course course) {
+    public void deleteCourse(Course course) {
         StudyServices_Service service = new StudyServices_Service(); //Verbindungsaufbau zum Backend über WebServices
         StudyServices port = service.getStudyServicesPort();
 
@@ -146,7 +146,7 @@ public class courseListBean implements Serializable {
         courseParams.setCoursePk(course.getCoursePk()); //Vorbereitung der Daten welche über das WS transportiert werden sollen
 
         Boolean opl = port.deleteCourse(courseParams); //Der eigentliche Aufruf des WebServices (Synchron)
-        return "courseList";
+        loadCourseList();
     }
 
     public void showGrade(Course course) {

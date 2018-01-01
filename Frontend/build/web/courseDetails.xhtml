@@ -3,33 +3,50 @@
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="./resources/basicTemplate.xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns="http://www.w3.org/1999/xhtml">
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                >
 
     <ui:define name="top">
     </ui:define>
 
     <ui:define name="left">
-        <h:commandButton value="My courses" action="courseList" />
-        <h:commandButton value="Personal data" action="personalData"  />
+        <p:commandButton value="Course List" action="courseList" class="btn btn-block btn-sm btn-info" icon="ui-icon-folder-open" />  
+        <p:commandButton value="Personal Data" action="personalData" class="btn btn-block btn-sm btn-info" icon="ui-icon-person" />
     </ui:define>
 
     <ui:define name="content">
 
         <h3>Course Details</h3>
         <h5>#{courseDetailsBean.course.title}</h5>
-        <br />
-        <ul>
-            <li>ID: #{courseDetailsBean.course.coursePk}</li>
-            <li>Title: #{courseDetailsBean.course.title}</li>
-            <li>Lecturer: </li>
-            <li>Duration: #{courseDetailsBean.course.duration}</li>
-            <li>Semester: #{courseDetailsBean.course.semester}</li>
-            <li>Description: #{courseDetailsBean.course.description}</li>
-            <li>Grade: </li>
-        </ul>
+        <p:separator />
         
-        <h:commandButton value="Back" action="courseList" />      
-        
+        <h:panelGrid columns="2" cellpadding="5">
+
+            <h:outputLabel value="ID: " />
+            <h:outputText value="#{courseDetailsBean.course.coursePk}" />
+
+            <h:outputLabel value="Lecturer: " />
+            <h:outputText value=" " />
+
+            <h:outputLabel value="Duration: " />
+            <h:outputText value="#{courseDetailsBean.course.duration}" />
+
+            <h:outputLabel value="Semester: " />
+            <h:outputText value="#{courseDetailsBean.course.semester}" />
+
+            <h:outputLabel value="Description: " />
+            <h:outputText value="#{courseDetailsBean.course.description}" />
+
+            <h:outputLabel value="Grade: " />
+            <h:outputText value=" " />  
+
+            <p:spacer height="20" />
+            <p:spacer height="20" />
+
+            <p:commandButton value="Back" action="courseList" class="btn btn-sm btn-info" icon="ui-icon-close" />      
+
+        </h:panelGrid>
     </ui:define>
 
 </ui:composition>

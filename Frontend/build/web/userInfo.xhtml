@@ -4,19 +4,32 @@
                 template="./resources/basicTemplate.xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:p="http://primefaces.org/ui"
                 >
 
     <ui:define name="top">
 
     </ui:define>
 
-    <ui:define name="left">
-        <h:commandButton value="My courses" action="courseList" />
-        <h:commandButton value="Personal data" action="personalData"  />
+    <ui:define name="left">    
+        <p:commandButton value="Course List" action="courseList" class="btn btn-block btn-sm btn-info" icon="ui-icon-folder-open" />  
+        <p:commandButton value="Personal Data" action="personalData" class="btn btn-block btn-sm btn-info" icon="ui-icon-person" />
     </ui:define>
 
     <ui:define name="content">
-        You are logged in
+
+        <h3>Welcome</h3>
+        <p:separator />
+        
+        <p:spacer height="20" />
+
+        <p:messages id="messages" showDetail="true" autoUpdate="true" />
+
+        <p:spacer height="20" />
+
+        <p class="text-center"> Welcome to CIS - new and improved!</p>
+
+
     </ui:define>
 
 </ui:composition>

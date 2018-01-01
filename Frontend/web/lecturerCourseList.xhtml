@@ -5,6 +5,7 @@
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
                 xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:p="http://primefaces.org/ui"
                 >
 
     <ui:define name="top">
@@ -12,15 +13,15 @@
     </ui:define>
 
     <ui:define name="left">
-        <h:commandButton value="My courses" action="lecturerCourseList" />
-        <h:commandButton value="Create new Course" action="lecturerCourseForm" />    
-        <h:commandButton value="Personal data" action="lecturerPersonalData"  />
+        <p:commandButton value="Course List" action="lecturerCourseList" class="btn btn-block btn-sm btn-info" icon="ui-icon-folder-open" />
+        <p:commandButton value="New Course" action="lecturerCourseForm" class="btn btn-block btn-sm btn-info" icon="ui-icon-circle-plus" />    
+        <p:commandButton value="Personal Data" action="lecturerPersonalData" class="btn btn-block btn-sm btn-info" icon="ui-icon-person" />
     </ui:define>
 
     <ui:define name="content">
 
-        <h4 class="text-center">Course List of #{courseListBean.username}</h4>
-        <br />
+        <h3>Course List</h3>
+        <p:separator />
 
         <h:dataTable class="table table-striped table-hover" value="#{courseListBean.courses}" var="aCourse">
 
@@ -45,33 +46,29 @@
             </h:column>
 
             <h:column>
-                <f:facet name="header">Grade</f:facet>  
-                    #{aCourse.personCourseMemberships}
-            </h:column>
-
-            <h:column>
                 <f:facet name="header"></f:facet>
-                <h:commandButton value="Edit" action="#{courseListBean.showCourseDetails(aCourse)}" />
+                <h:commandButton value="Edit" action="#{courseListBean.showCourseDetails(aCourse)}" class="btn btn-sm btn-info" />
 
             </h:column>
 
             <h:column>
                 <f:facet name="header"></f:facet>
-                <h:commandButton value="Delete" action="#{courseListBean.deleteCourse(aCourse)}" />
+                <h:commandButton value="Delete" action="#{courseListBean.deleteCourse(aCourse)}" class="btn btn-sm btn-info" />
             </h:column>
-            
-             <h:column>
+
+            <h:column>
                 <f:facet name="header"></f:facet>
-                <h:commandButton value="Add/Remove Students" action="#{courseListBean.showStudentManager(aCourse)}" />
+                <h:commandButton value="Manage Students" action="#{courseListBean.showStudentManager(aCourse)}" class="btn btn-sm btn-info" />
             </h:column>
 
         </h:dataTable>
-        <br />
 
-        <h:commandButton value="Back" action="lecturerUserInfo" />
-        <h:commandButton value="Create new Course" action="lecturerCourseForm" />     
+        <p:spacer height="20" />
 
-
+        <h:panelGrid columns="2" cellpadding="5">
+            <p:commandButton value="Back" action="lecturerUserInfo" class="btn btn-sm btn-info" icon="ui-icon-close" />
+            <p:commandButton value="Add New Course" action="lecturerCourseForm" class="btn btn-sm btn-info" icon="ui-icon-circle-plus" />     
+        </h:panelGrid >
     </ui:define>
 
 </ui:composition>
