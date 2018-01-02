@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="return" type="{http://ws.at/}outputPayloadLogin" minOccurs="0"/&gt;
+ *         &lt;element name="return" type="{http://ws.at/}outputPayloadPerson" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -33,17 +33,17 @@ import javax.xml.bind.annotation.XmlType;
 public class LoginResponse {
 
     @XmlElement(name = "return")
-    protected OutputPayloadLogin _return;
+    protected OutputPayloadPerson _return;
 
     /**
      * Gets the value of the return property.
      * 
      * @return
      *     possible object is
-     *     {@link OutputPayloadLogin }
+     *     {@link OutputPayloadPerson }
      *     
      */
-    public OutputPayloadLogin getReturn() {
+    public OutputPayloadPerson getReturn() {
         return _return;
     }
 
@@ -52,10 +52,10 @@ public class LoginResponse {
      * 
      * @param value
      *     allowed object is
-     *     {@link OutputPayloadLogin }
+     *     {@link OutputPayloadPerson }
      *     
      */
-    public void setReturn(OutputPayloadLogin value) {
+    public void setReturn(OutputPayloadPerson value) {
         this._return = value;
     }
 

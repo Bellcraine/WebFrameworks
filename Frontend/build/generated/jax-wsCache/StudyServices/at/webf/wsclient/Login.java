@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="parameter" type="{http://ws.at/}inputPayloadLogin" minOccurs="0"/&gt;
+ *         &lt;element name="parameter" type="{http://ws.at/}inputPayloadPerson" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -31,17 +31,17 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class Login {
 
-    protected InputPayloadLogin parameter;
+    protected InputPayloadPerson parameter;
 
     /**
      * Gets the value of the parameter property.
      * 
      * @return
      *     possible object is
-     *     {@link InputPayloadLogin }
+     *     {@link InputPayloadPerson }
      *     
      */
-    public InputPayloadLogin getParameter() {
+    public InputPayloadPerson getParameter() {
         return parameter;
     }
 
@@ -50,10 +50,10 @@ public class Login {
      * 
      * @param value
      *     allowed object is
-     *     {@link InputPayloadLogin }
+     *     {@link InputPayloadPerson }
      *     
      */
-    public void setParameter(InputPayloadLogin value) {
+    public void setParameter(InputPayloadPerson value) {
         this.parameter = value;
     }
 

@@ -1,5 +1,5 @@
 package at.database;
-// Generated 26.09.2017 18:50:13 by Hibernate Tools 4.3.1
+// Generated 21.12.2017 18:52:49 by Hibernate Tools 4.3.1
 
 
 
@@ -12,16 +12,22 @@ public class PersonCourseMembership  implements java.io.Serializable {
      private PersonCourseMembershipId id;
      private Course course;
      private Person person;
-     private int note;
+     private Integer grade;
 
     public PersonCourseMembership() {
     }
 
-    public PersonCourseMembership(PersonCourseMembershipId id, Course course, Person person, int note) {
+	
+    public PersonCourseMembership(PersonCourseMembershipId id, Course course, Person person) {
+        this.id = id;
+        this.course = course;
+        this.person = person;
+    }
+    public PersonCourseMembership(PersonCourseMembershipId id, Course course, Person person, Integer grade) {
        this.id = id;
        this.course = course;
        this.person = person;
-       this.note = note;
+       this.grade = grade;
     }
    
     public PersonCourseMembershipId getId() {
@@ -45,12 +51,12 @@ public class PersonCourseMembership  implements java.io.Serializable {
     public void setPerson(Person person) {
         this.person = person;
     }
-    public int getNote() {
-        return this.note;
+    public Integer getGrade() {
+        return this.grade;
     }
     
-    public void setNote(int note) {
-        this.note = note;
+    public void setGrade(Integer grade) {
+        this.grade = grade;
     }
 
 

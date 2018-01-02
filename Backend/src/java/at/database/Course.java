@@ -1,5 +1,5 @@
 package at.database;
-// Generated 26.09.2017 18:50:13 by Hibernate Tools 4.3.1
+// Generated 21.12.2017 18:52:49 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -14,19 +14,25 @@ public class Course  implements java.io.Serializable {
      private Integer coursePk;
      private String title;
      private String description;
+     private int duration;
+     private String semester;
      private Set personCourseMemberships = new HashSet(0);
 
     public Course() {
     }
 
 	
-    public Course(String title, String description) {
+    public Course(String title, String description, int duration, String semester) {
         this.title = title;
         this.description = description;
+        this.duration = duration;
+        this.semester = semester;
     }
-    public Course(String title, String description, Set personCourseMemberships) {
+    public Course(String title, String description, int duration, String semester, Set personCourseMemberships) {
        this.title = title;
        this.description = description;
+       this.duration = duration;
+       this.semester = semester;
        this.personCourseMemberships = personCourseMemberships;
     }
    
@@ -50,6 +56,20 @@ public class Course  implements java.io.Serializable {
     
     public void setDescription(String description) {
         this.description = description;
+    }
+    public int getDuration() {
+        return this.duration;
+    }
+    
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+    public String getSemester() {
+        return this.semester;
+    }
+    
+    public void setSemester(String semester) {
+        this.semester = semester;
     }
     public Set getPersonCourseMemberships() {
         return this.personCourseMemberships;

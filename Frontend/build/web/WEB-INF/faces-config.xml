@@ -5,20 +5,26 @@
               xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
                                 
     <managed-bean>
-            <managed-bean-name>loginFrontend</managed-bean-name>
-            <managed-bean-class>at.webf.wsclient.LoginFrontend</managed-bean-class>
+            <managed-bean-name>loginBean</managed-bean-name>
+            <managed-bean-class>at.webf.wsclient.loginBean</managed-bean-class>
             <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
     
     <managed-bean>
-            <managed-bean-name>home</managed-bean-name>
-            <managed-bean-class>at.webf.wsclient.Home</managed-bean-class>
+            <managed-bean-name>userInfoBean</managed-bean-name>
+            <managed-bean-class>at.webf.wsclient.userInfoBean</managed-bean-class>
             <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
     
     <managed-bean>
-            <managed-bean-name>coursesListMB</managed-bean-name>
-            <managed-bean-class>at.webf.wsclient.coursesListMB</managed-bean-class>
+            <managed-bean-name>courseListBean</managed-bean-name>
+            <managed-bean-class>at.webf.wsclient.courseListBean</managed-bean-class>
+            <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+        
+    <managed-bean>
+            <managed-bean-name>courseDetailsBean</managed-bean-name>
+            <managed-bean-class>at.webf.wsclient.courseDetailsBean</managed-bean-class>
             <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
     

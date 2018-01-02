@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 26.09.2017 18:50:15 by Hibernate Tools 4.3.1 -->
+<!-- Generated 21.12.2017 18:52:50 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="at.database.PersonCourseMembership" table="person_course_membership" catalog="web" optimistic-lock="version">
         <composite-id name="id" class="at.database.PersonCourseMembershipId">
@@ -18,8 +18,8 @@
         <many-to-one name="person" class="at.database.Person" update="false" insert="false" fetch="select">
             <column name="person_fk" not-null="true" />
         </many-to-one>
-        <property name="note" type="int">
-            <column name="note" not-null="true" />
+        <property name="grade" type="java.lang.Integer">
+            <column name="grade" />
         </property>
     </class>
 </hibernate-mapping>
