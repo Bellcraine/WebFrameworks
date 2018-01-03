@@ -166,7 +166,13 @@ public class courseListBean implements Serializable {
 
         parameter.setPersonPk(personPk);      //Vorbereitung der Daten welche über das WS transportiert werden sollen
         courseParams.setCoursePk(course.getCoursePk());
-
+        
+        /* message von judith:
+         * sorry, dass ich hier reinschreibe (einfach löschen, wenn dus gelesen hast):
+         * diese methode ist fürs Frontend nicht mehr verfügbar!
+         * die grade und den lecturer gibts jetzt via loadCourseList als course.grade und course.lecturer (wie besprochen)
+         * die WebServices sind neu generiert, ich nehme an, das ist deshalb rot unterwellt
+         */
         OutputPayloadPersonCourseMembership opl = port.studentGetGrade(courseParams, parameter); //Der eigentliche Aufruf des WebServices (Synchron)
 
         grade = (Integer) opl.getGrade();

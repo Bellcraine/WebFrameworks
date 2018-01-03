@@ -1,7 +1,6 @@
 
 package at.webf.wsclient;
 
-import java.util.List;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
@@ -42,45 +41,6 @@ public interface StudyServices {
 
     /**
      * 
-     * @return
-     *     returns java.util.List<at.webf.wsclient.Person>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getAllStudents", targetNamespace = "http://ws.at/", className = "at.webf.wsclient.GetAllStudents")
-    @ResponseWrapper(localName = "getAllStudentsResponse", targetNamespace = "http://ws.at/", className = "at.webf.wsclient.GetAllStudentsResponse")
-    @Action(input = "http://ws.at/StudyServices/getAllStudentsRequest", output = "http://ws.at/StudyServices/getAllStudentsResponse")
-    public List<Person> getAllStudents();
-
-    /**
-     * 
-     * @param parameter
-     * @return
-     *     returns java.lang.Boolean
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "deleteCourse", targetNamespace = "http://ws.at/", className = "at.webf.wsclient.DeleteCourse")
-    @ResponseWrapper(localName = "deleteCourseResponse", targetNamespace = "http://ws.at/", className = "at.webf.wsclient.DeleteCourseResponse")
-    @Action(input = "http://ws.at/StudyServices/deleteCourseRequest", output = "http://ws.at/StudyServices/deleteCourseResponse")
-    public Boolean deleteCourse(
-        @WebParam(name = "parameter", targetNamespace = "")
-        InputPayloadCourse parameter);
-
-    /**
-     * 
-     * @return
-     *     returns at.webf.wsclient.OutputPayloadCourse
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getCourses", targetNamespace = "http://ws.at/", className = "at.webf.wsclient.GetCourses")
-    @ResponseWrapper(localName = "getCoursesResponse", targetNamespace = "http://ws.at/", className = "at.webf.wsclient.GetCoursesResponse")
-    @Action(input = "http://ws.at/StudyServices/getCoursesRequest", output = "http://ws.at/StudyServices/getCoursesResponse")
-    public OutputPayloadCourse getCourses();
-
-    /**
-     * 
      * @param parameter
      * @return
      *     returns at.webf.wsclient.OutputPayloadCourse
@@ -111,21 +71,6 @@ public interface StudyServices {
 
     /**
      * 
-     * @param parameter
-     * @return
-     *     returns at.webf.wsclient.OutputPayloadCourse
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "loadCourseDetails", targetNamespace = "http://ws.at/", className = "at.webf.wsclient.LoadCourseDetails")
-    @ResponseWrapper(localName = "loadCourseDetailsResponse", targetNamespace = "http://ws.at/", className = "at.webf.wsclient.LoadCourseDetailsResponse")
-    @Action(input = "http://ws.at/StudyServices/loadCourseDetailsRequest", output = "http://ws.at/StudyServices/loadCourseDetailsResponse")
-    public OutputPayloadCourse loadCourseDetails(
-        @WebParam(name = "parameter", targetNamespace = "")
-        InputPayloadCourse parameter);
-
-    /**
-     * 
      * @param courseParam
      * @param personParam
      * @return
@@ -137,24 +82,6 @@ public interface StudyServices {
     @ResponseWrapper(localName = "addOrUpdateCourseResponse", targetNamespace = "http://ws.at/", className = "at.webf.wsclient.AddOrUpdateCourseResponse")
     @Action(input = "http://ws.at/StudyServices/addOrUpdateCourseRequest", output = "http://ws.at/StudyServices/addOrUpdateCourseResponse")
     public Boolean addOrUpdateCourse(
-        @WebParam(name = "courseParam", targetNamespace = "")
-        InputPayloadCourse courseParam,
-        @WebParam(name = "personParam", targetNamespace = "")
-        InputPayloadPerson personParam);
-
-    /**
-     * 
-     * @param courseParam
-     * @param personParam
-     * @return
-     *     returns at.webf.wsclient.OutputPayloadPersonCourseMembership
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "studentGetGrade", targetNamespace = "http://ws.at/", className = "at.webf.wsclient.StudentGetGrade")
-    @ResponseWrapper(localName = "studentGetGradeResponse", targetNamespace = "http://ws.at/", className = "at.webf.wsclient.StudentGetGradeResponse")
-    @Action(input = "http://ws.at/StudyServices/studentGetGradeRequest", output = "http://ws.at/StudyServices/studentGetGradeResponse")
-    public OutputPayloadPersonCourseMembership studentGetGrade(
         @WebParam(name = "courseParam", targetNamespace = "")
         InputPayloadCourse courseParam,
         @WebParam(name = "personParam", targetNamespace = "")
@@ -208,6 +135,57 @@ public interface StudyServices {
     @ResponseWrapper(localName = "loadStudentListResponse", targetNamespace = "http://ws.at/", className = "at.webf.wsclient.LoadStudentListResponse")
     @Action(input = "http://ws.at/StudyServices/loadStudentListRequest", output = "http://ws.at/StudyServices/loadStudentListResponse")
     public OutputPayloadPerson loadStudentList(
+        @WebParam(name = "parameter", targetNamespace = "")
+        InputPayloadCourse parameter);
+
+    /**
+     * 
+     * @param courseParam
+     * @param grade
+     * @param personParam
+     * @return
+     *     returns java.lang.Boolean
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "addOrUpdateGrade", targetNamespace = "http://ws.at/", className = "at.webf.wsclient.AddOrUpdateGrade")
+    @ResponseWrapper(localName = "addOrUpdateGradeResponse", targetNamespace = "http://ws.at/", className = "at.webf.wsclient.AddOrUpdateGradeResponse")
+    @Action(input = "http://ws.at/StudyServices/addOrUpdateGradeRequest", output = "http://ws.at/StudyServices/addOrUpdateGradeResponse")
+    public Boolean addOrUpdateGrade(
+        @WebParam(name = "courseParam", targetNamespace = "")
+        InputPayloadCourse courseParam,
+        @WebParam(name = "personParam", targetNamespace = "")
+        InputPayloadPerson personParam,
+        @WebParam(name = "grade", targetNamespace = "")
+        Integer grade);
+
+    /**
+     * 
+     * @param parameter
+     * @return
+     *     returns java.lang.Boolean
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "addOrUpdatePerson", targetNamespace = "http://ws.at/", className = "at.webf.wsclient.AddOrUpdatePerson")
+    @ResponseWrapper(localName = "addOrUpdatePersonResponse", targetNamespace = "http://ws.at/", className = "at.webf.wsclient.AddOrUpdatePersonResponse")
+    @Action(input = "http://ws.at/StudyServices/addOrUpdatePersonRequest", output = "http://ws.at/StudyServices/addOrUpdatePersonResponse")
+    public Boolean addOrUpdatePerson(
+        @WebParam(name = "parameter", targetNamespace = "")
+        InputPayloadPerson parameter);
+
+    /**
+     * 
+     * @param parameter
+     * @return
+     *     returns java.lang.Boolean
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "deleteCourse", targetNamespace = "http://ws.at/", className = "at.webf.wsclient.DeleteCourse")
+    @ResponseWrapper(localName = "deleteCourseResponse", targetNamespace = "http://ws.at/", className = "at.webf.wsclient.DeleteCourseResponse")
+    @Action(input = "http://ws.at/StudyServices/deleteCourseRequest", output = "http://ws.at/StudyServices/deleteCourseResponse")
+    public Boolean deleteCourse(
         @WebParam(name = "parameter", targetNamespace = "")
         InputPayloadCourse parameter);
 

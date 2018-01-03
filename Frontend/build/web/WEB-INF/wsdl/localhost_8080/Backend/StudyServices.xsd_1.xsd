@@ -4,6 +4,14 @@
 
 <xs:element name="addOrUpdateCourseResponse" type="tns:addOrUpdateCourseResponse"/>
 
+<xs:element name="addOrUpdateGrade" type="tns:addOrUpdateGrade"/>
+
+<xs:element name="addOrUpdateGradeResponse" type="tns:addOrUpdateGradeResponse"/>
+
+<xs:element name="addOrUpdatePerson" type="tns:addOrUpdatePerson"/>
+
+<xs:element name="addOrUpdatePersonResponse" type="tns:addOrUpdatePersonResponse"/>
+
 <xs:element name="addPersonToCourse" type="tns:addPersonToCourse"/>
 
 <xs:element name="addPersonToCourseResponse" type="tns:addPersonToCourseResponse"/>
@@ -15,18 +23,6 @@
 <xs:element name="deletePersonFromCourse" type="tns:deletePersonFromCourse"/>
 
 <xs:element name="deletePersonFromCourseResponse" type="tns:deletePersonFromCourseResponse"/>
-
-<xs:element name="getAllStudents" type="tns:getAllStudents"/>
-
-<xs:element name="getAllStudentsResponse" type="tns:getAllStudentsResponse"/>
-
-<xs:element name="getCourses" type="tns:getCourses"/>
-
-<xs:element name="getCoursesResponse" type="tns:getCoursesResponse"/>
-
-<xs:element name="loadCourseDetails" type="tns:loadCourseDetails"/>
-
-<xs:element name="loadCourseDetailsResponse" type="tns:loadCourseDetailsResponse"/>
 
 <xs:element name="loadCourseList" type="tns:loadCourseList"/>
 
@@ -47,12 +43,6 @@
 <xs:element name="outputPayloadCourse" type="tns:outputPayloadCourse"/>
 
 <xs:element name="outputPayloadPerson" type="tns:outputPayloadPerson"/>
-
-<xs:element name="outputPayloadPersonCourseMembership" type="tns:outputPayloadPersonCourseMembership"/>
-
-<xs:element name="studentGetGrade" type="tns:studentGetGrade"/>
-
-<xs:element name="studentGetGradeResponse" type="tns:studentGetGradeResponse"/>
 
 <xs:complexType name="deletePersonFromCourse">
 <xs:sequence>
@@ -89,44 +79,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="loadCourseDetails">
-<xs:sequence>
-<xs:element name="parameter" type="tns:inputPayloadCourse" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="loadCourseDetailsResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:outputPayloadCourse" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="outputPayloadCourse">
-<xs:sequence>
-<xs:element name="coursePk" type="xs:int" minOccurs="0"/>
-<xs:element name="courses" type="tns:course" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
-<xs:element name="description" type="xs:string" minOccurs="0"/>
-<xs:element name="duration" type="xs:int" minOccurs="0"/>
-<xs:element name="errorCode" type="xs:int" minOccurs="0"/>
-<xs:element name="errorMessage" type="xs:string" minOccurs="0"/>
-<xs:element name="personCourseMemberships" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
-<xs:element name="semester" type="xs:string" minOccurs="0"/>
-<xs:element name="title" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="course">
-<xs:sequence>
-<xs:element name="coursePk" type="xs:int" minOccurs="0"/>
-<xs:element name="description" type="xs:string" minOccurs="0"/>
-<xs:element name="duration" type="xs:int"/>
-<xs:element name="grade" type="xs:int" minOccurs="0"/>
-<xs:element name="personCourseMemberships" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
-<xs:element name="semester" type="xs:string" minOccurs="0"/>
-<xs:element name="title" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="loadStudentList">
 <xs:sequence>
 <xs:element name="parameter" type="tns:inputPayloadCourse" minOccurs="0"/>
@@ -153,6 +105,7 @@
 
 <xs:complexType name="person">
 <xs:sequence>
+<xs:element name="grade" type="xs:int" minOccurs="0"/>
 <xs:element name="lastname" type="xs:string" minOccurs="0"/>
 <xs:element name="membership" type="xs:boolean"/>
 <xs:element name="name" type="xs:string" minOccurs="0"/>
@@ -161,16 +114,6 @@
 <xs:element name="personPk" type="xs:int" minOccurs="0"/>
 <xs:element name="role" type="xs:string" minOccurs="0"/>
 <xs:element name="username" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="getCourses">
-<xs:sequence/>
-</xs:complexType>
-
-<xs:complexType name="getCoursesResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:outputPayloadCourse" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -186,6 +129,45 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="outputPayloadCourse">
+<xs:sequence>
+<xs:element name="coursePk" type="xs:int" minOccurs="0"/>
+<xs:element name="courses" type="tns:course" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="description" type="xs:string" minOccurs="0"/>
+<xs:element name="duration" type="xs:int" minOccurs="0"/>
+<xs:element name="errorCode" type="xs:int" minOccurs="0"/>
+<xs:element name="errorMessage" type="xs:string" minOccurs="0"/>
+<xs:element name="personCourseMemberships" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="semester" type="xs:string" minOccurs="0"/>
+<xs:element name="title" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="course">
+<xs:sequence>
+<xs:element name="coursePk" type="xs:int" minOccurs="0"/>
+<xs:element name="description" type="xs:string" minOccurs="0"/>
+<xs:element name="duration" type="xs:int"/>
+<xs:element name="grade" type="xs:int" minOccurs="0"/>
+<xs:element name="lecturer" type="xs:string" minOccurs="0"/>
+<xs:element name="personCourseMemberships" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="semester" type="xs:string" minOccurs="0"/>
+<xs:element name="title" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addOrUpdatePerson">
+<xs:sequence>
+<xs:element name="parameter" type="tns:inputPayloadPerson" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addOrUpdatePersonResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="deleteCourse">
 <xs:sequence>
 <xs:element name="parameter" type="tns:inputPayloadCourse" minOccurs="0"/>
@@ -198,42 +180,17 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="studentGetGrade">
+<xs:complexType name="addOrUpdateGrade">
 <xs:sequence>
 <xs:element name="courseParam" type="tns:inputPayloadCourse" minOccurs="0"/>
 <xs:element name="personParam" type="tns:inputPayloadPerson" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="studentGetGradeResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:outputPayloadPersonCourseMembership" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="outputPayloadPersonCourseMembership">
-<xs:sequence>
-<xs:element name="course" type="tns:course" minOccurs="0"/>
 <xs:element name="grade" type="xs:int" minOccurs="0"/>
-<xs:element name="id" type="tns:personCourseMembershipId" minOccurs="0"/>
-<xs:element name="person" type="tns:person" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="personCourseMembershipId">
+<xs:complexType name="addOrUpdateGradeResponse">
 <xs:sequence>
-<xs:element name="courseFk" type="xs:int"/>
-<xs:element name="personFk" type="xs:int"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="getAllStudents">
-<xs:sequence/>
-</xs:complexType>
-
-<xs:complexType name="getAllStudentsResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:person" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="return" type="xs:boolean" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 

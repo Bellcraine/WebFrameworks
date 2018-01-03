@@ -5,6 +5,7 @@
  */
 
 import at.database.Person;
+import at.database.PersonCourseMembership;
 import at.ws.Input.InputPayloadCourse;
 import at.ws.Input.InputPayloadPerson;
 import at.ws.Output.OutputPayloadCourse;
@@ -59,21 +60,24 @@ public class testStudyServices {
         Integer expectedCoursePk = 7;
         //String expectedCourseTitle = "Web Frameworks";
         Integer expectedGrade = 2;
+        String expectedLecturer = "Philip Urbauer";
         InputPayloadPerson parameter = new InputPayloadPerson();
         parameter.setPersonPk(10);
+        parameter.setRole("student");
         OutputPayloadCourse result = ss.loadCourseList(parameter);
-        assertEquals(expectedCoursePk, result.getCourses().get(0).getCoursePk());
+        //assertEquals(expectedCoursePk, result.getCourses().get(0).getCoursePk());
         //assertEquals(expectedCourseTitle, result.getCourses().get(0).getTitle());
-        assertEquals(expectedGrade, result.getCourses().get(0).getGrade());
+        //assertEquals(expectedGrade, result.getCourses().get(0).getGrade());
+        assertEquals(expectedLecturer, result.getCourses().get(0).getLecturer());
 
     }
     
-/*    @Test
+    @Test
     public void testAddOrUpdateCourse() throws Exception {
-        String title = "Web Frameworks";
-        String description = "Java Frameworks Hibernate and Primefaces";
+        String title = "Backend Basics";
+        String description = "all about php";
         Integer duration = 12;
-        String semester = "WS17";
+        String semester = "SS17";
         Integer personPk = 7;
         
         InputPayloadCourse courseParam = new InputPayloadCourse();
@@ -89,7 +93,7 @@ public class testStudyServices {
         boolean result = ss.addOrUpdateCourse(courseParam, personParam);
         assertEquals(true, result);
 
-    }*/
+    }
 /*    @Test
     public void testDeleteCourse() throws Exception {
         Integer coursePk = 36;
@@ -103,19 +107,20 @@ public class testStudyServices {
     @Test
     public void testLogin() throws Exception {
         String expectedName = "Judith";
-        Integer expectedId = 9;
-        String expectedRole = "student";
+        //Integer expectedId = 9;
+        //String expectedRole = "student";
         InputPayloadPerson parameter = new InputPayloadPerson();
         parameter.setPassword("1234");
         parameter.setUsername("judith");
         OutputPayloadPerson result = ss.login(parameter);
         assertEquals(expectedName, result.getName());
-        assertEquals(expectedId, result.getPersonPk());
-        assertEquals(expectedRole, result.getRole());
+        //assertEquals(expectedId, result.getPersonPk());
+        //assertEquals(expectedRole, result.getRole());
+        //assertEquals(null, result);   // to test result at incorrect login username or password
     }
     
-    @Test
-    public void testStudentGetGrade() throws Exception {
+    /*@Test
+    public void testLoadMembershipData() throws Exception {
         Integer expectedGrade = 1;
         Integer personPk = 9;  // values to test: tommy+feb(10,8)->exp:1, judith+frameworks(9, 7)->exp: 1, urbauer+frameworks(7, 7)->exp: null
         Integer coursePk = 7;
@@ -123,9 +128,9 @@ public class testStudyServices {
         personParam.setPersonPk(personPk);
         InputPayloadCourse courseParam = new InputPayloadCourse();
         courseParam.setCoursePk(coursePk);
-        OutputPayloadPersonCourseMembership result = ss.studentGetGrade(courseParam, personParam);
+        PersonCourseMembership result = ss.loadMembershipData(courseParam, personParam);
         assertEquals(expectedGrade, result.getGrade());
-    }
+    }*/
         
 /*    @Test
     public void testAddPersonToCourse() throws Exception {
@@ -170,10 +175,46 @@ public class testStudyServices {
         assertEquals(expectedGrade, result.getPersons().get(0).getGrade());
     }
     
-    @Test
+    /*@Test
     public void testGetAllStudents() throws Exception {
         Integer expectedPersonPk = 10;  // tom
         ArrayList<Person> result = ss.getAllStudents();
         assertEquals(expectedPersonPk, result.get(1).getPersonPk());
-    }
+    }*/
+    
+    /*@Test
+    public void testAddOrUpdateGrade() throws Exception {
+        boolean expected = true;
+        InputPayloadCourse courseParam = new InputPayloadCourse();
+        courseParam.setCoursePk(7); // Frontend
+        InputPayloadPerson personParam = new InputPayloadPerson();
+        personParam.setPersonPk(10); // tommy
+        Integer grade = 1;
+        boolean result = ss.addOrUpdateGrade(courseParam, personParam, grade);
+        assertEquals(expected, result);     
+    } */
+    
+    /*@Test
+    public void testAddOrUpdatePerson() throws Exception {
+        boolean expected = true;
+        InputPayloadPerson personParam = new InputPayloadPerson();
+        //personParam.setPersonPk(10); // tommy
+        personParam.setUsername("tom");
+        personParam.setLastname("Brandstätter");
+        personParam.setName("Thomas");
+        personParam.setRole("student");
+        //personParam.setPassword("12345");
+        boolean result = ss.addOrUpdatePerson(personParam);
+        assertEquals(expected, result);     
+    }*/
+    
+    /*@Test
+    public void testGetLecturer() throws Exception {
+        String expected = "Florian Eckkrammer";
+        InputPayloadCourse parameter = new InputPayloadCourse();
+        parameter.setCoursePk(8);
+        String result = ss.getLecturer(parameter);
+        assertEquals(expected, result);     
+    }*/
+    
 }
