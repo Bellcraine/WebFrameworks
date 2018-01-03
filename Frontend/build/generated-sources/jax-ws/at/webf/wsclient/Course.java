@@ -22,6 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="coursePk" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="duration" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="grade" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="personCourseMemberships" type="{http://www.w3.org/2001/XMLSchema}anyType" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="semester" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="title" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -38,6 +39,7 @@ import javax.xml.bind.annotation.XmlType;
     "coursePk",
     "description",
     "duration",
+    "grade",
     "personCourseMemberships",
     "semester",
     "title"
@@ -47,6 +49,7 @@ public class Course {
     protected Integer coursePk;
     protected String description;
     protected int duration;
+    protected Integer grade;
     @XmlElement(nillable = true)
     protected List<Object> personCourseMemberships;
     protected String semester;
@@ -114,6 +117,30 @@ public class Course {
      */
     public void setDuration(int value) {
         this.duration = value;
+    }
+
+    /**
+     * Ruft den Wert der grade-Eigenschaft ab.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getGrade() {
+        return grade;
+    }
+
+    /**
+     * Legt den Wert der grade-Eigenschaft fest.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setGrade(Integer value) {
+        this.grade = value;
     }
 
     /**
