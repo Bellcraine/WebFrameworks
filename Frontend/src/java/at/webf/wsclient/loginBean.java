@@ -89,13 +89,13 @@ public class loginBean implements Serializable {
         FacesContext context = FacesContext.getCurrentInstance();
         HttpSession session = (HttpSession) context.getExternalContext().getSession(true);
 
-        if (opl != null && opl.getRole().equals("lecturer")) { //Auslesen der Resultate
+        if (opl.getRole().equals("lecturer")) { //Auslesen der Resultate
             session.setAttribute("personPk", personPk);
             session.setAttribute("username", username);
             session.setAttribute("role", role);
             showMessage(FacesMessage.SEVERITY_INFO, "SUCCESS", "You were logged in successfully.");
             return "lecturerUserInfo";
-        } else if (opl != null && opl.getRole().equals("student")) {
+        } else if (opl.getRole().equals("student")) {
             session.setAttribute("personPk", personPk);
             session.setAttribute("username", username);
             session.setAttribute("role", role);
@@ -103,7 +103,7 @@ public class loginBean implements Serializable {
             return "userInfo";
         } else {
             showMessage(FacesMessage.SEVERITY_ERROR, "FAILURE", "You were not able to log in.");
-            return "index";
+            return "userInfo";
         }
     }
 

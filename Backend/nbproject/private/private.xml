@@ -5,8 +5,11 @@
         <group>
             <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WebFrameworks/Backend/src/java/at/database/Person.hbm.xml</file>
             <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WebFrameworks/Backend/src/java/at/database/HibernateUtil.java</file>
+            <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WebFrameworks/Backend/src/java/at/ws/Output/OutputPayloadLogin.java</file>
             <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WebFrameworks/Backend/src/java/hibernate.cfg.xml</file>
+            <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WebFrameworks/Backend/src/java/at/database/PersonCourseMembership.java</file>
             <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WebFrameworks/Backend/src/java/at/ws/StudyServices.java</file>
+            <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WebFrameworks/Backend/src/java/at/ws/Input/InputPayloadPerson.java</file>
         </group>
     </open-files>
 </project-private>
