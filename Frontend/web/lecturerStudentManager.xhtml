@@ -26,6 +26,51 @@
         <p:messages id="messages" showDetail="true" autoUpdate="true" />
         <p:spacer height="20" />
 
+        <h:dataTable class="table table-striped table-hover" value="#{studentManagerBean.persons}" var="aPerson">
+
+            <h:column>
+                <f:facet name="header">ID</f:facet>
+                    #{aPerson.personPk}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Username</f:facet>
+                    #{aPerson.username}
+            </h:column>
+            
+             <h:column>
+                <f:facet name="header">First Name</f:facet>
+                    #{aPerson.name}
+            </h:column>
+            
+             <h:column>
+                <f:facet name="header">Last Name</f:facet>
+                    #{aPerson.lastname}
+            </h:column>
+            
+              <h:column>
+                <f:facet name="header">Grade</f:facet>
+                   
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">Add / Remove Student</f:facet>
+                <h:commandButton value="Add" action="#{studentManagerBean.addStudentToCourse(aPerson)}" class="btn btn-sm btn-info" rendered="#{!aPerson.membership}" />
+                <h:commandButton value="Remove" action="#{studentManagerBean.removeStudentFromCourse(aPerson)}" class="btn btn-sm btn-info" rendered="#{aPerson.membership}" />
+            </h:column>
+
+         
+          
+
+          
+
+           
+
+
+
+        </h:dataTable>
+        
+        
     </ui:define>
 
 </ui:composition>

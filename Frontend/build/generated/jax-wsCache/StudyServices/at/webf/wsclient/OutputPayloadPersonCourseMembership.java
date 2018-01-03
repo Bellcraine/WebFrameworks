@@ -7,23 +7,23 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java-Klasse für outputPayloadPersonCourseMembership complex type.
+ * <p>Java class for outputPayloadPersonCourseMembership complex type.
  * 
- * <p>Das folgende Schemafragment gibt den erwarteten Content an, der in dieser Klasse enthalten ist.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="outputPayloadPersonCourseMembership">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="course" type="{http://ws.at/}course" minOccurs="0"/>
- *         &lt;element name="grade" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
- *         &lt;element name="id" type="{http://ws.at/}personCourseMembershipId" minOccurs="0"/>
- *         &lt;element name="person" type="{http://ws.at/}person" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="outputPayloadPersonCourseMembership"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="course" type="{http://ws.at/}course" minOccurs="0"/&gt;
+ *         &lt;element name="grade" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
+ *         &lt;element name="id" type="{http://ws.at/}personCourseMembershipId" minOccurs="0"/&gt;
+ *         &lt;element name="person" type="{http://ws.at/}person" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -43,7 +43,7 @@ public class OutputPayloadPersonCourseMembership {
     protected Person person;
 
     /**
-     * Ruft den Wert der course-Eigenschaft ab.
+     * Gets the value of the course property.
      * 
      * @return
      *     possible object is
@@ -55,7 +55,7 @@ public class OutputPayloadPersonCourseMembership {
     }
 
     /**
-     * Legt den Wert der course-Eigenschaft fest.
+     * Sets the value of the course property.
      * 
      * @param value
      *     allowed object is
@@ -67,7 +67,7 @@ public class OutputPayloadPersonCourseMembership {
     }
 
     /**
-     * Ruft den Wert der grade-Eigenschaft ab.
+     * Gets the value of the grade property.
      * 
      * @return
      *     possible object is
@@ -79,7 +79,7 @@ public class OutputPayloadPersonCourseMembership {
     }
 
     /**
-     * Legt den Wert der grade-Eigenschaft fest.
+     * Sets the value of the grade property.
      * 
      * @param value
      *     allowed object is
@@ -91,7 +91,7 @@ public class OutputPayloadPersonCourseMembership {
     }
 
     /**
-     * Ruft den Wert der id-Eigenschaft ab.
+     * Gets the value of the id property.
      * 
      * @return
      *     possible object is
@@ -103,7 +103,7 @@ public class OutputPayloadPersonCourseMembership {
     }
 
     /**
-     * Legt den Wert der id-Eigenschaft fest.
+     * Sets the value of the id property.
      * 
      * @param value
      *     allowed object is
@@ -115,7 +115,7 @@ public class OutputPayloadPersonCourseMembership {
     }
 
     /**
-     * Ruft den Wert der person-Eigenschaft ab.
+     * Gets the value of the person property.
      * 
      * @return
      *     possible object is
@@ -127,7 +127,7 @@ public class OutputPayloadPersonCourseMembership {
     }
 
     /**
-     * Legt den Wert der person-Eigenschaft fest.
+     * Sets the value of the person property.
      * 
      * @param value
      *     allowed object is

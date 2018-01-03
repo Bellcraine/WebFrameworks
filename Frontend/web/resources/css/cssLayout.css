@@ -24,8 +24,9 @@
     background-color: #bbbbbb;
     padding: 5px;
     width: 150px;
-    min-height: 500px;
     border-radius: 5px;
+    min-height: 90%;
+
 }
 
 #left commandButton {
@@ -43,26 +44,26 @@
     position: relative;
     background-color: #eeeeee;
     padding: 5px;
-    min-height: 500px; 
     border-radius: 5px;
+    width: 100%;
 
 }
 
 .left_content {
     background-color: #eeeeee;
     padding: 5px;
-    margin-left: 170px;
-    min-height: 500px; 
+    margin-left: 10px;  
     border-radius: 5px;
+    width: 100%;
 
 }
 
 .right_content {
     background-color: #eeeeee;
     padding: 5px;
-    margin: 0px 170px 0px 170px;
-    min-height: 500px; 
+    margin: 0px 170px 0px 170px;  
     border-radius: 5px;
+    width: 100%;
 
 }
 
@@ -78,4 +79,7 @@
     text-decoration : underline;
 }
 
+.main {
+    display: flex;
+}
 

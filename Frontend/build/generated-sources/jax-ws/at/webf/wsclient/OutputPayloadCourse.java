@@ -10,28 +10,28 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java-Klasse für outputPayloadCourse complex type.
+ * <p>Java class for outputPayloadCourse complex type.
  * 
- * <p>Das folgende Schemafragment gibt den erwarteten Content an, der in dieser Klasse enthalten ist.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="outputPayloadCourse">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="coursePk" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
- *         &lt;element name="courses" type="{http://ws.at/}course" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="duration" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
- *         &lt;element name="errorCode" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
- *         &lt;element name="errorMessage" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="personCourseMemberships" type="{http://www.w3.org/2001/XMLSchema}anyType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="semester" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="title" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="outputPayloadCourse"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="coursePk" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
+ *         &lt;element name="courses" type="{http://ws.at/}course" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="duration" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
+ *         &lt;element name="errorCode" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
+ *         &lt;element name="errorMessage" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="personCourseMemberships" type="{http://www.w3.org/2001/XMLSchema}anyType" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *         &lt;element name="semester" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="title" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -63,7 +63,7 @@ public class OutputPayloadCourse {
     protected String title;
 
     /**
-     * Ruft den Wert der coursePk-Eigenschaft ab.
+     * Gets the value of the coursePk property.
      * 
      * @return
      *     possible object is
@@ -75,7 +75,7 @@ public class OutputPayloadCourse {
     }
 
     /**
-     * Legt den Wert der coursePk-Eigenschaft fest.
+     * Sets the value of the coursePk property.
      * 
      * @param value
      *     allowed object is
@@ -116,7 +116,7 @@ public class OutputPayloadCourse {
     }
 
     /**
-     * Ruft den Wert der description-Eigenschaft ab.
+     * Gets the value of the description property.
      * 
      * @return
      *     possible object is
@@ -128,7 +128,7 @@ public class OutputPayloadCourse {
     }
 
     /**
-     * Legt den Wert der description-Eigenschaft fest.
+     * Sets the value of the description property.
      * 
      * @param value
      *     allowed object is
@@ -140,7 +140,7 @@ public class OutputPayloadCourse {
     }
 
     /**
-     * Ruft den Wert der duration-Eigenschaft ab.
+     * Gets the value of the duration property.
      * 
      * @return
      *     possible object is
@@ -152,7 +152,7 @@ public class OutputPayloadCourse {
     }
 
     /**
-     * Legt den Wert der duration-Eigenschaft fest.
+     * Sets the value of the duration property.
      * 
      * @param value
      *     allowed object is
@@ -164,7 +164,7 @@ public class OutputPayloadCourse {
     }
 
     /**
-     * Ruft den Wert der errorCode-Eigenschaft ab.
+     * Gets the value of the errorCode property.
      * 
      * @return
      *     possible object is
@@ -176,7 +176,7 @@ public class OutputPayloadCourse {
     }
 
     /**
-     * Legt den Wert der errorCode-Eigenschaft fest.
+     * Sets the value of the errorCode property.
      * 
      * @param value
      *     allowed object is
@@ -188,7 +188,7 @@ public class OutputPayloadCourse {
     }
 
     /**
-     * Ruft den Wert der errorMessage-Eigenschaft ab.
+     * Gets the value of the errorMessage property.
      * 
      * @return
      *     possible object is
@@ -200,7 +200,7 @@ public class OutputPayloadCourse {
     }
 
     /**
-     * Legt den Wert der errorMessage-Eigenschaft fest.
+     * Sets the value of the errorMessage property.
      * 
      * @param value
      *     allowed object is
@@ -241,7 +241,7 @@ public class OutputPayloadCourse {
     }
 
     /**
-     * Ruft den Wert der semester-Eigenschaft ab.
+     * Gets the value of the semester property.
      * 
      * @return
      *     possible object is
@@ -253,7 +253,7 @@ public class OutputPayloadCourse {
     }
 
     /**
-     * Legt den Wert der semester-Eigenschaft fest.
+     * Sets the value of the semester property.
      * 
      * @param value
      *     allowed object is
@@ -265,7 +265,7 @@ public class OutputPayloadCourse {
     }
 
     /**
-     * Ruft den Wert der title-Eigenschaft ab.
+     * Gets the value of the title property.
      * 
      * @return
      *     possible object is
@@ -277,7 +277,7 @@ public class OutputPayloadCourse {
     }
 
     /**
-     * Legt den Wert der title-Eigenschaft fest.
+     * Sets the value of the title property.
      * 
      * @param value
      *     allowed object is

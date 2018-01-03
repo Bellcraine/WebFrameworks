@@ -7,21 +7,21 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java-Klasse für addPersonToCourse complex type.
+ * <p>Java class for addPersonToCourse complex type.
  * 
- * <p>Das folgende Schemafragment gibt den erwarteten Content an, der in dieser Klasse enthalten ist.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="addPersonToCourse">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="courseParam" type="{http://ws.at/}inputPayloadCourse" minOccurs="0"/>
- *         &lt;element name="personParam" type="{http://ws.at/}inputPayloadPerson" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="addPersonToCourse"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="courseParam" type="{http://ws.at/}inputPayloadCourse" minOccurs="0"/&gt;
+ *         &lt;element name="personParam" type="{http://ws.at/}inputPayloadPerson" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -37,7 +37,7 @@ public class AddPersonToCourse {
     protected InputPayloadPerson personParam;
 
     /**
-     * Ruft den Wert der courseParam-Eigenschaft ab.
+     * Gets the value of the courseParam property.
      * 
      * @return
      *     possible object is
@@ -49,7 +49,7 @@ public class AddPersonToCourse {
     }
 
     /**
-     * Legt den Wert der courseParam-Eigenschaft fest.
+     * Sets the value of the courseParam property.
      * 
      * @param value
      *     allowed object is
@@ -61,7 +61,7 @@ public class AddPersonToCourse {
     }
 
     /**
-     * Ruft den Wert der personParam-Eigenschaft ab.
+     * Gets the value of the personParam property.
      * 
      * @return
      *     possible object is
@@ -73,7 +73,7 @@ public class AddPersonToCourse {
     }
 
     /**
-     * Legt den Wert der personParam-Eigenschaft fest.
+     * Sets the value of the personParam property.
      * 
      * @param value
      *     allowed object is

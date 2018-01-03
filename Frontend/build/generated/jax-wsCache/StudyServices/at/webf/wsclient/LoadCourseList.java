@@ -7,20 +7,20 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java-Klasse für loadCourseList complex type.
+ * <p>Java class for loadCourseList complex type.
  * 
- * <p>Das folgende Schemafragment gibt den erwarteten Content an, der in dieser Klasse enthalten ist.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="loadCourseList">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="parameter" type="{http://ws.at/}inputPayloadPerson" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="loadCourseList"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="parameter" type="{http://ws.at/}inputPayloadPerson" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -34,7 +34,7 @@ public class LoadCourseList {
     protected InputPayloadPerson parameter;
 
     /**
-     * Ruft den Wert der parameter-Eigenschaft ab.
+     * Gets the value of the parameter property.
      * 
      * @return
      *     possible object is
@@ -46,7 +46,7 @@ public class LoadCourseList {
     }
 
     /**
-     * Legt den Wert der parameter-Eigenschaft fest.
+     * Sets the value of the parameter property.
      * 
      * @param value
      *     allowed object is
