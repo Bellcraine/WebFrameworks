@@ -42,21 +42,5 @@
         <delete dir="${build.generated.sources.dir}/jax-ws/at/webf/wsclient"/>
         <delete dir="${build.generated.dir}/jax-wsCache/StudyServices"/>
     </target>
-    <target name="wsimport-client-StudyServices_1" depends="wsimport-init">
-        <mkdir dir="${build.generated.dir}/jax-wsCache/StudyServices_1"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/StudyServices_1" destdir="${build.generated.dir}/jax-wsCache/StudyServices_1" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/StudyServices_1/wsdl/localhost_8080/Backend/StudyServices.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/Backend/StudyServices?wsdl" xnocompile="true" xendorsed="true" package="at.webf.wsclient">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/StudyServices_1/wsdl/localhost_8080/Backend/StudyServices.wsdl"/>
-            <produces dir="${build.generated.dir}/jax-wsCache/StudyServices_1"/>
-        </wsimport>
-        <copy todir="${build.generated.sources.dir}/jax-ws">
-            <fileset dir="${build.generated.dir}/jax-wsCache/StudyServices_1">
-                <include name="**/*.java"/>
-            </fileset>
-        </copy>
-    </target>
-    <target name="wsimport-client-clean-StudyServices_1" depends="-init-project">
-        <delete dir="${build.generated.sources.dir}/jax-ws/at/webf/wsclient"/>
-        <delete dir="${build.generated.dir}/jax-wsCache/StudyServices_1"/>
-    </target>
-    <target name="wsimport-client-generate" depends="wsimport-client-StudyServices, wsimport-client-StudyServices_1"/>
+    <target name="wsimport-client-generate" depends="wsimport-client-StudyServices"/>
 </project>
