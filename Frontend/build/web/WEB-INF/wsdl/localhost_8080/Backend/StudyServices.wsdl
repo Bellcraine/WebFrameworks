@@ -4,41 +4,11 @@
 <xsd:import namespace="http://ws.at/" schemaLocation="http://localhost:8080/Backend/StudyServices?xsd=1"/>
 </xsd:schema>
 </types>
-<message name="getCourses">
-<part name="parameters" element="tns:getCourses"/>
-</message>
-<message name="getCoursesResponse">
-<part name="parameters" element="tns:getCoursesResponse"/>
-</message>
-<message name="deleteCourse">
-<part name="parameters" element="tns:deleteCourse"/>
-</message>
-<message name="deleteCourseResponse">
-<part name="parameters" element="tns:deleteCourseResponse"/>
-</message>
-<message name="studentGetGrade">
-<part name="parameters" element="tns:studentGetGrade"/>
-</message>
-<message name="studentGetGradeResponse">
-<part name="parameters" element="tns:studentGetGradeResponse"/>
-</message>
-<message name="loadCourseList">
-<part name="parameters" element="tns:loadCourseList"/>
-</message>
-<message name="loadCourseListResponse">
-<part name="parameters" element="tns:loadCourseListResponse"/>
-</message>
 <message name="login">
 <part name="parameters" element="tns:login"/>
 </message>
 <message name="loginResponse">
 <part name="parameters" element="tns:loginResponse"/>
-</message>
-<message name="addOrUpdateCourse">
-<part name="parameters" element="tns:addOrUpdateCourse"/>
-</message>
-<message name="addOrUpdateCourseResponse">
-<part name="parameters" element="tns:addOrUpdateCourseResponse"/>
 </message>
 <message name="loadCourseDetails">
 <part name="parameters" element="tns:loadCourseDetails"/>
@@ -64,30 +34,52 @@
 <message name="loadPersonDetailsResponse">
 <part name="parameters" element="tns:loadPersonDetailsResponse"/>
 </message>
+<message name="addOrUpdateCourse">
+<part name="parameters" element="tns:addOrUpdateCourse"/>
+</message>
+<message name="addOrUpdateCourseResponse">
+<part name="parameters" element="tns:addOrUpdateCourseResponse"/>
+</message>
+<message name="loadStudentList">
+<part name="parameters" element="tns:loadStudentList"/>
+</message>
+<message name="loadStudentListResponse">
+<part name="parameters" element="tns:loadStudentListResponse"/>
+</message>
+<message name="deleteCourse">
+<part name="parameters" element="tns:deleteCourse"/>
+</message>
+<message name="deleteCourseResponse">
+<part name="parameters" element="tns:deleteCourseResponse"/>
+</message>
+<message name="getAllStudents">
+<part name="parameters" element="tns:getAllStudents"/>
+</message>
+<message name="getAllStudentsResponse">
+<part name="parameters" element="tns:getAllStudentsResponse"/>
+</message>
+<message name="studentGetGrade">
+<part name="parameters" element="tns:studentGetGrade"/>
+</message>
+<message name="studentGetGradeResponse">
+<part name="parameters" element="tns:studentGetGradeResponse"/>
+</message>
+<message name="loadCourseList">
+<part name="parameters" element="tns:loadCourseList"/>
+</message>
+<message name="loadCourseListResponse">
+<part name="parameters" element="tns:loadCourseListResponse"/>
+</message>
+<message name="getCourses">
+<part name="parameters" element="tns:getCourses"/>
+</message>
+<message name="getCoursesResponse">
+<part name="parameters" element="tns:getCoursesResponse"/>
+</message>
 <portType name="StudyServices">
-<operation name="getCourses">
-<input wsam:Action="http://ws.at/StudyServices/getCoursesRequest" message="tns:getCourses"/>
-<output wsam:Action="http://ws.at/StudyServices/getCoursesResponse" message="tns:getCoursesResponse"/>
-</operation>
-<operation name="deleteCourse">
-<input wsam:Action="http://ws.at/StudyServices/deleteCourseRequest" message="tns:deleteCourse"/>
-<output wsam:Action="http://ws.at/StudyServices/deleteCourseResponse" message="tns:deleteCourseResponse"/>
-</operation>
-<operation name="studentGetGrade">
-<input wsam:Action="http://ws.at/StudyServices/studentGetGradeRequest" message="tns:studentGetGrade"/>
-<output wsam:Action="http://ws.at/StudyServices/studentGetGradeResponse" message="tns:studentGetGradeResponse"/>
-</operation>
-<operation name="loadCourseList">
-<input wsam:Action="http://ws.at/StudyServices/loadCourseListRequest" message="tns:loadCourseList"/>
-<output wsam:Action="http://ws.at/StudyServices/loadCourseListResponse" message="tns:loadCourseListResponse"/>
-</operation>
 <operation name="login">
 <input wsam:Action="http://ws.at/StudyServices/loginRequest" message="tns:login"/>
 <output wsam:Action="http://ws.at/StudyServices/loginResponse" message="tns:loginResponse"/>
-</operation>
-<operation name="addOrUpdateCourse">
-<input wsam:Action="http://ws.at/StudyServices/addOrUpdateCourseRequest" message="tns:addOrUpdateCourse"/>
-<output wsam:Action="http://ws.at/StudyServices/addOrUpdateCourseResponse" message="tns:addOrUpdateCourseResponse"/>
 </operation>
 <operation name="loadCourseDetails">
 <input wsam:Action="http://ws.at/StudyServices/loadCourseDetailsRequest" message="tns:loadCourseDetails"/>
@@ -105,55 +97,38 @@
 <input wsam:Action="http://ws.at/StudyServices/loadPersonDetailsRequest" message="tns:loadPersonDetails"/>
 <output wsam:Action="http://ws.at/StudyServices/loadPersonDetailsResponse" message="tns:loadPersonDetailsResponse"/>
 </operation>
+<operation name="addOrUpdateCourse">
+<input wsam:Action="http://ws.at/StudyServices/addOrUpdateCourseRequest" message="tns:addOrUpdateCourse"/>
+<output wsam:Action="http://ws.at/StudyServices/addOrUpdateCourseResponse" message="tns:addOrUpdateCourseResponse"/>
+</operation>
+<operation name="loadStudentList">
+<input wsam:Action="http://ws.at/StudyServices/loadStudentListRequest" message="tns:loadStudentList"/>
+<output wsam:Action="http://ws.at/StudyServices/loadStudentListResponse" message="tns:loadStudentListResponse"/>
+</operation>
+<operation name="deleteCourse">
+<input wsam:Action="http://ws.at/StudyServices/deleteCourseRequest" message="tns:deleteCourse"/>
+<output wsam:Action="http://ws.at/StudyServices/deleteCourseResponse" message="tns:deleteCourseResponse"/>
+</operation>
+<operation name="getAllStudents">
+<input wsam:Action="http://ws.at/StudyServices/getAllStudentsRequest" message="tns:getAllStudents"/>
+<output wsam:Action="http://ws.at/StudyServices/getAllStudentsResponse" message="tns:getAllStudentsResponse"/>
+</operation>
+<operation name="studentGetGrade">
+<input wsam:Action="http://ws.at/StudyServices/studentGetGradeRequest" message="tns:studentGetGrade"/>
+<output wsam:Action="http://ws.at/StudyServices/studentGetGradeResponse" message="tns:studentGetGradeResponse"/>
+</operation>
+<operation name="loadCourseList">
+<input wsam:Action="http://ws.at/StudyServices/loadCourseListRequest" message="tns:loadCourseList"/>
+<output wsam:Action="http://ws.at/StudyServices/loadCourseListResponse" message="tns:loadCourseListResponse"/>
+</operation>
+<operation name="getCourses">
+<input wsam:Action="http://ws.at/StudyServices/getCoursesRequest" message="tns:getCourses"/>
+<output wsam:Action="http://ws.at/StudyServices/getCoursesResponse" message="tns:getCoursesResponse"/>
+</operation>
 </portType>
 <binding name="StudyServicesPortBinding" type="tns:StudyServices">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-<operation name="getCourses">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="deleteCourse">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="studentGetGrade">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="loadCourseList">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
 <operation name="login">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="addOrUpdateCourse">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -190,6 +165,69 @@
 </output>
 </operation>
 <operation name="loadPersonDetails">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="addOrUpdateCourse">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="loadStudentList">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="deleteCourse">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="getAllStudents">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="studentGetGrade">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="loadCourseList">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="getCourses">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

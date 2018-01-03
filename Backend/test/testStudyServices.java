@@ -4,12 +4,14 @@
  * and open the template in the editor.
  */
 
+import at.database.Person;
 import at.ws.Input.InputPayloadCourse;
 import at.ws.Input.InputPayloadPerson;
 import at.ws.Output.OutputPayloadCourse;
 import at.ws.Output.OutputPayloadPerson;
 import at.ws.Output.OutputPayloadPersonCourseMembership;
 import at.ws.StudyServices;
+import java.util.ArrayList;
 import org.junit.Before;
 import static org.junit.Assert.*;
 import org.junit.Test;
@@ -152,4 +154,24 @@ public class testStudyServices {
         boolean result = ss.deletePersonFromCourse(courseParam, personParam);
         assertEquals(true, result);
     }*/
+    
+    @Test
+    public void testLoadStudentList() throws Exception {
+        String expectedUsername = "judith";
+        String expectedRole = "student";
+        boolean expectedMembership = true;
+        InputPayloadCourse courseParam = new InputPayloadCourse();
+        courseParam.setCoursePk(7); // frameworks
+        OutputPayloadPerson result = ss.loadStudentList(courseParam);
+        assertEquals(expectedUsername, result.getPersons().get(0).getUsername());  // first student object -> judith
+        assertEquals(expectedRole, result.getPersons().get(0).getRole());
+        assertEquals(expectedMembership, result.getPersons().get(0).isMembership());
+    }
+    
+    @Test
+    public void testGetAllStudents() throws Exception {
+        Integer expectedPersonPk = 10;  // tom
+        ArrayList<Person> result = ss.getAllStudents();
+        assertEquals(expectedPersonPk, result.get(1).getPersonPk());
+    }
 }
