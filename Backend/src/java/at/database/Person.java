@@ -19,6 +19,15 @@ public class Person  implements java.io.Serializable {
      private String role;
      private Set personCourseMemberships = new HashSet(0);
      private boolean membership;
+     private Integer grade;
+
+    public Integer getGrade() {
+        return grade;
+    }
+
+    public void setGrade(Integer grade) {
+        this.grade = grade;
+    }
 
     public boolean isMembership() {
         return membership;

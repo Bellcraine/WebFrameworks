@@ -16,10 +16,7 @@ import at.database.Person;
 import at.database.PersonCourseMembership;
 import at.database.PersonCourseMembershipId;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Objects;
-import java.util.Set;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -153,20 +150,23 @@ public class StudyServices {
             query.setParameter("id", parameter.getPersonPk());
             List results = query.list();
 
-           for (int i = 0; i < results.size(); i++) {
+            for (int i = 0; i < results.size(); i++) {
                 
                 Course courseFromDb = (Course) results.get(i);
                 Course c = new Course();
-                   c.setCoursePk(courseFromDb.getCoursePk());
-                   c.setTitle(courseFromDb.getTitle());
-                   c.setDescription(courseFromDb.getDescription());
-                   c.setDuration(courseFromDb.getDuration());
-                   c.setSemester(courseFromDb.getSemester());
-//                   if (parameter.getRole().equalsIgnoreCase("student")) {
-//                      c.setPersonCourseMemberships(courseFromDb.getPersonCourseMemberships());
-//                   }
-                   
-                   opl.addCourse(c);
+                c.setCoursePk(courseFromDb.getCoursePk());
+                c.setTitle(courseFromDb.getTitle());
+                c.setDescription(courseFromDb.getDescription());
+                c.setDuration(courseFromDb.getDuration());
+                c.setSemester(courseFromDb.getSemester());
+                
+                InputPayloadCourse ipl = new InputPayloadCourse();
+                ipl.setCoursePk(c.getCoursePk());
+
+                OutputPayloadPersonCourseMembership m = studentGetGrade(ipl, parameter);
+                
+                c.setGrade(m.getGrade());                
+                opl.addCourse(c);  
             }
 
             tx.commit();
@@ -545,6 +545,7 @@ public class StudyServices {
             } else {
                 p.setMembership(true);
             }
+            p.setGrade(m.getGrade());
             opl.addPerson(p);
 
         }
