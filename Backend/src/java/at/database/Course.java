@@ -18,6 +18,15 @@ public class Course  implements java.io.Serializable {
      private String semester;
      private Set personCourseMemberships = new HashSet(0);
      private Integer grade;
+     private String lecturer;
+
+    public String getLecturer() {
+        return lecturer;
+    }
+
+    public void setLecturer(String lecturer) {
+        this.lecturer = lecturer;
+    }
 
     public Integer getGrade() {
         return grade;

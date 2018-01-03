@@ -57,14 +57,14 @@ public class testStudyServices {
     @Test
     public void testLoadCourseList() throws Exception {
         Integer expectedCoursePk = 7;
-        String expectedCourseTitle = "Web Frameworks";
-        //Integer expectedGrade = 1;        // inside Hashset -> read via Iterator?
+        //String expectedCourseTitle = "Web Frameworks";
+        Integer expectedGrade = 2;
         InputPayloadPerson parameter = new InputPayloadPerson();
-        parameter.setPersonPk(7);
-        parameter.setRole("student");
+        parameter.setPersonPk(10);
         OutputPayloadCourse result = ss.loadCourseList(parameter);
         assertEquals(expectedCoursePk, result.getCourses().get(0).getCoursePk());
-        assertEquals(expectedCourseTitle, result.getCourses().get(0).getTitle());
+        //assertEquals(expectedCourseTitle, result.getCourses().get(0).getTitle());
+        assertEquals(expectedGrade, result.getCourses().get(0).getGrade());
 
     }
     
@@ -160,12 +160,14 @@ public class testStudyServices {
         String expectedUsername = "judith";
         String expectedRole = "student";
         boolean expectedMembership = true;
+        Integer expectedGrade = 1;
         InputPayloadCourse courseParam = new InputPayloadCourse();
         courseParam.setCoursePk(7); // frameworks
         OutputPayloadPerson result = ss.loadStudentList(courseParam);
         assertEquals(expectedUsername, result.getPersons().get(0).getUsername());  // first student object -> judith
         assertEquals(expectedRole, result.getPersons().get(0).getRole());
         assertEquals(expectedMembership, result.getPersons().get(0).isMembership());
+        assertEquals(expectedGrade, result.getPersons().get(0).getGrade());
     }
     
     @Test
