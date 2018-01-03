@@ -7,25 +7,25 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for inputPayloadPerson complex type.
+ * <p>Java-Klasse für inputPayloadPerson complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>Das folgende Schemafragment gibt den erwarteten Content an, der in dieser Klasse enthalten ist.
  * 
  * <pre>
- * &lt;complexType name="inputPayloadPerson"&gt;
- *   &lt;complexContent&gt;
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *       &lt;sequence&gt;
- *         &lt;element name="lastname" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *         &lt;element name="password" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *         &lt;element name="personPk" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
- *         &lt;element name="role" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *         &lt;element name="username" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *       &lt;/sequence&gt;
- *     &lt;/restriction&gt;
- *   &lt;/complexContent&gt;
- * &lt;/complexType&gt;
+ * &lt;complexType name="inputPayloadPerson">
+ *   &lt;complexContent>
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;sequence>
+ *         &lt;element name="lastname" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="password" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="personPk" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="role" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="username" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *       &lt;/sequence>
+ *     &lt;/restriction>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
  * </pre>
  * 
  * 
@@ -49,7 +49,7 @@ public class InputPayloadPerson {
     protected String username;
 
     /**
-     * Gets the value of the lastname property.
+     * Ruft den Wert der lastname-Eigenschaft ab.
      * 
      * @return
      *     possible object is
@@ -61,7 +61,7 @@ public class InputPayloadPerson {
     }
 
     /**
-     * Sets the value of the lastname property.
+     * Legt den Wert der lastname-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is
@@ -73,7 +73,7 @@ public class InputPayloadPerson {
     }
 
     /**
-     * Gets the value of the name property.
+     * Ruft den Wert der name-Eigenschaft ab.
      * 
      * @return
      *     possible object is
@@ -85,7 +85,7 @@ public class InputPayloadPerson {
     }
 
     /**
-     * Sets the value of the name property.
+     * Legt den Wert der name-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is
@@ -97,7 +97,7 @@ public class InputPayloadPerson {
     }
 
     /**
-     * Gets the value of the password property.
+     * Ruft den Wert der password-Eigenschaft ab.
      * 
      * @return
      *     possible object is
@@ -109,7 +109,7 @@ public class InputPayloadPerson {
     }
 
     /**
-     * Sets the value of the password property.
+     * Legt den Wert der password-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is
@@ -121,7 +121,7 @@ public class InputPayloadPerson {
     }
 
     /**
-     * Gets the value of the personPk property.
+     * Ruft den Wert der personPk-Eigenschaft ab.
      * 
      * @return
      *     possible object is
@@ -133,7 +133,7 @@ public class InputPayloadPerson {
     }
 
     /**
-     * Sets the value of the personPk property.
+     * Legt den Wert der personPk-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is
@@ -145,7 +145,7 @@ public class InputPayloadPerson {
     }
 
     /**
-     * Gets the value of the role property.
+     * Ruft den Wert der role-Eigenschaft ab.
      * 
      * @return
      *     possible object is
@@ -157,7 +157,7 @@ public class InputPayloadPerson {
     }
 
     /**
-     * Sets the value of the role property.
+     * Legt den Wert der role-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is
@@ -169,7 +169,7 @@ public class InputPayloadPerson {
     }
 
     /**
-     * Gets the value of the username property.
+     * Ruft den Wert der username-Eigenschaft ab.
      * 
      * @return
      *     possible object is
@@ -181,7 +181,7 @@ public class InputPayloadPerson {
     }
 
     /**
-     * Sets the value of the username property.
+     * Legt den Wert der username-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is

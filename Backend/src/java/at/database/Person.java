@@ -18,6 +18,15 @@ public class Person  implements java.io.Serializable {
      private String lastname;
      private String role;
      private Set personCourseMemberships = new HashSet(0);
+     private boolean membership;
+
+    public boolean isMembership() {
+        return membership;
+    }
+
+    public void setMembership(boolean membership) {
+        this.membership = membership;
+    }
 
     public Person() {
     }

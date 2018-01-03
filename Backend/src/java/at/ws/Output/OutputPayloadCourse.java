@@ -27,6 +27,8 @@ public class OutputPayloadCourse {
     private Integer duration;
     private String semester;
     private Set personCourseMemberships = new HashSet(0);
+    private ArrayList<Course> courses = new ArrayList<>();
+
 
     public Set getPersonCourseMemberships() {
         return personCourseMemberships;
@@ -36,8 +38,6 @@ public class OutputPayloadCourse {
         this.personCourseMemberships = personCourseMemberships;
     }
     
-    private ArrayList<Course> courses = new ArrayList<>();
-
     public ArrayList<Course> getCourses() {
         return courses;
     }

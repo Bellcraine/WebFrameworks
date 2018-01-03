@@ -7,21 +7,21 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for personCourseMembershipId complex type.
+ * <p>Java-Klasse für personCourseMembershipId complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>Das folgende Schemafragment gibt den erwarteten Content an, der in dieser Klasse enthalten ist.
  * 
  * <pre>
- * &lt;complexType name="personCourseMembershipId"&gt;
- *   &lt;complexContent&gt;
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *       &lt;sequence&gt;
- *         &lt;element name="courseFk" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
- *         &lt;element name="personFk" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
- *       &lt;/sequence&gt;
- *     &lt;/restriction&gt;
- *   &lt;/complexContent&gt;
- * &lt;/complexType&gt;
+ * &lt;complexType name="personCourseMembershipId">
+ *   &lt;complexContent>
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;sequence>
+ *         &lt;element name="courseFk" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="personFk" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *       &lt;/sequence>
+ *     &lt;/restriction>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
  * </pre>
  * 
  * 
@@ -37,7 +37,7 @@ public class PersonCourseMembershipId {
     protected int personFk;
 
     /**
-     * Gets the value of the courseFk property.
+     * Ruft den Wert der courseFk-Eigenschaft ab.
      * 
      */
     public int getCourseFk() {
@@ -45,7 +45,7 @@ public class PersonCourseMembershipId {
     }
 
     /**
-     * Sets the value of the courseFk property.
+     * Legt den Wert der courseFk-Eigenschaft fest.
      * 
      */
     public void setCourseFk(int value) {
@@ -53,7 +53,7 @@ public class PersonCourseMembershipId {
     }
 
     /**
-     * Gets the value of the personFk property.
+     * Ruft den Wert der personFk-Eigenschaft ab.
      * 
      */
     public int getPersonFk() {
@@ -61,7 +61,7 @@ public class PersonCourseMembershipId {
     }
 
     /**
-     * Sets the value of the personFk property.
+     * Legt den Wert der personFk-Eigenschaft fest.
      * 
      */
     public void setPersonFk(int value) {

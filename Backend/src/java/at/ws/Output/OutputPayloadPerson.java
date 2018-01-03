@@ -5,6 +5,9 @@
  */
 package at.ws.Output;
 
+import at.database.Course;
+import at.database.Person;
+import java.util.ArrayList;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -20,8 +23,22 @@ public class OutputPayloadPerson {
     private String name;
     private String lastname;
     private String role;
+    
+    private ArrayList<Person> persons = new ArrayList<>();
+
+    public ArrayList<Person> getPersons() {
+        return persons;
+    }
+
+    public void setPersons(ArrayList<Person> persons) {
+        this.persons = persons;
+    }
 
 
+    public void addPerson(Person p) {
+        this.persons.add(p);
+    }
+        
     public String getUsername() {
         return username;
     }

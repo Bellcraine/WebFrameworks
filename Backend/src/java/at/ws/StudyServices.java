@@ -15,8 +15,10 @@ import at.database.HibernateUtil;
 import at.database.Person;
 import at.database.PersonCourseMembership;
 import at.database.PersonCourseMembershipId;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
@@ -519,5 +521,174 @@ public class StudyServices {
          
         return done;
     }
+
+     /**
+     * loadStudentList
+     * input: course.coursePk
+     * output: person ArrayList (only students) -> isMembership returns true / false, if student is member of given course
+     */
+    @WebMethod(operationName = "loadStudentList")
+    public OutputPayloadPerson loadStudentList(@WebParam(name = "parameter") InputPayloadCourse parameter) {
+        
+        OutputPayloadPerson opl = new OutputPayloadPerson();  
+        ArrayList<Person> students = getAllStudents();
+        
+        for (int i = 0; i < students.size(); i++) {
+            
+            Person p = students.get(i);
+            InputPayloadPerson ipl = new InputPayloadPerson();
+            ipl.setPersonPk(p.getPersonPk());
+            
+            OutputPayloadPersonCourseMembership m = studentGetGrade(parameter, ipl);
+            if (m.getPerson() == null) {
+                p.setMembership(false);
+            } else {
+                p.setMembership(true);
+            }
+            opl.addPerson(p);
+
+        }
+        
+        return opl;
+    }
+    
+    /**
+     * for backend use only (turn private after final testing)
+     * getAllStudents
+     * input: none
+     * output: ArrayList of Persons
+     */
+    public ArrayList<Person> getAllStudents() {
+        
+        ArrayList<Person> students = new ArrayList<>();
+
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session s = sf.openSession();
+        Transaction tx = null;
+
+        try {
+            tx = s.beginTransaction();
+            String hql = "FROM Person P WHERE P.role = :role";
+            Query query = s.createQuery(hql);
+            query.setParameter("role", "student");
+            List results = query.list();
+            
+            for (int i = 0; i < results.size(); i++) {
+                
+                Person personFromDb = (Person) results.get(i);
+                Person p = new Person();
+                p.setPersonPk(personFromDb.getPersonPk());
+                p.setLastname(personFromDb.getLastname());
+                p.setName(personFromDb.getName());
+                p.setRole(personFromDb.getRole());
+                p.setUsername(personFromDb.getUsername());
+                students.add(p);
+            }
+            tx.commit();
+        
+        } catch (Exception e) {
+
+            if (tx != null) {
+                tx.rollback();
+            }
+        } finally {
+            s.close();
+        }
+
+        return students;
+    }
+    
+    /**
+     * old / alternative version
+     */
+/*    @WebMethod(operationName = "loadStudentList")
+    public OutputPayloadPerson loadStudentList(@WebParam(name = "parameter") InputPayloadCourse parameter) {
+        
+        OutputPayloadPerson opl = new OutputPayloadPerson();
+        
+        // load all persons
+        ArrayList<Person> persons = getAllPersons();
+        // load all persons (filter: student, course membership of given course)
+        ArrayList<Person> students = loadStudentsPerCourse(parameter);
+        
+        // iterates over all persons list
+        for (int i = 0; i < persons.size(); i++) {
+            
+            // create a person with all data from persons(i)
+            Person p = persons.get(i);
+            
+            // iterates over students list    
+            for (int j = 0; j < students.size(); j++) {
+                // if p.pk NOT equals students(j).pk -> membership false
+                // if p.pk equals students(j).pk -> membership true
+                if (Objects.equals(p.getPersonPk(), students.get(j).getPersonPk())) {
+                    p.setMembership(false);
+                    break;
+                } else {
+                    p.setMembership(true);
+                }
+            }
+           
+            // add only students to output
+            if(p.getRole().equalsIgnoreCase("student")) {
+                opl.addPerson(p);
+            }
+        }
+
+        return opl;
+    } */
+    
+    
+    /**
+     * Not needed
+     */
+    /*@WebMethod(operationName = "loadStudentsPerCourse")
+    public ArrayList<Person> loadStudentsPerCourse(@WebParam(name = "parameter") InputPayloadCourse parameter) {
+        
+        ArrayList<Person> students = new ArrayList<>();
+
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session s = sf.openSession();
+        Transaction tx = null;
+
+        try {
+            tx = s.beginTransaction();
+            String hql = "SELECT P FROM PersonCourseMembership M LEFT JOIN M.person P WHERE M.course.coursePk = :id";
+            Query query = s.createQuery(hql);
+            query.setParameter("id", parameter.getCoursePk());
+            List results = query.list();
+            // returns list of persons for given coursePk
+            
+           for (int i = 0; i < results.size(); i++) {
+                
+                Person personFromDb = (Person) results.get(i);
+                Person p = new Person();
+                p.setPersonPk(personFromDb.getPersonPk());
+                p.setLastname(personFromDb.getLastname());
+                p.setName(personFromDb.getName());
+                p.setRole(personFromDb.getRole());
+                p.setUsername(personFromDb.getUsername());
+                p.setMembership(true);
+                // add only students to output
+                if(p.getRole().equals("student")) {
+                    students.add(p);
+                }
+            }
+            tx.commit();
+        
+        } catch (Exception e) {
+
+            if (tx != null) {
+                tx.rollback();
+            }
+        } finally {
+            s.close();
+        }
+
+        return students;
+    } */
+
+    
+    
     
 }
