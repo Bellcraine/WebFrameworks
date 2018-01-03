@@ -3,22 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WebFrameworks/Backend/src/java/at/database/Person.hbm.xml</file>
-            <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WebFrameworks/Backend/src/java/at/database/HibernateUtil.java</file>
-            <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WebFrameworks/Backend/src/java/at/ws/Output/OutputPayloadLogin.java</file>
-            <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WebFrameworks/Backend/src/java/hibernate.cfg.xml</file>
-            <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WebFrameworks/Backend/src/java/at/database/PersonCourseMembership.java</file>
-            <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WebFrameworks/Backend/src/java/at/ws/StudyServices.java</file>
-            <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WebFrameworks/Backend/src/java/at/ws/Input/InputPayloadPerson.java</file>
-=======
             <file>file:/Users/Judith/Desktop/webf-git/WebFrameworks/Backend/src/java/at/ws/Output/OutputPayloadCourse.java</file>
             <file>file:/Users/Judith/Desktop/webf-git/WebFrameworks/Backend/src/java/at/database/Course.java</file>
             <file>file:/Users/Judith/Desktop/webf-git/WebFrameworks/Backend/src/java/at/database/Person.java</file>
             <file>file:/Users/Judith/Desktop/webf-git/WebFrameworks/Backend/src/java/at/ws/StudyServices.java</file>
             <file>file:/Users/Judith/Desktop/webf-git/WebFrameworks/Backend/test/testStudyServices.java</file>
             <file>file:/Users/Judith/Desktop/webf-git/WebFrameworks/Backend/src/java/at/ws/Output/OutputPayloadPerson.java</file>
->>>>>>> 32d20bb43b0474f34f6237328e4395ca49e6a2ea
         </group>
     </open-files>
 </project-private>

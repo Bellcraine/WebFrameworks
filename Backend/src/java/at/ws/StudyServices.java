@@ -394,11 +394,8 @@ public class StudyServices {
             query.setParameter("cid", courseParam.getCoursePk());                    //Wert für die id einfügen (gegen SQL Injection!)
             query.setParameter("pid", personParam.getPersonPk());
             List results = query.list();
-            
-            
 
             PersonCourseMembership membershipFromDb = (PersonCourseMembership) results.get(0);
-            opl.setId(membershipFromDb.getId());
             opl.setCourse(membershipFromDb.getCourse());
             opl.setPerson(membershipFromDb.getPerson());
             opl.setGrade(membershipFromDb.getGrade());

@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./resources/basicTemplate.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                >
+
+    <ui:define name="top">
+    </ui:define>
+
+    <ui:define name="left">
+        <p:commandButton value="Course List" action="lecturerCourseList" class="btn btn-block btn-sm btn-info" icon="ui-icon-folder-open" />
+        <p:commandButton value="New Course" action="lecturerCourseForm" class="btn btn-block btn-sm btn-info" icon="ui-icon-circle-plus" />    
+        <p:commandButton value="Personal Data" action="lecturerPersonalData" class="btn btn-block btn-sm btn-info" icon="ui-icon-person" />
+    </ui:define>
+
+    <ui:define name="content">
+
+        <h3>Course Details</h3>
+        <h5>#{courseDetailsBean.course.title}</h5>
+        <p:separator />
+
+        <p:messages id="messages" showDetail="true" autoUpdate="true" />
+        <p:spacer height="20" />
+
+        <h:panelGrid columns="2" cellpadding="5">
+            <h:outputLabel value="ID: " />
+            <h:outputText value="#{courseDetailsBean.course.coursePk}" />
+
+            <h:outputLabel value="Title: " />
+            <p:inputText value="#{courseDetailsBean.course.title}" />
+
+            <h:outputLabel value="Lecturer: " />
+            <p:inputText value=" " />
+
+            <h:outputLabel value="Duration: " />
+            <p:inputText value="#{courseDetailsBean.course.duration}" />
+
+            <h:outputLabel value="Semester: " />
+            <p:inputText value="#{courseDetailsBean.course.semester}" />
+
+            <h:outputLabel value="Description: " />
+            <p:inputTextarea value="#{courseDetailsBean.course.description}" />
+
+            <p:spacer height="20" />
+            <p:spacer height="20" />
+
+            <p:commandButton value="Back" action="lecturerCourseList" class="btn btn-sm btn-info" icon="ui-icon-close" />        
+            <p:commandButton value="Save" action="#{courseDetailsBean.updateCourse()}" class="btn btn-sm btn-info" icon="ui-icon-check">
+                <f:setPropertyActionListener target="#{courseDetailsBean.coursePk}" value="#{courseDetailsBean.course.coursePk}" />
+                <f:setPropertyActionListener target="#{courseDetailsBean.title}" value="#{courseDetailsBean.course.title}" />
+                <f:setPropertyActionListener target="#{courseDetailsBean.description}" value="#{courseDetailsBean.course.description}" />
+                <f:setPropertyActionListener target="#{courseDetailsBean.semester}" value="#{courseDetailsBean.course.semester}" />
+                <f:setPropertyActionListener target="#{courseDetailsBean.duration}" value="#{courseDetailsBean.course.duration}" />
+            </p:commandButton>
+        </h:panelGrid>
+        
+    </ui:define>
+
+</ui:composition>
