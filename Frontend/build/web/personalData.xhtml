@@ -45,10 +45,10 @@
             <p:spacer height="20" />
 
             <h:outputLabel value="New Password: " />
-            <p:password value=" " />
+            <p:password value="#{personalDataBean.password}" />
 
             <h:outputLabel value="Confirm Password: " />
-            <p:password value=" " />
+            <p:password value="#{personalDataBean.confirmPassword}" />
 
             <p:spacer height="20" />
             <p:spacer height="20" />
@@ -60,6 +60,8 @@
                 <f:setPropertyActionListener target="#{personalDataBean.firstName}" value="#{personalDataBean.firstName}" />
                 <f:setPropertyActionListener target="#{personalDataBean.lastName}" value="#{personalDataBean.lastName}" />
                 <f:setPropertyActionListener target="#{personalDataBean.role}" value="#{personalDataBean.role}" />
+                <f:setPropertyActionListener target="#{personalDataBean.password}" value="#{personalDataBean.password}" />
+                <f:setPropertyActionListener target="#{personalDataBean.confirmPassword}" value="#{personalDataBean.confirmPassword}" /> 
             </p:commandButton>
         </h:panelGrid>
 

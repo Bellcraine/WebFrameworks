@@ -81,7 +81,7 @@ public class studentManagerBean {
 
         persons = opl.getPersons();
     }
-      //--------------------------------------- Container für Username & Passwort
+    //--------------------------------------- Container für Username & Passwort
     private InputPayloadCourse parameter1;
 
     public InputPayloadCourse getParameter1() {
@@ -103,9 +103,7 @@ public class studentManagerBean {
     }
 
     //---------------------------------------
-   
-        
-    public void addStudentToCourse(Person person) {
+    public String addStudentToCourse(Person person) {
         StudyServices_Service service = new StudyServices_Service(); //Verbindungsaufbau zum Backend über WebServices
         StudyServices port = service.getStudyServicesPort();
 
@@ -117,13 +115,14 @@ public class studentManagerBean {
 
         Boolean opl = port.addPersonToCourse(parameter1, parameter2); //Der eigentliche Aufruf des WebServices (Synchron)
         loadStudentList();
-        
+        return "lecturerStudentManager";
+
 //     * addPersonToCourse
 //     * input: course.coursePk, person.personPk
 //     * output: true / false (returns false if person or course have pks that do not exist in their tables!)
     }
 
-     public void removeStudentFromCourse(Person person) {
+    public String removeStudentFromCourse(Person person) {
         StudyServices_Service service = new StudyServices_Service(); //Verbindungsaufbau zum Backend über WebServices
         StudyServices port = service.getStudyServicesPort();
 
@@ -135,13 +134,14 @@ public class studentManagerBean {
 
         Boolean opl = port.deletePersonFromCourse(parameter1, parameter2); //Der eigentliche Aufruf des WebServices (Synchron)
         loadStudentList();
-        
+        return "lecturerStudentManager";
+
 //     * deletePersonFromCourse
 //     * input: course.coursePk, person.personPk
 //     * output: true / false (gives also true, if person-course combination does not exist in membership table -> i will try to fix this)
     }
-     
-     public void addGrade() {
-         
-     }
+
+    public void addGrade() {
+
+    }
 }

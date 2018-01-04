@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
       >
 
     <h:head>
@@ -17,16 +18,28 @@
 
         <h:form>
             <div class="container"> 
-                
+
                 <div id="top" class="top text-center">
-                    <h:outputLabel for="role">Welcome to NEW CIS - Please log in</h:outputLabel>
-                    <ui:insert name="top">Top</ui:insert>
+                    <div class="row">
+                        <div class="col-sm-3 text-left">
+
+                        </div>
+
+                        <div class="col-sm-6 text-center">
+                            <h:outputLabel for="role">Welcome to NEW CIS - Please log in</h:outputLabel>
+                        </div>
+
+                        <div class="col-sm-3 text-right">
+                            <p:commandButton value="Register" action="userRegistration" class="btn btn-sm btn-info" icon="ui-icon-person" />
+                        </div>
+                    </div>
+
                 </div>
 
                 <div id="content" class="center_content">
                     <ui:insert name="content">Content</ui:insert>
                 </div>
-                
+
             </div>
         </h:form>
     </h:body>

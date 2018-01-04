@@ -30,30 +30,38 @@
 
             <h:column>
                 <f:facet name="header">ID</f:facet>
-                    #{aPerson.personPk}
+                <h:outputText value="#{aPerson.personPk}" rendered="#{aPerson.membership}" />
+                <h:outputText value="#{aPerson.personPk}" class="isNotMember" rendered="#{!aPerson.membership}" />
+
             </h:column>
 
             <h:column>
                 <f:facet name="header">Username</f:facet>
-                    #{aPerson.username}
+                <h:outputText value="#{aPerson.username}" rendered="#{aPerson.membership}" />
+                <h:outputText value="#{aPerson.username}" class="isNotMember" rendered="#{!aPerson.membership}" />
+
             </h:column>
-            
-             <h:column>
+
+            <h:column>
                 <f:facet name="header">First Name</f:facet>
-                    #{aPerson.name}
+                <h:outputText value="#{aPerson.name}" rendered="#{aPerson.membership}" />
+                <h:outputText value="#{aPerson.name}" class="isNotMember" rendered="#{!aPerson.membership}" />
+
             </h:column>
-            
-             <h:column>
+
+            <h:column>
                 <f:facet name="header">Last Name</f:facet>
-                    #{aPerson.lastname}
+                <h:outputText value="#{aPerson.lastname}" rendered="#{aPerson.membership}" />
+                <h:outputText value="#{aPerson.lastname}" class="isNotMember" rendered="#{!aPerson.membership}" />
+
             </h:column>
-            
-              <h:column>
+
+            <h:column>
                 <f:facet name="header">Grade</f:facet>
-                <h:outputText value="#{aPerson.grade}" rendered="#{aPerson.grade != null}" />
-                <h:commandButton value="Add Grade" action="#{studentManagerBean.addGrade()}" class="btn btn-sm btn-info" rendered="#{aPerson.grade == null}" />
+                <h:outputText value="#{aPerson.grade}" rendered="#{aPerson.grade != null and aPerson.membership}" />
+                <h:commandButton value="Add Grade" action="#{studentManagerBean.addGrade()}" class="btn btn-sm btn-info" rendered="#{aPerson.grade == null and aPerson.membership}" />
             </h:column>
-            
+
             <h:column>
                 <f:facet name="header">Add / Remove Student</f:facet>
                 <h:commandButton value="Add" action="#{studentManagerBean.addStudentToCourse(aPerson)}" class="btn btn-sm btn-info" rendered="#{!aPerson.membership}" />
@@ -61,8 +69,13 @@
             </h:column>
 
         </h:dataTable>
-        
-        
+
+        <p:spacer height="20" />
+
+        <h:panelGrid columns="2" cellpadding="5">
+            <p:commandButton value="Back" action="lecturerCourseList" class="btn btn-sm btn-info" icon="ui-icon-close" />
+        </h:panelGrid >
+
     </ui:define>
 
 </ui:composition>

@@ -26,18 +26,16 @@ public class ObjectFactory {
 
     private final static QName _AddOrUpdateCourse_QNAME = new QName("http://ws.at/", "addOrUpdateCourse");
     private final static QName _AddOrUpdateCourseResponse_QNAME = new QName("http://ws.at/", "addOrUpdateCourseResponse");
+    private final static QName _AddOrUpdateGrade_QNAME = new QName("http://ws.at/", "addOrUpdateGrade");
+    private final static QName _AddOrUpdateGradeResponse_QNAME = new QName("http://ws.at/", "addOrUpdateGradeResponse");
+    private final static QName _AddOrUpdatePerson_QNAME = new QName("http://ws.at/", "addOrUpdatePerson");
+    private final static QName _AddOrUpdatePersonResponse_QNAME = new QName("http://ws.at/", "addOrUpdatePersonResponse");
     private final static QName _AddPersonToCourse_QNAME = new QName("http://ws.at/", "addPersonToCourse");
     private final static QName _AddPersonToCourseResponse_QNAME = new QName("http://ws.at/", "addPersonToCourseResponse");
     private final static QName _DeleteCourse_QNAME = new QName("http://ws.at/", "deleteCourse");
     private final static QName _DeleteCourseResponse_QNAME = new QName("http://ws.at/", "deleteCourseResponse");
     private final static QName _DeletePersonFromCourse_QNAME = new QName("http://ws.at/", "deletePersonFromCourse");
     private final static QName _DeletePersonFromCourseResponse_QNAME = new QName("http://ws.at/", "deletePersonFromCourseResponse");
-    private final static QName _GetAllStudents_QNAME = new QName("http://ws.at/", "getAllStudents");
-    private final static QName _GetAllStudentsResponse_QNAME = new QName("http://ws.at/", "getAllStudentsResponse");
-    private final static QName _GetCourses_QNAME = new QName("http://ws.at/", "getCourses");
-    private final static QName _GetCoursesResponse_QNAME = new QName("http://ws.at/", "getCoursesResponse");
-    private final static QName _LoadCourseDetails_QNAME = new QName("http://ws.at/", "loadCourseDetails");
-    private final static QName _LoadCourseDetailsResponse_QNAME = new QName("http://ws.at/", "loadCourseDetailsResponse");
     private final static QName _LoadCourseList_QNAME = new QName("http://ws.at/", "loadCourseList");
     private final static QName _LoadCourseListResponse_QNAME = new QName("http://ws.at/", "loadCourseListResponse");
     private final static QName _LoadPersonDetails_QNAME = new QName("http://ws.at/", "loadPersonDetails");
@@ -48,9 +46,6 @@ public class ObjectFactory {
     private final static QName _LoginResponse_QNAME = new QName("http://ws.at/", "loginResponse");
     private final static QName _OutputPayloadCourse_QNAME = new QName("http://ws.at/", "outputPayloadCourse");
     private final static QName _OutputPayloadPerson_QNAME = new QName("http://ws.at/", "outputPayloadPerson");
-    private final static QName _OutputPayloadPersonCourseMembership_QNAME = new QName("http://ws.at/", "outputPayloadPersonCourseMembership");
-    private final static QName _StudentGetGrade_QNAME = new QName("http://ws.at/", "studentGetGrade");
-    private final static QName _StudentGetGradeResponse_QNAME = new QName("http://ws.at/", "studentGetGradeResponse");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: at.webf.wsclient
@@ -73,6 +68,38 @@ public class ObjectFactory {
      */
     public AddOrUpdateCourseResponse createAddOrUpdateCourseResponse() {
         return new AddOrUpdateCourseResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddOrUpdateGrade }
+     * 
+     */
+    public AddOrUpdateGrade createAddOrUpdateGrade() {
+        return new AddOrUpdateGrade();
+    }
+
+    /**
+     * Create an instance of {@link AddOrUpdateGradeResponse }
+     * 
+     */
+    public AddOrUpdateGradeResponse createAddOrUpdateGradeResponse() {
+        return new AddOrUpdateGradeResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddOrUpdatePerson }
+     * 
+     */
+    public AddOrUpdatePerson createAddOrUpdatePerson() {
+        return new AddOrUpdatePerson();
+    }
+
+    /**
+     * Create an instance of {@link AddOrUpdatePersonResponse }
+     * 
+     */
+    public AddOrUpdatePersonResponse createAddOrUpdatePersonResponse() {
+        return new AddOrUpdatePersonResponse();
     }
 
     /**
@@ -121,54 +148,6 @@ public class ObjectFactory {
      */
     public DeletePersonFromCourseResponse createDeletePersonFromCourseResponse() {
         return new DeletePersonFromCourseResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetAllStudents }
-     * 
-     */
-    public GetAllStudents createGetAllStudents() {
-        return new GetAllStudents();
-    }
-
-    /**
-     * Create an instance of {@link GetAllStudentsResponse }
-     * 
-     */
-    public GetAllStudentsResponse createGetAllStudentsResponse() {
-        return new GetAllStudentsResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetCourses }
-     * 
-     */
-    public GetCourses createGetCourses() {
-        return new GetCourses();
-    }
-
-    /**
-     * Create an instance of {@link GetCoursesResponse }
-     * 
-     */
-    public GetCoursesResponse createGetCoursesResponse() {
-        return new GetCoursesResponse();
-    }
-
-    /**
-     * Create an instance of {@link LoadCourseDetails }
-     * 
-     */
-    public LoadCourseDetails createLoadCourseDetails() {
-        return new LoadCourseDetails();
-    }
-
-    /**
-     * Create an instance of {@link LoadCourseDetailsResponse }
-     * 
-     */
-    public LoadCourseDetailsResponse createLoadCourseDetailsResponse() {
-        return new LoadCourseDetailsResponse();
     }
 
     /**
@@ -252,30 +231,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link OutputPayloadPersonCourseMembership }
-     * 
-     */
-    public OutputPayloadPersonCourseMembership createOutputPayloadPersonCourseMembership() {
-        return new OutputPayloadPersonCourseMembership();
-    }
-
-    /**
-     * Create an instance of {@link StudentGetGrade }
-     * 
-     */
-    public StudentGetGrade createStudentGetGrade() {
-        return new StudentGetGrade();
-    }
-
-    /**
-     * Create an instance of {@link StudentGetGradeResponse }
-     * 
-     */
-    public StudentGetGradeResponse createStudentGetGradeResponse() {
-        return new StudentGetGradeResponse();
-    }
-
-    /**
      * Create an instance of {@link InputPayloadCourse }
      * 
      */
@@ -292,14 +247,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Course }
-     * 
-     */
-    public Course createCourse() {
-        return new Course();
-    }
-
-    /**
      * Create an instance of {@link Person }
      * 
      */
@@ -308,11 +255,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link PersonCourseMembershipId }
+     * Create an instance of {@link Course }
      * 
      */
-    public PersonCourseMembershipId createPersonCourseMembershipId() {
-        return new PersonCourseMembershipId();
+    public Course createCourse() {
+        return new Course();
     }
 
     /**
@@ -331,6 +278,42 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://ws.at/", name = "addOrUpdateCourseResponse")
     public JAXBElement<AddOrUpdateCourseResponse> createAddOrUpdateCourseResponse(AddOrUpdateCourseResponse value) {
         return new JAXBElement<AddOrUpdateCourseResponse>(_AddOrUpdateCourseResponse_QNAME, AddOrUpdateCourseResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AddOrUpdateGrade }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ws.at/", name = "addOrUpdateGrade")
+    public JAXBElement<AddOrUpdateGrade> createAddOrUpdateGrade(AddOrUpdateGrade value) {
+        return new JAXBElement<AddOrUpdateGrade>(_AddOrUpdateGrade_QNAME, AddOrUpdateGrade.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AddOrUpdateGradeResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ws.at/", name = "addOrUpdateGradeResponse")
+    public JAXBElement<AddOrUpdateGradeResponse> createAddOrUpdateGradeResponse(AddOrUpdateGradeResponse value) {
+        return new JAXBElement<AddOrUpdateGradeResponse>(_AddOrUpdateGradeResponse_QNAME, AddOrUpdateGradeResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AddOrUpdatePerson }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ws.at/", name = "addOrUpdatePerson")
+    public JAXBElement<AddOrUpdatePerson> createAddOrUpdatePerson(AddOrUpdatePerson value) {
+        return new JAXBElement<AddOrUpdatePerson>(_AddOrUpdatePerson_QNAME, AddOrUpdatePerson.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AddOrUpdatePersonResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ws.at/", name = "addOrUpdatePersonResponse")
+    public JAXBElement<AddOrUpdatePersonResponse> createAddOrUpdatePersonResponse(AddOrUpdatePersonResponse value) {
+        return new JAXBElement<AddOrUpdatePersonResponse>(_AddOrUpdatePersonResponse_QNAME, AddOrUpdatePersonResponse.class, null, value);
     }
 
     /**
@@ -385,60 +368,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://ws.at/", name = "deletePersonFromCourseResponse")
     public JAXBElement<DeletePersonFromCourseResponse> createDeletePersonFromCourseResponse(DeletePersonFromCourseResponse value) {
         return new JAXBElement<DeletePersonFromCourseResponse>(_DeletePersonFromCourseResponse_QNAME, DeletePersonFromCourseResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetAllStudents }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://ws.at/", name = "getAllStudents")
-    public JAXBElement<GetAllStudents> createGetAllStudents(GetAllStudents value) {
-        return new JAXBElement<GetAllStudents>(_GetAllStudents_QNAME, GetAllStudents.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetAllStudentsResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://ws.at/", name = "getAllStudentsResponse")
-    public JAXBElement<GetAllStudentsResponse> createGetAllStudentsResponse(GetAllStudentsResponse value) {
-        return new JAXBElement<GetAllStudentsResponse>(_GetAllStudentsResponse_QNAME, GetAllStudentsResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetCourses }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://ws.at/", name = "getCourses")
-    public JAXBElement<GetCourses> createGetCourses(GetCourses value) {
-        return new JAXBElement<GetCourses>(_GetCourses_QNAME, GetCourses.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetCoursesResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://ws.at/", name = "getCoursesResponse")
-    public JAXBElement<GetCoursesResponse> createGetCoursesResponse(GetCoursesResponse value) {
-        return new JAXBElement<GetCoursesResponse>(_GetCoursesResponse_QNAME, GetCoursesResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link LoadCourseDetails }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://ws.at/", name = "loadCourseDetails")
-    public JAXBElement<LoadCourseDetails> createLoadCourseDetails(LoadCourseDetails value) {
-        return new JAXBElement<LoadCourseDetails>(_LoadCourseDetails_QNAME, LoadCourseDetails.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link LoadCourseDetailsResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://ws.at/", name = "loadCourseDetailsResponse")
-    public JAXBElement<LoadCourseDetailsResponse> createLoadCourseDetailsResponse(LoadCourseDetailsResponse value) {
-        return new JAXBElement<LoadCourseDetailsResponse>(_LoadCourseDetailsResponse_QNAME, LoadCourseDetailsResponse.class, null, value);
     }
 
     /**
@@ -529,33 +458,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://ws.at/", name = "outputPayloadPerson")
     public JAXBElement<OutputPayloadPerson> createOutputPayloadPerson(OutputPayloadPerson value) {
         return new JAXBElement<OutputPayloadPerson>(_OutputPayloadPerson_QNAME, OutputPayloadPerson.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link OutputPayloadPersonCourseMembership }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://ws.at/", name = "outputPayloadPersonCourseMembership")
-    public JAXBElement<OutputPayloadPersonCourseMembership> createOutputPayloadPersonCourseMembership(OutputPayloadPersonCourseMembership value) {
-        return new JAXBElement<OutputPayloadPersonCourseMembership>(_OutputPayloadPersonCourseMembership_QNAME, OutputPayloadPersonCourseMembership.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link StudentGetGrade }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://ws.at/", name = "studentGetGrade")
-    public JAXBElement<StudentGetGrade> createStudentGetGrade(StudentGetGrade value) {
-        return new JAXBElement<StudentGetGrade>(_StudentGetGrade_QNAME, StudentGetGrade.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link StudentGetGradeResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://ws.at/", name = "studentGetGradeResponse")
-    public JAXBElement<StudentGetGradeResponse> createStudentGetGradeResponse(StudentGetGradeResponse value) {
-        return new JAXBElement<StudentGetGradeResponse>(_StudentGetGradeResponse_QNAME, StudentGetGradeResponse.class, null, value);
     }
 
 }

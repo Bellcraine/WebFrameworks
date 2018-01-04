@@ -83,3 +83,8 @@
     display: flex;
 }
 
+.isNotMember {
+    color: #aaaaaa;  
+    font-style: italic;
+}
+

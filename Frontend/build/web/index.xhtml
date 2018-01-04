@@ -16,7 +16,10 @@
         <p:messages showDetail="true" autoUpdate="true" />
         <p:spacer height="20" />
 
+        <p:defaultCommand target="login" />
+        
         <h:panelGrid columns="2" cellpadding="5" style="margin: 0 auto">
+
             <h:outputLabel for="username">Username:</h:outputLabel>
             <p:inputText id="username" value="#{loginBean.username}" />
 
@@ -27,12 +30,11 @@
             <p:spacer height="20" />
 
             <div></div>
-            <p:commandButton value="Login" action="#{loginBean.login}" class="btn btn-sm btn-info" icon="ui-icon-check" />
+            <p:commandButton id="login" value="Login" action="#{loginBean.login}" class="btn btn-sm btn-info" icon="ui-icon-check" />       
+
         </h:panelGrid>
 
-
-
-
+        <p:spacer height="20" />
 
     </ui:define>
 

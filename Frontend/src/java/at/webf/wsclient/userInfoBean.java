@@ -7,6 +7,7 @@ package at.webf.wsclient;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpSession;
  * @author Tommy
  */
 @Named
+@RequestScoped
 public class userInfoBean implements Serializable {
 
     private Integer personPk;
