@@ -23,6 +23,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="duration" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
  *         &lt;element name="grade" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
+ *         &lt;element name="lecturer" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="personCourseMemberships" type="{http://www.w3.org/2001/XMLSchema}anyType" maxOccurs="unbounded" minOccurs="0"/&gt;
  *         &lt;element name="semester" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="title" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
@@ -40,6 +41,7 @@ import javax.xml.bind.annotation.XmlType;
     "description",
     "duration",
     "grade",
+    "lecturer",
     "personCourseMemberships",
     "semester",
     "title"
@@ -50,6 +52,7 @@ public class Course {
     protected String description;
     protected int duration;
     protected Integer grade;
+    protected String lecturer;
     @XmlElement(nillable = true)
     protected List<Object> personCourseMemberships;
     protected String semester;
@@ -141,6 +144,30 @@ public class Course {
      */
     public void setGrade(Integer value) {
         this.grade = value;
+    }
+
+    /**
+     * Gets the value of the lecturer property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getLecturer() {
+        return lecturer;
+    }
+
+    /**
+     * Sets the value of the lecturer property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setLecturer(String value) {
+        this.lecturer = value;
     }
 
     /**

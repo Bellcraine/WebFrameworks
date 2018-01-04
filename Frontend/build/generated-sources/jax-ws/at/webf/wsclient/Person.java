@@ -19,6 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
+ *         &lt;element name="grade" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
  *         &lt;element name="lastname" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="membership" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
@@ -37,6 +38,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "person", propOrder = {
+    "grade",
     "lastname",
     "membership",
     "name",
@@ -48,6 +50,7 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class Person {
 
+    protected Integer grade;
     protected String lastname;
     protected boolean membership;
     protected String name;
@@ -57,6 +60,30 @@ public class Person {
     protected Integer personPk;
     protected String role;
     protected String username;
+
+    /**
+     * Gets the value of the grade property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getGrade() {
+        return grade;
+    }
+
+    /**
+     * Sets the value of the grade property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setGrade(Integer value) {
+        this.grade = value;
+    }
 
     /**
      * Gets the value of the lastname property.

@@ -49,18 +49,14 @@
 
             <h:column>
                 <f:facet name="header">Grade</f:facet>  
-                    #{courseListBean.grade}
+                <h:outputText value="#{aCourse.grade}" rendered="#{aCourse.grade != null}" />
+                <h:outputText value="N/A" rendered="#{aCourse.grade == null}" />
             </h:column>
 
 
             <h:column>
                 <f:facet name="header"></f:facet>
                 <h:commandButton value="Show Details" action="#{courseListBean.showCourseDetails(aCourse)}" class="btn btn-sm btn-info"  />                       
-            </h:column>
-
-            <h:column>
-                <f:facet name="header"></f:facet>
-                <h:commandButton value="Show Grade" action="#{courseListBean.showGrade(aCourse)}" class="btn btn-sm btn-info" />                       
             </h:column>
 
         </h:dataTable>

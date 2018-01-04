@@ -140,4 +140,8 @@ public class studentManagerBean {
 //     * input: course.coursePk, person.personPk
 //     * output: true / false (gives also true, if person-course combination does not exist in membership table -> i will try to fix this)
     }
+     
+     public void addGrade() {
+         
+     }
 }

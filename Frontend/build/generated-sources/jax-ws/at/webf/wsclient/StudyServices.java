@@ -33,10 +33,25 @@ public interface StudyServices {
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "login", targetNamespace = "http://ws.at/", className = "at.webf.wsclient.Login")
-    @ResponseWrapper(localName = "loginResponse", targetNamespace = "http://ws.at/", className = "at.webf.wsclient.LoginResponse")
-    @Action(input = "http://ws.at/StudyServices/loginRequest", output = "http://ws.at/StudyServices/loginResponse")
-    public OutputPayloadPerson login(
+    @RequestWrapper(localName = "loadStudentList", targetNamespace = "http://ws.at/", className = "at.webf.wsclient.LoadStudentList")
+    @ResponseWrapper(localName = "loadStudentListResponse", targetNamespace = "http://ws.at/", className = "at.webf.wsclient.LoadStudentListResponse")
+    @Action(input = "http://ws.at/StudyServices/loadStudentListRequest", output = "http://ws.at/StudyServices/loadStudentListResponse")
+    public OutputPayloadPerson loadStudentList(
+        @WebParam(name = "parameter", targetNamespace = "")
+        InputPayloadCourse parameter);
+
+    /**
+     * 
+     * @param parameter
+     * @return
+     *     returns at.webf.wsclient.OutputPayloadCourse
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "loadCourseList", targetNamespace = "http://ws.at/", className = "at.webf.wsclient.LoadCourseList")
+    @ResponseWrapper(localName = "loadCourseListResponse", targetNamespace = "http://ws.at/", className = "at.webf.wsclient.LoadCourseListResponse")
+    @Action(input = "http://ws.at/StudyServices/loadCourseListRequest", output = "http://ws.at/StudyServices/loadCourseListResponse")
+    public OutputPayloadCourse loadCourseList(
         @WebParam(name = "parameter", targetNamespace = "")
         InputPayloadPerson parameter);
 
@@ -81,33 +96,21 @@ public interface StudyServices {
 
     /**
      * 
-     * @param parameter
+     * @param courseParam
+     * @param personParam
      * @return
-     *     returns at.webf.wsclient.OutputPayloadCourse
+     *     returns at.webf.wsclient.OutputPayloadPersonCourseMembership
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "loadCourseList", targetNamespace = "http://ws.at/", className = "at.webf.wsclient.LoadCourseList")
-    @ResponseWrapper(localName = "loadCourseListResponse", targetNamespace = "http://ws.at/", className = "at.webf.wsclient.LoadCourseListResponse")
-    @Action(input = "http://ws.at/StudyServices/loadCourseListRequest", output = "http://ws.at/StudyServices/loadCourseListResponse")
-    public OutputPayloadCourse loadCourseList(
-        @WebParam(name = "parameter", targetNamespace = "")
-        InputPayloadPerson parameter);
-
-    /**
-     * 
-     * @param parameter
-     * @return
-     *     returns at.webf.wsclient.OutputPayloadPerson
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "loadPersonDetails", targetNamespace = "http://ws.at/", className = "at.webf.wsclient.LoadPersonDetails")
-    @ResponseWrapper(localName = "loadPersonDetailsResponse", targetNamespace = "http://ws.at/", className = "at.webf.wsclient.LoadPersonDetailsResponse")
-    @Action(input = "http://ws.at/StudyServices/loadPersonDetailsRequest", output = "http://ws.at/StudyServices/loadPersonDetailsResponse")
-    public OutputPayloadPerson loadPersonDetails(
-        @WebParam(name = "parameter", targetNamespace = "")
-        InputPayloadPerson parameter);
+    @RequestWrapper(localName = "studentGetGrade", targetNamespace = "http://ws.at/", className = "at.webf.wsclient.StudentGetGrade")
+    @ResponseWrapper(localName = "studentGetGradeResponse", targetNamespace = "http://ws.at/", className = "at.webf.wsclient.StudentGetGradeResponse")
+    @Action(input = "http://ws.at/StudyServices/studentGetGradeRequest", output = "http://ws.at/StudyServices/studentGetGradeResponse")
+    public OutputPayloadPersonCourseMembership studentGetGrade(
+        @WebParam(name = "courseParam", targetNamespace = "")
+        InputPayloadCourse courseParam,
+        @WebParam(name = "personParam", targetNamespace = "")
+        InputPayloadPerson personParam);
 
     /**
      * 
@@ -126,6 +129,21 @@ public interface StudyServices {
 
     /**
      * 
+     * @param parameter
+     * @return
+     *     returns at.webf.wsclient.OutputPayloadPerson
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "loadPersonDetails", targetNamespace = "http://ws.at/", className = "at.webf.wsclient.LoadPersonDetails")
+    @ResponseWrapper(localName = "loadPersonDetailsResponse", targetNamespace = "http://ws.at/", className = "at.webf.wsclient.LoadPersonDetailsResponse")
+    @Action(input = "http://ws.at/StudyServices/loadPersonDetailsRequest", output = "http://ws.at/StudyServices/loadPersonDetailsResponse")
+    public OutputPayloadPerson loadPersonDetails(
+        @WebParam(name = "parameter", targetNamespace = "")
+        InputPayloadPerson parameter);
+
+    /**
+     * 
      * @param courseParam
      * @param personParam
      * @return
@@ -137,24 +155,6 @@ public interface StudyServices {
     @ResponseWrapper(localName = "addOrUpdateCourseResponse", targetNamespace = "http://ws.at/", className = "at.webf.wsclient.AddOrUpdateCourseResponse")
     @Action(input = "http://ws.at/StudyServices/addOrUpdateCourseRequest", output = "http://ws.at/StudyServices/addOrUpdateCourseResponse")
     public Boolean addOrUpdateCourse(
-        @WebParam(name = "courseParam", targetNamespace = "")
-        InputPayloadCourse courseParam,
-        @WebParam(name = "personParam", targetNamespace = "")
-        InputPayloadPerson personParam);
-
-    /**
-     * 
-     * @param courseParam
-     * @param personParam
-     * @return
-     *     returns at.webf.wsclient.OutputPayloadPersonCourseMembership
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "studentGetGrade", targetNamespace = "http://ws.at/", className = "at.webf.wsclient.StudentGetGrade")
-    @ResponseWrapper(localName = "studentGetGradeResponse", targetNamespace = "http://ws.at/", className = "at.webf.wsclient.StudentGetGradeResponse")
-    @Action(input = "http://ws.at/StudyServices/studentGetGradeRequest", output = "http://ws.at/StudyServices/studentGetGradeResponse")
-    public OutputPayloadPersonCourseMembership studentGetGrade(
         @WebParam(name = "courseParam", targetNamespace = "")
         InputPayloadCourse courseParam,
         @WebParam(name = "personParam", targetNamespace = "")
@@ -204,11 +204,11 @@ public interface StudyServices {
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "loadStudentList", targetNamespace = "http://ws.at/", className = "at.webf.wsclient.LoadStudentList")
-    @ResponseWrapper(localName = "loadStudentListResponse", targetNamespace = "http://ws.at/", className = "at.webf.wsclient.LoadStudentListResponse")
-    @Action(input = "http://ws.at/StudyServices/loadStudentListRequest", output = "http://ws.at/StudyServices/loadStudentListResponse")
-    public OutputPayloadPerson loadStudentList(
+    @RequestWrapper(localName = "login", targetNamespace = "http://ws.at/", className = "at.webf.wsclient.Login")
+    @ResponseWrapper(localName = "loginResponse", targetNamespace = "http://ws.at/", className = "at.webf.wsclient.LoginResponse")
+    @Action(input = "http://ws.at/StudyServices/loginRequest", output = "http://ws.at/StudyServices/loginResponse")
+    public OutputPayloadPerson login(
         @WebParam(name = "parameter", targetNamespace = "")
-        InputPayloadCourse parameter);
+        InputPayloadPerson parameter);
 
 }

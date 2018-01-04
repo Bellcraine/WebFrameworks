@@ -3,17 +3,28 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WebFrameworks/Frontend/src/java/at/webf/wsclient/userInfoBean.java</file>
             <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WebFrameworks/Frontend/src/java/at/webf/wsclient/studentManagerBean.java</file>
-            <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WebFrameworks/Frontend/web/courseList.xhtml</file>
             <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WebFrameworks/Frontend/src/java/at/webf/wsclient/courseFormBean.java</file>
+            <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WebFrameworks/Frontend/web/resources/css/default.css</file>
+            <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WebFrameworks/Frontend/build/generated-sources/jax-ws/at/webf/wsclient/DeleteCourse.java</file>
+            <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WebFrameworks/Frontend/web/lecturerCourseList.xhtml</file>
+            <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WebFrameworks/Frontend/web/index.xhtml</file>
+            <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WebFrameworks/Frontend/build/generated-sources/jax-ws/at/webf/wsclient/Course.java</file>
+            <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WebFrameworks/Frontend/web/WEB-INF/faces-config.xml</file>
+            <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WebFrameworks/Frontend/web/lecturerStudentManager.xhtml</file>
+            <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WebFrameworks/Frontend/src/java/at/webf/wsclient/userInfoBean.java</file>
+            <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WebFrameworks/Frontend/web/resources/css/cssLayout.css</file>
+            <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WebFrameworks/Frontend/web/lecturerCourseForm.xhtml</file>
+            <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WebFrameworks/Frontend/web/lecturerPersonalData.xhtml</file>
+            <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WebFrameworks/Frontend/src/conf/xml-resources/web-service-references/StudyServices/wsdl/localhost_8080/Backend/StudyServices.wsdl</file>
+            <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WebFrameworks/Frontend/web/courseList.xhtml</file>
+            <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WebFrameworks/Frontend/web/courseDetails.xhtml</file>
             <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WebFrameworks/Frontend/src/java/at/webf/wsclient/personalDataBean.java</file>
             <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WebFrameworks/Frontend/src/java/at/webf/wsclient/loginBean.java</file>
-            <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WebFrameworks/Frontend/web/lecturerCourseList.xhtml</file>
             <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WebFrameworks/Frontend/src/java/at/webf/wsclient/courseDetailsBean.java</file>
+            <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WebFrameworks/Frontend/web/lecturerCourseDetails.xhtml</file>
             <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WebFrameworks/Frontend/src/java/at/webf/wsclient/courseListBean.java</file>
-            <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WebFrameworks/Frontend/web/index.xhtml</file>
-            <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WebFrameworks/Frontend/web/WEB-INF/faces-config.xml</file>
+            <file>file:/C:/Users/Tommy/WebDevelopment/NetBeans/WebFrameworks/Frontend/web/resources/basicTemplate.xhtml</file>
         </group>
     </open-files>
 </project-private>

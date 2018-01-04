@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.1-b419 (branches/2.3.1.x-7937; 2014-08-04T08:11:03+0000) JAXWS-RI/2.2.10-b140803.1500 JAXWS-API/2.2.11 JAXB-RI/2.2.10-b140802.1033 JAXB-API/2.2.12-b140109.1041 svn-revision#unknown. --><xs:schema xmlns:tns="http://ws.at/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://ws.at/">
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.2-b608 (trunk-7979; 2015-01-21T12:50:19+0000) JAXWS-RI/2.2.11-b150120.1832 JAXWS-API/2.2.12 JAXB-RI/2.2.12-b141219.1637 JAXB-API/2.2.13-b141020.1521 svn-revision#unknown. --><xs:schema xmlns:tns="http://ws.at/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://ws.at/">
 
 <xs:element name="addOrUpdateCourse" type="tns:addOrUpdateCourse"/>
 
@@ -121,6 +121,7 @@
 <xs:element name="description" type="xs:string" minOccurs="0"/>
 <xs:element name="duration" type="xs:int"/>
 <xs:element name="grade" type="xs:int" minOccurs="0"/>
+<xs:element name="lecturer" type="xs:string" minOccurs="0"/>
 <xs:element name="personCourseMemberships" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
 <xs:element name="semester" type="xs:string" minOccurs="0"/>
 <xs:element name="title" type="xs:string" minOccurs="0"/>
@@ -153,6 +154,7 @@
 
 <xs:complexType name="person">
 <xs:sequence>
+<xs:element name="grade" type="xs:int" minOccurs="0"/>
 <xs:element name="lastname" type="xs:string" minOccurs="0"/>
 <xs:element name="membership" type="xs:boolean"/>
 <xs:element name="name" type="xs:string" minOccurs="0"/>
@@ -164,16 +166,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="getCourses">
-<xs:sequence/>
-</xs:complexType>
-
-<xs:complexType name="getCoursesResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:outputPayloadCourse" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="loadCourseList">
 <xs:sequence>
 <xs:element name="parameter" type="tns:inputPayloadPerson" minOccurs="0"/>
@@ -181,6 +173,16 @@
 </xs:complexType>
 
 <xs:complexType name="loadCourseListResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:outputPayloadCourse" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getCourses">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getCoursesResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:outputPayloadCourse" minOccurs="0"/>
 </xs:sequence>
@@ -237,18 +239,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="login">
-<xs:sequence>
-<xs:element name="parameter" type="tns:inputPayloadPerson" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="loginResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:outputPayloadPerson" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="loadPersonDetails">
 <xs:sequence>
 <xs:element name="parameter" type="tns:inputPayloadPerson" minOccurs="0"/>
@@ -256,6 +246,18 @@
 </xs:complexType>
 
 <xs:complexType name="loadPersonDetailsResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:outputPayloadPerson" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="login">
+<xs:sequence>
+<xs:element name="parameter" type="tns:inputPayloadPerson" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="loginResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:outputPayloadPerson" minOccurs="0"/>
 </xs:sequence>

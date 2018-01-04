@@ -50,7 +50,8 @@
             
               <h:column>
                 <f:facet name="header">Grade</f:facet>
-                   
+                <h:outputText value="#{aPerson.grade}" rendered="#{aPerson.grade != null}" />
+                <h:commandButton value="Add Grade" action="#{studentManagerBean.addGrade()}" class="btn btn-sm btn-info" rendered="#{aPerson.grade == null}" />
             </h:column>
             
             <h:column>
@@ -58,15 +59,6 @@
                 <h:commandButton value="Add" action="#{studentManagerBean.addStudentToCourse(aPerson)}" class="btn btn-sm btn-info" rendered="#{!aPerson.membership}" />
                 <h:commandButton value="Remove" action="#{studentManagerBean.removeStudentFromCourse(aPerson)}" class="btn btn-sm btn-info" rendered="#{aPerson.membership}" />
             </h:column>
-
-         
-          
-
-          
-
-           
-
-
 
         </h:dataTable>
         

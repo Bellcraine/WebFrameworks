@@ -42,7 +42,8 @@
             <h:outputText value="#{courseDetailsBean.course.description}" />
 
             <h:outputLabel value="Grade: " />
-            <h:outputText value=" " />  
+            <h:outputText value="#{courseDetailsBean.course.grade}" rendered="#{courseDetailsBean.course.grade != null}" />
+            <h:outputText value="N/A" rendered="#{courseDetailsBean.course.grade == null}" />  
 
             <p:spacer height="20" />
             <p:spacer height="20" />
