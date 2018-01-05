@@ -47,13 +47,36 @@ public class userInfoBean implements Serializable {
     public void setRole(String role) {
         this.role = role;
     }
+//--------------------------------------- Container für Username & Passwort
+    private InputPayloadPerson parameter;
 
+    public InputPayloadPerson getParameter() {
+        return parameter;
+    }
+
+    public void setParameter(InputPayloadPerson parameter) {
+        this.parameter = parameter;
+    }
+
+    //---------------------------------------
     public userInfoBean() {
         FacesContext context = FacesContext.getCurrentInstance();
         HttpSession session = (HttpSession) context.getExternalContext().getSession(true);
+        
         personPk = (Integer) session.getAttribute("personPk");
-        username = (String) session.getAttribute("username");
+//        username = (String) session.getAttribute("username");
         role = (String) session.getAttribute("role");
+
+        StudyServices_Service service = new StudyServices_Service(); //Verbindungsaufbau zum Backend über WebServices
+        StudyServices port = service.getStudyServicesPort();
+
+        parameter = new InputPayloadPerson(); //Vorbereitung der Daten welche über das WS transportiert werden sollen
+        parameter.setPersonPk(personPk);
+
+        OutputPayloadPerson opl = port.loadPersonDetails(parameter);
+        
+        username = opl.getUsername();
+
     }
 
 }

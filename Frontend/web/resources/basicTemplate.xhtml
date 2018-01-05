@@ -18,12 +18,13 @@
 
         <h:form>
             <div class="container"> 
+
                 <div id="top" class="top">
                     <div class="row">
                         <div class="col-sm-3 text-left">
 
                         </div>
-                        
+
                         <div class="col-sm-6 text-center">
                             <h:outputLabel for="role">You are logged in as <span id="user"> #{loginBean.username} (#{loginBean.role}) </span></h:outputLabel>
                         </div>
@@ -38,11 +39,12 @@
                     <div id="left">
                         <ui:insert name="left">Left</ui:insert>
                     </div>
-                    
+
                     <div id="content" class="left_content">
                         <ui:insert name="content">Content</ui:insert>
                     </div>
                 </div>
+
             </div>
         </h:form>
 

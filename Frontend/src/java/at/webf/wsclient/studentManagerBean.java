@@ -5,10 +5,12 @@
  */
 package at.webf.wsclient;
 
+import java.io.Serializable;
 import java.util.List;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
-import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -16,8 +18,9 @@ import javax.servlet.http.HttpSession;
  * @author Bellacraine
  */
 @Named(value = "studentManagerBean")
-@RequestScoped
-public class studentManagerBean {
+//@SessionScoped
+@ViewScoped
+public class studentManagerBean implements Serializable {
 
     /**
      * Creates a new instance of studentManagerBean
@@ -25,6 +28,8 @@ public class studentManagerBean {
     private String username;
     private Course course;
     private List<Person> persons;
+    private Person student;
+    private Integer grade;
 
     public List<Person> getPersons() {
         return persons;
@@ -48,6 +53,22 @@ public class studentManagerBean {
 
     public void setCourse(Course course) {
         this.course = course;
+    }
+
+    public Person getStudent() {
+        return student;
+    }
+
+    public void setStudent(Person student) {
+        this.student = student;
+    }
+
+    public Integer getGrade() {
+        return grade;
+    }
+
+    public void setGrade(Integer grade) {
+        this.grade = grade;
     }
 
     public studentManagerBean() {
@@ -141,7 +162,23 @@ public class studentManagerBean {
 //     * output: true / false (gives also true, if person-course combination does not exist in membership table -> i will try to fix this)
     }
 
-    public void addGrade() {
+    public String addGrade() {
+        StudyServices_Service service = new StudyServices_Service(); //Verbindungsaufbau zum Backend über WebServices
+        StudyServices port = service.getStudyServicesPort();
 
+        parameter1 = new InputPayloadCourse();
+        parameter2 = new InputPayloadPerson();
+
+        parameter1.setCoursePk(course.coursePk);
+        parameter2.setPersonPk(student.personPk);      // Vorbereitung der Daten welche über das WS transportiert werden sollen
+
+        Boolean opl = port.addOrUpdateGrade(parameter1, parameter2, grade); //Der eigentliche Aufruf des WebServices (Synchron)
+        
+        student = null;
+        loadStudentList();
+        return "lecturerStudentManager";
+
+//        addOrUpdateGrade Input: course.coursePk, person.personPk, grade (Integer)
+//        Output: true / false
     }
 }

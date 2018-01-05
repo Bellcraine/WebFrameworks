@@ -26,22 +26,22 @@
 
         <h:panelGrid columns="2" cellpadding="5">
 
-            <h:outputLabel value="ID: " />
+            <h:outputLabel value="ID: " class="big-letters" />
             <h:outputText value="#{courseDetailsBean.course.coursePk}" />
 
-            <h:outputLabel value="Lecturer: " />
+            <h:outputLabel value="Lecturer: " class="big-letters" />
             <h:outputText value="#{courseDetailsBean.course.lecturer}" />
 
-            <h:outputLabel value="Duration: " />
+            <h:outputLabel value="Duration: " class="big-letters" />
             <h:outputText value="#{courseDetailsBean.course.duration}" />
 
-            <h:outputLabel value="Semester: " />
+            <h:outputLabel value="Semester: " class="big-letters" />
             <h:outputText value="#{courseDetailsBean.course.semester}" />
 
-            <h:outputLabel value="Description: " />
+            <h:outputLabel value="Description: " class="big-letters" />
             <h:outputText value="#{courseDetailsBean.course.description}" />
 
-            <h:outputLabel value="Grade: " />
+            <h:outputLabel value="Grade: " class="big-letters" />
             <h:outputText value="#{courseDetailsBean.course.grade}" rendered="#{courseDetailsBean.course.grade != null}" />
             <h:outputText value="N/A" rendered="#{courseDetailsBean.course.grade == null}" />  
 

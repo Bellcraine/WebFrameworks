@@ -23,19 +23,21 @@
 
         <p:messages id="messages" showDetail="true" autoUpdate="true" />
         <p:spacer height="20" />
+        
+        <p:defaultCommand target="register" />
 
         <h:panelGrid columns="2" cellpadding="5">
 
-            <h:outputLabel value="Username: " />
+            <h:outputLabel value="Username: " class="big-letters" />
             <p:inputText value="#{personalDataBean.username}" />
 
-            <h:outputLabel value="First Name: " />
+            <h:outputLabel value="First Name: " class="big-letters" />
             <p:inputText value="#{personalDataBean.firstName}" />
 
-            <h:outputLabel value="Last Name: " />
+            <h:outputLabel value="Last Name: " class="big-letters" />
             <p:inputText value="#{personalDataBean.lastName}" />
 
-            <h:outputLabel value="Role: " />   
+            <h:outputLabel value="Role: " class="big-letters" />   
             <h:selectOneMenu value="#{personalDataBean.role}">
                 <f:selectItem itemValue="student" itemLabel="Student" />
                 <f:selectItem itemValue="lecturer" itemLabel="Lecturer" />
@@ -44,17 +46,17 @@
             <p:spacer height="20" />
             <p:spacer height="20" />
 
-            <h:outputLabel value="Password: " />
+            <h:outputLabel value="Password: " class="big-letters" />
             <p:password value="#{personalDataBean.password}" />
 
-            <h:outputLabel value="Confirm Password: " />
+            <h:outputLabel value="Confirm Password: " class="big-letters" />
             <p:password value="#{personalDataBean.confirmPassword}" />
 
             <p:spacer height="20" />
             <p:spacer height="20" />
 
             <p:commandButton value="Back" action="index" class="btn btn-sm btn-info" icon="ui-icon-close" />        
-            <p:commandButton value="Save" action="#{personalDataBean.addPersonalData()}" class="btn btn-sm btn-info" icon="ui-icon-check">
+            <p:commandButton value="Save" id="register" action="#{personalDataBean.addPersonalData()}" class="btn btn-sm btn-info" icon="ui-icon-check">
                 <f:setPropertyActionListener target="#{personalDataBean.username}" value="#{personalDataBean.username}" />
                 <f:setPropertyActionListener target="#{personalDataBean.firstName}" value="#{personalDataBean.firstName}" />
                 <f:setPropertyActionListener target="#{personalDataBean.lastName}" value="#{personalDataBean.lastName}" />

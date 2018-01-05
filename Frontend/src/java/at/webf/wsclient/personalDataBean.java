@@ -123,13 +123,12 @@ public class personalDataBean {
 
     public String addPersonalData() {
 
-        if (!username.equals("") && password.equals(confirmPassword)) {
+        if (!username.equals("") && !password.equals("") && password.equals(confirmPassword)) {
 
             StudyServices_Service service = new StudyServices_Service(); //Verbindungsaufbau zum Backend über WebServices
             StudyServices port = service.getStudyServicesPort();
 
             parameter = new InputPayloadPerson(); //Vorbereitung der Daten welche über das WS transportiert werden sollen
-//            parameter.setPersonPk(personPk);
             parameter.setUsername(username);
             parameter.setName(firstName);
             parameter.setLastname(lastName);
@@ -174,7 +173,7 @@ public class personalDataBean {
             FacesContext context = FacesContext.getCurrentInstance();
             HttpSession session = (HttpSession) context.getExternalContext().getSession(true);
             session.setAttribute("username", username);
-            
+
             showMessage(FacesMessage.SEVERITY_INFO, "SUCCESS", "Your personal data was updated successfully.");
             if (role.equals("student")) {
                 return "userInfo";
