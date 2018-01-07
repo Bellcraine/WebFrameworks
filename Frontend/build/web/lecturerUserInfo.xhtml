@@ -12,9 +12,11 @@
     </ui:define>
 
     <ui:define name="left">
-        <p:commandButton value="Course List" action="lecturerCourseList" class="btn btn-block btn-sm btn-info" icon="ui-icon-folder-open" />
-        <p:commandButton value="New Course" action="lecturerCourseForm" class="btn btn-block btn-sm btn-info" icon="ui-icon-circle-plus" />    
-        <p:commandButton value="Personal Data" action="lecturerPersonalData" class="btn btn-block btn-sm btn-info" icon="ui-icon-person" />
+        <h:form>
+            <p:commandButton value="Course List" action="lecturerCourseList" class="btn btn-block btn-sm btn-info" icon="ui-icon-folder-open" />
+            <p:commandButton value="New Course" action="lecturerCourseForm" class="btn btn-block btn-sm btn-info" icon="ui-icon-circle-plus" />    
+            <p:commandButton value="Personal Data" action="lecturerPersonalData" class="btn btn-block btn-sm btn-info" icon="ui-icon-person" />
+        </h:form>
     </ui:define>
 
     <ui:define name="content">

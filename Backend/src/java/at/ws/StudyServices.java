@@ -62,7 +62,8 @@ public class StudyServices {
                 opl.setName(personFromDb.getName());
                 opl.setLastname(personFromDb.getLastname());
             } else {
-                opl = null;
+//                opl = null; // funktioniert so nicht 
+                opl.setPersonPk(null);
             }
 
             tx.commit();            //Transaktion durchführen

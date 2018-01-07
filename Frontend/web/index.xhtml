@@ -8,31 +8,32 @@
                 >
 
     <ui:define name="top">
-
     </ui:define>
 
     <ui:define name="content">
 
-        <p:messages showDetail="true" autoUpdate="true" />
-        <p:spacer height="20" />
-
-        <p:defaultCommand target="login" />
-        
-        <h:panelGrid columns="2" cellpadding="5" style="margin: 0 auto">
-
-            <h:outputLabel for="username">Username:</h:outputLabel>
-            <p:inputText id="username" value="#{loginBean.username}" />
-
-            <h:outputLabel for="password">Password:</h:outputLabel>
-            <p:password id="password" value="#{loginBean.password}" />
-
+            <p:messages showDetail="true" autoUpdate="true" />
             <p:spacer height="20" />
-            <p:spacer height="20" />
+    
+        <h:form>
+            <p:defaultCommand target="login" />
 
-            <div></div>
-            <p:commandButton id="login" value="Login" action="#{loginBean.login}" class="btn btn-sm btn-info" icon="ui-icon-check" />       
+            <h:panelGrid columns="2" cellpadding="5" style="margin: 0 auto">
 
-        </h:panelGrid>
+                <h:outputLabel for="username">Username:</h:outputLabel>
+                <p:inputText id="username" value="#{loginBean.username}" />
+
+                <h:outputLabel for="password">Password:</h:outputLabel>
+                <p:password id="password" value="#{loginBean.password}" />
+
+                <p:spacer height="20" />
+                <p:spacer height="20" />
+
+                <div></div>
+                <p:commandButton id="login" value="Login" action="#{loginBean.login}" class="btn btn-sm btn-info" icon="ui-icon-check" />       
+
+            </h:panelGrid>
+        </h:form>
 
         <p:spacer height="20" />
 

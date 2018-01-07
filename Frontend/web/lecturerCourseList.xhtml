@@ -13,9 +13,11 @@
     </ui:define>
 
     <ui:define name="left">
-        <p:commandButton value="Course List" action="lecturerCourseList" class="btn btn-block btn-sm btn-info" icon="ui-icon-folder-open" />
-        <p:commandButton value="New Course" action="lecturerCourseForm" class="btn btn-block btn-sm btn-info" icon="ui-icon-circle-plus" />    
-        <p:commandButton value="Personal Data" action="lecturerPersonalData" class="btn btn-block btn-sm btn-info" icon="ui-icon-person" />
+        <h:form>
+            <p:commandButton value="Course List" action="lecturerCourseList" class="btn btn-block btn-sm btn-info" icon="ui-icon-folder-open" />
+            <p:commandButton value="New Course" action="lecturerCourseForm" class="btn btn-block btn-sm btn-info" icon="ui-icon-circle-plus" />    
+            <p:commandButton value="Personal Data" action="lecturerPersonalData" class="btn btn-block btn-sm btn-info" icon="ui-icon-person" />
+        </h:form>
     </ui:define>
 
     <ui:define name="content">
@@ -26,51 +28,56 @@
         <p:messages id="messages" showDetail="true" autoUpdate="true" />
         <p:spacer height="20" />
 
-        <h:dataTable class="table table-striped table-hover" value="#{courseListBean.courses}" var="aCourse">
+        <h:form>
+            <h:dataTable class="table table-striped table-hover" value="#{courseListBean.courses}" var="aCourse">
 
-            <h:column>
-                <f:facet name="header">ID</f:facet>
-                    #{aCourse.coursePk}
-            </h:column>
+                <h:column>
+                    <f:facet name="header">ID</f:facet>
+                        #{aCourse.coursePk}
+                </h:column>
 
-            <h:column>
-                <f:facet name="header">Title</f:facet>
-                    #{aCourse.title}
-            </h:column>
+                <h:column>
+                    <f:facet name="header">Title</f:facet>
+                        #{aCourse.title}
+                </h:column>
 
-            <h:column>
-                <f:facet name="header">Duration</f:facet>  
-                    #{aCourse.duration}
-            </h:column>
+                <h:column>
+                    <f:facet name="header">Duration</f:facet>  
+                        #{aCourse.duration}
+                </h:column>
 
-            <h:column>
-                <f:facet name="header">Semester</f:facet>  
-                    #{aCourse.semester}
-            </h:column>
+                <h:column>
+                    <f:facet name="header">Semester</f:facet>  
+                        #{aCourse.semester}
+                </h:column>
 
-            <h:column>
-                <f:facet name="header"></f:facet>
-                <h:commandButton value="Edit" action="#{courseListBean.showCourseDetails(aCourse)}" class="btn btn-sm btn-info" />
-            </h:column>
+                <h:column>
+                    <f:facet name="header"></f:facet>
+                    <h:commandButton value="Edit" action="#{courseListBean.showCourseDetails(aCourse)}" class="btn btn-sm btn-info" />
+                </h:column>
 
-            <h:column>
-                <f:facet name="header"></f:facet>
-                <h:commandButton value="Delete" action="#{courseListBean.deleteCourse(aCourse)}" class="btn btn-sm btn-info" />
-            </h:column>
+                <h:column>
+                    <f:facet name="header"></f:facet>
+                    <h:commandButton value="Delete" action="#{courseListBean.deleteCourse(aCourse)}" class="btn btn-sm btn-info" />
+                </h:column>
 
-            <h:column>
-                <f:facet name="header"></f:facet>
-                <h:commandButton value="Manage Students" action="#{courseListBean.showStudentManager(aCourse)}" class="btn btn-sm btn-info" />
-            </h:column>
+                <h:column>
+                    <f:facet name="header"></f:facet>
+                    <h:commandButton value="Manage Students" action="#{courseListBean.showStudentManager(aCourse)}" class="btn btn-sm btn-info" />
+                </h:column>
 
-        </h:dataTable>
+            </h:dataTable>
+        </h:form>
 
         <p:spacer height="20" />
 
-        <h:panelGrid columns="2" cellpadding="5">
-            <p:commandButton value="Back" action="lecturerUserInfo" class="btn btn-sm btn-info" icon="ui-icon-close" />
-            <p:commandButton value="Add New Course" action="lecturerCourseForm" class="btn btn-sm btn-info" icon="ui-icon-circle-plus" />     
-        </h:panelGrid >
+        <h:form>
+            <h:panelGrid columns="2" cellpadding="5">
+                <p:commandButton value="Back" action="lecturerUserInfo" class="btn btn-sm btn-info" icon="ui-icon-close" />
+                <p:commandButton value="Add New Course" action="lecturerCourseForm" class="btn btn-sm btn-info" icon="ui-icon-circle-plus" />     
+            </h:panelGrid >
+        </h:form>
+
     </ui:define>
 
 </ui:composition>

@@ -12,9 +12,11 @@
     </ui:define>
 
     <ui:define name="left">
-        <p:commandButton value="Course List" action="lecturerCourseList" class="btn btn-block btn-sm btn-info" icon="ui-icon-folder-open" />
-        <p:commandButton value="New Course" action="lecturerCourseForm" class="btn btn-block btn-sm btn-info" icon="ui-icon-circle-plus" />    
-        <p:commandButton value="Personal Data" action="lecturerPersonalData" class="btn btn-block btn-sm btn-info" icon="ui-icon-person" />
+        <h:form>
+            <p:commandButton value="Course List" action="lecturerCourseList" class="btn btn-block btn-sm btn-info" icon="ui-icon-folder-open" />
+            <p:commandButton value="New Course" action="lecturerCourseForm" class="btn btn-block btn-sm btn-info" icon="ui-icon-circle-plus" />    
+            <p:commandButton value="Personal Data" action="lecturerPersonalData" class="btn btn-block btn-sm btn-info" icon="ui-icon-person" />
+        </h:form>
     </ui:define>
 
     <ui:define name="content">
@@ -26,35 +28,37 @@
         <p:messages id="messages" showDetail="true" autoUpdate="true" />
         <p:spacer height="20" />
 
-        <h:panelGrid columns="2" cellpadding="5">
-            <h:outputLabel value="ID: " class="big-letters" />
-            <h:outputText value="#{courseDetailsBean.course.coursePk}" />
+        <h:form>
+            <h:panelGrid columns="2" cellpadding="5">
+                <h:outputLabel value="ID: " class="big-letters" />
+                <h:outputText value="#{courseDetailsBean.course.coursePk}" />
 
-            <h:outputLabel value="Title: " class="big-letters" />
-            <p:inputText value="#{courseDetailsBean.course.title}" />
+                <h:outputLabel value="Title: " class="big-letters" />
+                <p:inputText value="#{courseDetailsBean.course.title}" />
 
-            <h:outputLabel value="Duration: " class="big-letters" />
-            <p:inputText value="#{courseDetailsBean.course.duration}" />
+                <h:outputLabel value="Duration: " class="big-letters" />
+                <p:inputText value="#{courseDetailsBean.course.duration}" />
 
-            <h:outputLabel value="Semester: " class="big-letters" />
-            <p:inputText value="#{courseDetailsBean.course.semester}" />
+                <h:outputLabel value="Semester: " class="big-letters" />
+                <p:inputText value="#{courseDetailsBean.course.semester}" />
 
-            <h:outputLabel value="Description: " class="big-letters" />
-            <p:inputTextarea value="#{courseDetailsBean.course.description}" />
+                <h:outputLabel value="Description: " class="big-letters" />
+                <p:inputTextarea value="#{courseDetailsBean.course.description}" />
 
-            <p:spacer height="20" />
-            <p:spacer height="20" />
+                <p:spacer height="20" />
+                <p:spacer height="20" />
 
-            <p:commandButton value="Back" action="lecturerCourseList" class="btn btn-sm btn-info" icon="ui-icon-close" />        
-            <p:commandButton value="Save" action="#{courseDetailsBean.updateCourse()}" class="btn btn-sm btn-info" icon="ui-icon-check">
-                <f:setPropertyActionListener target="#{courseDetailsBean.coursePk}" value="#{courseDetailsBean.course.coursePk}" />
-                <f:setPropertyActionListener target="#{courseDetailsBean.title}" value="#{courseDetailsBean.course.title}" />
-                <f:setPropertyActionListener target="#{courseDetailsBean.description}" value="#{courseDetailsBean.course.description}" />
-                <f:setPropertyActionListener target="#{courseDetailsBean.semester}" value="#{courseDetailsBean.course.semester}" />
-                <f:setPropertyActionListener target="#{courseDetailsBean.duration}" value="#{courseDetailsBean.course.duration}" />
-            </p:commandButton>
-        </h:panelGrid>
-        
+                <p:commandButton value="Back" action="lecturerCourseList" class="btn btn-sm btn-info" icon="ui-icon-close" />        
+                <p:commandButton value="Save" action="#{courseDetailsBean.updateCourse()}" class="btn btn-sm btn-info" icon="ui-icon-check">
+                    <f:setPropertyActionListener target="#{courseDetailsBean.coursePk}" value="#{courseDetailsBean.course.coursePk}" />
+                    <f:setPropertyActionListener target="#{courseDetailsBean.title}" value="#{courseDetailsBean.course.title}" />
+                    <f:setPropertyActionListener target="#{courseDetailsBean.description}" value="#{courseDetailsBean.course.description}" />
+                    <f:setPropertyActionListener target="#{courseDetailsBean.semester}" value="#{courseDetailsBean.course.semester}" />
+                    <f:setPropertyActionListener target="#{courseDetailsBean.duration}" value="#{courseDetailsBean.course.duration}" />
+                </p:commandButton>
+            </h:panelGrid>
+        </h:form>
+
     </ui:define>
 
 </ui:composition>

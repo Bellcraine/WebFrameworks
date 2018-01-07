@@ -12,8 +12,10 @@
     </ui:define>
 
     <ui:define name="left">
-        <p:commandButton value="Course List" action="courseList" class="btn btn-block btn-sm btn-info" icon="ui-icon-folder-open" />  
-        <p:commandButton value="Personal Data" action="personalData" class="btn btn-block btn-sm btn-info" icon="ui-icon-person" />
+        <h:form>
+            <p:commandButton value="Course List" action="courseList" class="btn btn-block btn-sm btn-info" icon="ui-icon-folder-open" />  
+            <p:commandButton value="Personal Data" action="personalData" class="btn btn-block btn-sm btn-info" icon="ui-icon-person" />
+        </h:form>
     </ui:define>
 
     <ui:define name="content">
@@ -23,48 +25,51 @@
 
         <p:messages id="messages" showDetail="true" autoUpdate="true" />
         <p:spacer height="20" />
-        
-        <p:defaultCommand target="register" />
 
-        <h:panelGrid columns="2" cellpadding="5">
 
-            <h:outputLabel value="Username: " class="big-letters" />
-            <p:inputText value="#{personalDataBean.username}" />
+        <h:form>
+            <p:defaultCommand target="register" />
 
-            <h:outputLabel value="First Name: " class="big-letters" />
-            <p:inputText value="#{personalDataBean.firstName}" />
+            <h:panelGrid columns="2" cellpadding="5">
 
-            <h:outputLabel value="Last Name: " class="big-letters" />
-            <p:inputText value="#{personalDataBean.lastName}" />
+                <h:outputLabel value="Username: " class="big-letters" />
+                <p:inputText value="#{personalDataBean.username}" />
 
-            <h:outputLabel value="Role: " class="big-letters" />   
-            <h:selectOneMenu value="#{personalDataBean.role}">
-                <f:selectItem itemValue="student" itemLabel="Student" />
-                <f:selectItem itemValue="lecturer" itemLabel="Lecturer" />
-            </h:selectOneMenu>
+                <h:outputLabel value="First Name: " class="big-letters" />
+                <p:inputText value="#{personalDataBean.firstName}" />
 
-            <p:spacer height="20" />
-            <p:spacer height="20" />
+                <h:outputLabel value="Last Name: " class="big-letters" />
+                <p:inputText value="#{personalDataBean.lastName}" />
 
-            <h:outputLabel value="Password: " class="big-letters" />
-            <p:password value="#{personalDataBean.password}" />
+                <h:outputLabel value="Role: " class="big-letters" />   
+                <h:selectOneMenu value="#{personalDataBean.role}">
+                    <f:selectItem itemValue="student" itemLabel="Student" />
+                    <f:selectItem itemValue="lecturer" itemLabel="Lecturer" />
+                </h:selectOneMenu>
 
-            <h:outputLabel value="Confirm Password: " class="big-letters" />
-            <p:password value="#{personalDataBean.confirmPassword}" />
+                <p:spacer height="20" />
+                <p:spacer height="20" />
 
-            <p:spacer height="20" />
-            <p:spacer height="20" />
+                <h:outputLabel value="Password: " class="big-letters" />
+                <p:password value="#{personalDataBean.password}" />
 
-            <p:commandButton value="Back" action="index" class="btn btn-sm btn-info" icon="ui-icon-close" />        
-            <p:commandButton value="Save" id="register" action="#{personalDataBean.addPersonalData()}" class="btn btn-sm btn-info" icon="ui-icon-check">
-                <f:setPropertyActionListener target="#{personalDataBean.username}" value="#{personalDataBean.username}" />
-                <f:setPropertyActionListener target="#{personalDataBean.firstName}" value="#{personalDataBean.firstName}" />
-                <f:setPropertyActionListener target="#{personalDataBean.lastName}" value="#{personalDataBean.lastName}" />
-                <f:setPropertyActionListener target="#{personalDataBean.role}" value="#{personalDataBean.role}" />
-                <f:setPropertyActionListener target="#{personalDataBean.password}" value="#{personalDataBean.password}" />
-                <f:setPropertyActionListener target="#{personalDataBean.confirmPassword}" value="#{personalDataBean.confirmPassword}" />  
-            </p:commandButton>
-        </h:panelGrid>
+                <h:outputLabel value="Confirm Password: " class="big-letters" />
+                <p:password value="#{personalDataBean.confirmPassword}" />
+
+                <p:spacer height="20" />
+                <p:spacer height="20" />
+
+                <p:commandButton value="Back" action="index" class="btn btn-sm btn-info" icon="ui-icon-close" />        
+                <p:commandButton value="Save" id="register" action="#{personalDataBean.addPersonalData()}" class="btn btn-sm btn-info" icon="ui-icon-check">
+                    <f:setPropertyActionListener target="#{personalDataBean.username}" value="#{personalDataBean.username}" />
+                    <f:setPropertyActionListener target="#{personalDataBean.firstName}" value="#{personalDataBean.firstName}" />
+                    <f:setPropertyActionListener target="#{personalDataBean.lastName}" value="#{personalDataBean.lastName}" />
+                    <f:setPropertyActionListener target="#{personalDataBean.role}" value="#{personalDataBean.role}" />
+                    <f:setPropertyActionListener target="#{personalDataBean.password}" value="#{personalDataBean.password}" />
+                    <f:setPropertyActionListener target="#{personalDataBean.confirmPassword}" value="#{personalDataBean.confirmPassword}" />  
+                </p:commandButton>
+            </h:panelGrid>
+        </h:form>
 
     </ui:define>
 

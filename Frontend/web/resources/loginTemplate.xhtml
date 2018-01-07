@@ -16,7 +16,6 @@
 
     <h:body>
 
-        <h:form>
             <div class="container"> 
 
                 <div id="top" class="top text-center">
@@ -30,7 +29,9 @@
                         </div>
 
                         <div class="col-sm-3 text-right">
-                            <p:commandButton value="Register" action="userRegistration" class="btn btn-sm btn-info" icon="ui-icon-person" />
+                            <h:form>
+                                <p:commandButton value="Register" action="userRegistration" class="btn btn-sm btn-info" icon="ui-icon-person" />
+                            </h:form>
                         </div>
                     </div>
 
@@ -41,7 +42,7 @@
                 </div>
 
             </div>
-        </h:form>
+
     </h:body>
 
 </html>

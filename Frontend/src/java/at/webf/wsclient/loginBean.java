@@ -6,7 +6,6 @@
 package at.webf.wsclient;
 
 import java.io.Serializable;
-import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
@@ -17,7 +16,6 @@ import javax.servlet.http.HttpSession;
  * @author PU
  */
 @Named // Wichtig um die Klasse zum Binding für die index.xhtml Seite zu klassifizieren (Binding wird in faces-config.xml durchgeführt)
-@SessionScoped
 public class loginBean implements Serializable {
 
     // Input
@@ -91,7 +89,7 @@ public class loginBean implements Serializable {
         FacesContext context = FacesContext.getCurrentInstance();
         HttpSession session = (HttpSession) context.getExternalContext().getSession(true);
 
-        if (opl.getPersonPk() == null) {
+        if (opl == null) {
             showMessage(FacesMessage.SEVERITY_ERROR, "FAILURE", "You were not able to log in.");
             return "index";
         } else if (opl.getPersonPk() != null && opl.getRole().equals("lecturer")) { //Auslesen der Resultate
@@ -107,6 +105,7 @@ public class loginBean implements Serializable {
             showMessage(FacesMessage.SEVERITY_INFO, "SUCCESS", "You were logged in successfully.");
             return "userInfo";
         } else {
+            showMessage(FacesMessage.SEVERITY_ERROR, "FAILURE", "You were not able to log in.");
             return "index";
         }
     }
@@ -120,5 +119,13 @@ public class loginBean implements Serializable {
     public void showMessage(FacesMessage.Severity severity, String title, String details) {
         FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(null, new FacesMessage(severity, title, details));
+    }
+    
+    public String loadUsername() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession) context.getExternalContext().getSession(true);
+             
+        username = (String) session.getAttribute("username");
+        return username;
     }
 }

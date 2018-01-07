@@ -11,8 +11,10 @@
     </ui:define>
 
     <ui:define name="left">
-        <p:commandButton value="Course List" action="courseList" class="btn btn-block btn-sm btn-info" icon="ui-icon-folder-open" />  
-        <p:commandButton value="Personal Data" action="personalData" class="btn btn-block btn-sm btn-info" icon="ui-icon-person" />
+        <h:form>
+            <p:commandButton value="Course List" action="courseList" class="btn btn-block btn-sm btn-info" icon="ui-icon-folder-open" />  
+            <p:commandButton value="Personal Data" action="personalData" class="btn btn-block btn-sm btn-info" icon="ui-icon-person" />
+        </h:form>
     </ui:define>
 
     <ui:define name="content">
@@ -24,33 +26,35 @@
         <p:messages id="messages" showDetail="true" autoUpdate="true" />
         <p:spacer height="20" />
 
-        <h:panelGrid columns="2" cellpadding="5">
+        <h:form>
+            <h:panelGrid columns="2" cellpadding="5">
 
-            <h:outputLabel value="ID: " class="big-letters" />
-            <h:outputText value="#{courseDetailsBean.course.coursePk}" />
+                <h:outputLabel value="ID: " class="big-letters" />
+                <h:outputText value="#{courseDetailsBean.course.coursePk}" />
 
-            <h:outputLabel value="Lecturer: " class="big-letters" />
-            <h:outputText value="#{courseDetailsBean.course.lecturer}" />
+                <h:outputLabel value="Lecturer: " class="big-letters" />
+                <h:outputText value="#{courseDetailsBean.course.lecturer}" />
 
-            <h:outputLabel value="Duration: " class="big-letters" />
-            <h:outputText value="#{courseDetailsBean.course.duration}" />
+                <h:outputLabel value="Duration: " class="big-letters" />
+                <h:outputText value="#{courseDetailsBean.course.duration}" />
 
-            <h:outputLabel value="Semester: " class="big-letters" />
-            <h:outputText value="#{courseDetailsBean.course.semester}" />
+                <h:outputLabel value="Semester: " class="big-letters" />
+                <h:outputText value="#{courseDetailsBean.course.semester}" />
 
-            <h:outputLabel value="Description: " class="big-letters" />
-            <h:outputText value="#{courseDetailsBean.course.description}" />
+                <h:outputLabel value="Description: " class="big-letters" />
+                <h:outputText value="#{courseDetailsBean.course.description}" />
 
-            <h:outputLabel value="Grade: " class="big-letters" />
-            <h:outputText value="#{courseDetailsBean.course.grade}" rendered="#{courseDetailsBean.course.grade != null}" />
-            <h:outputText value="N/A" rendered="#{courseDetailsBean.course.grade == null}" />  
+                <h:outputLabel value="Grade: " class="big-letters" />
+                <h:outputText value="#{courseDetailsBean.course.grade}" rendered="#{courseDetailsBean.course.grade != null}" />
+                <h:outputText value="N/A" rendered="#{courseDetailsBean.course.grade == null}" />  
 
-            <p:spacer height="20" />
-            <p:spacer height="20" />
+                <p:spacer height="20" />
+                <p:spacer height="20" />
 
-            <p:commandButton value="Back" action="courseList" class="btn btn-sm btn-info" icon="ui-icon-close" />      
+                <p:commandButton value="Back" action="courseList" class="btn btn-sm btn-info" icon="ui-icon-close" />      
+            </h:panelGrid>
+        </h:form>
 
-        </h:panelGrid>
     </ui:define>
 
 </ui:composition>

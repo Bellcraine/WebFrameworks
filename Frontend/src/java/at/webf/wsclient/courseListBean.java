@@ -139,7 +139,7 @@ public class courseListBean implements Serializable {
         }
     }
 
-    public void deleteCourse(Course course) {
+    public String deleteCourse(Course course) {
         StudyServices_Service service = new StudyServices_Service(); //Verbindungsaufbau zum Backend über WebServices
         StudyServices port = service.getStudyServicesPort();
 
@@ -148,8 +148,9 @@ public class courseListBean implements Serializable {
 
         Boolean opl = port.deleteCourse(courseParams); //Der eigentliche Aufruf des WebServices (Synchron)
         loadCourseList();
+        
         showMessage(FacesMessage.SEVERITY_INFO, "SUCCESS", "Course was deleted successfully.");
-
+        return "lecturerCourseList";
     }
 
     public void showMessage(FacesMessage.Severity severity, String title, String details) {
