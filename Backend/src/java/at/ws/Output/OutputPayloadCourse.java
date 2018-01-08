@@ -17,9 +17,6 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlRootElement
 public class OutputPayloadCourse {
-    
-    private Integer errorCode;
-    private String errorMessage;
         
     private Integer coursePk;
     private String title;
@@ -56,22 +53,6 @@ public class OutputPayloadCourse {
 
     public void setCoursePk(Integer coursePk) {
         this.coursePk = coursePk;
-    }
-
-    public Integer getErrorCode() {
-        return errorCode;
-    }
-
-    public void setErrorCode(Integer errorCode) {
-        this.errorCode = errorCode;
-    }
-
-    public String getErrorMessage() {
-        return errorMessage;
-    }
-
-    public void setErrorMessage(String errorMessage) {
-        this.errorMessage = errorMessage;
     }
 
     public String getTitle() {

@@ -5,7 +5,6 @@
  */
 package at.ws.Output;
 
-import at.database.Course;
 import at.database.Person;
 import java.util.ArrayList;
 import javax.xml.bind.annotation.XmlRootElement;

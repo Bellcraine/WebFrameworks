@@ -32,8 +32,9 @@ import org.hibernate.Transaction;
 public class StudyServices {
 
     /**
-     * login input: person.username, person.password output: person object OR
-     * null if login is incorrect
+     * login
+     * input: person.username, person.password
+     * output: opl person object (person.personPk == null if login is incorrect)
      */
     @WebMethod(operationName = "login")
     public OutputPayloadPerson login(@WebParam(name = "parameter") InputPayloadPerson parameter) {
@@ -47,22 +48,21 @@ public class StudyServices {
 
         try {
 
-            tx = s.beginTransaction();                          //Beginne Transaktion
+            tx = s.beginTransaction();                              //Beginne Transaktion
             String hql = "FROM Person P WHERE P.username = :name";  //HQL Query um Person zu suchen
-            Query query = s.createQuery(hql);                   //HQL Query zuweisen
-            query.setParameter("name", parameter.getUsername()); //Wert für den namen einfügen (gegen SQL Injection!)
-            List results = query.list();                        //Abfrage durchführen
+            Query query = s.createQuery(hql);                       //HQL Query zuweisen
+            query.setParameter("name", parameter.getUsername());    //Wert für den namen einfügen (gegen SQL Injection!)
+            List results = query.list();                            //Abfrage durchführen
 
-            Person personFromDb = (Person) results.get(0);       //Resultat in person casten
+            Person personFromDb = (Person) results.get(0);          //Resultat in person casten
 
-            if (personFromDb.getPassword().equals(parameter.getPassword())) {             //Überprüfen des Passworts und entsprechend Response mit Sccuess/Failure info befüllen
+            if (personFromDb.getPassword().equals(parameter.getPassword())) {             //Überprüfen des Passworts
                 opl.setPersonPk(personFromDb.getPersonPk());
                 opl.setRole(personFromDb.getRole());
                 opl.setUsername(personFromDb.getUsername());
                 opl.setName(personFromDb.getName());
                 opl.setLastname(personFromDb.getLastname());
             } else {
-//                opl = null; // funktioniert so nicht 
                 opl.setPersonPk(null);
             }
 
@@ -76,14 +76,13 @@ public class StudyServices {
             s.close();              //Session schließen egal ob Erfolg oder Fehler
         }
 
-        //Hibernate
-        return opl;
+        return opl;                 //OutputPayload zurückgeben
     }
 
     /**
-     * loadCourseList (for students and lecturers) input: person.personPk,
-     * person.role output: course ArrayList --- only students have grade &
-     * lecturer
+     * loadCourseList (for students and lecturers)
+     * input: person.personPk, person.role
+     * output: opl course ArrayList --- only students have grade & lecturer
      */
     @WebMethod(operationName = "loadCourseList")
     public OutputPayloadCourse loadCourseList(@WebParam(name = "parameter") InputPayloadPerson parameter) {
@@ -142,7 +141,9 @@ public class StudyServices {
     }
 
     /**
-     * loadPersonDetails input: person.personPk output: person Object
+     * loadPersonDetails
+     * input: person.personPk
+     * output: opl person Object
      */
     @WebMethod(operationName = "loadPersonDetails")
     public OutputPayloadPerson loadPersonDetails(@WebParam(name = "parameter") InputPayloadPerson parameter) {
@@ -184,49 +185,11 @@ public class StudyServices {
     }
 
     /**
-     * loadCourseDetails input: course.coursePk output: course object not
-     * needed!
-     */
-    /*@WebMethod(operationName = "loadCourseDetails")
-    public OutputPayloadCourse loadCourseDetails(@WebParam(name = "parameter") InputPayloadCourse parameter) {
-        
-        OutputPayloadCourse opl = new OutputPayloadCourse();
-
-        SessionFactory sf = HibernateUtil.getSessionFactory();
-        Session s = sf.openSession(); 
-        Transaction tx = null;
-        
-        try {
-            tx = s.beginTransaction();  
-            String hql= "FROM Course C WHERE C.coursePk = :id";
-            Query query = s.createQuery(hql);                   //HQL Query zuweisen
-            query.setParameter("id", parameter.getCoursePk());                    //Wert für die id einfügen (gegen SQL Injection!)
-            List results = query.list();
-
-            Course courseFromDb = (Course) results.get(0);
-            opl.setCoursePk(courseFromDb.getCoursePk());
-            opl.setTitle(courseFromDb.getTitle());
-            opl.setDescription(courseFromDb.getDescription());
-            opl.setDuration(courseFromDb.getDuration());
-            opl.setSemester(courseFromDb.getSemester());
-            tx.commit();
-            
-        } catch (Exception e) {
-
-            if (tx != null) {
-                tx.rollback();
-            }
-            
-        } finally {
-            s.close();
-        }
-        return opl;
-    } */
-    /**
-     * addOrUpdateCourse input: course object ([coursePk], title, description,
-     * duration, semester), person.personPk on update: give course.coursePk on
-     * create: leave course.coursePk empty or set null (will be auto increment
-     * in db) output: true or false
+     * addOrUpdateCourse
+     * input: course object ([coursePk], title, description, duration, semester), person.personPk
+     *  on update: give course.coursePk
+     *  on create: leave course.coursePk empty or set null (will be auto increment in db)
+     * output: true or false
      */
     @WebMethod(operationName = "addOrUpdateCourse")
     public Boolean addOrUpdateCourse(@WebParam(name = "courseParam") InputPayloadCourse courseParam, @WebParam(name = "personParam") InputPayloadPerson personParam) {
@@ -236,9 +199,9 @@ public class StudyServices {
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session s = sf.openSession();
         Transaction tx = null;
-
-//        if (courseParam.getTitle() != null) {
-        if (!courseParam.getTitle().equals("")) { // <---- TOMMY changed: er testet jetzt auf leeren string, nicht mehr auf null.
+        
+        // title is required!
+        if (!courseParam.getTitle().equals("")) {
 
             Course c = new Course();
             c.setTitle(courseParam.getTitle());
@@ -291,7 +254,9 @@ public class StudyServices {
     }
 
     /**
-     * deleteCourse input: course.coursePk Output: true or false
+     * deleteCourse
+     * input: course.coursePk
+     * output: true or false
      */
     @WebMethod(operationName = "deleteCourse")
     public Boolean deleteCourse(@WebParam(name = "parameter") InputPayloadCourse parameter) {
@@ -328,8 +293,9 @@ public class StudyServices {
     }
 
     /**
-     * addPersonToCourse input: course.coursePk, person.personPk output: true /
-     * false (returns false if person or course have pks that do not exist in
+     * addPersonToCourse
+     * input: course.coursePk, person.personPk
+     * output: true / false (returns false if person or course have pks that do not exist in
      * their tables!)
      */
     @WebMethod(operationName = "addPersonToCourse")
@@ -378,8 +344,9 @@ public class StudyServices {
     }
 
     /**
-     * deletePersonFromCourse input: course.coursePk, person.personPk output:
-     * true / false (gives also true, if person-course combination does not
+     * deletePersonFromCourse
+     * input: course.coursePk, person.personPk
+     * output: true / false (gives also true, if person-course combination does not
      * exist in membership table)
      */
     @WebMethod(operationName = "deletePersonFromCourse")
@@ -409,15 +376,6 @@ public class StudyServices {
         try {
 
             tx = s.beginTransaction();
-            //s.delete(m);
-            /*String hql= "DELETE PersonCourseMembership M WHERE M.course.coursePk = :cid AND M.person.personPk = :pid";
-            Query query = s.createQuery(hql);                   //HQL Query zuweisen
-            query.setParameter("cid", courseParam.getCoursePk());
-            query.setParameter("pid", personParam.getPersonPk());
-            List results = query.list();
-            if (results.size() == 1) {
-                done = true;
-            } */
             s.delete(m);
             tx.commit();
             done = true;
@@ -437,9 +395,10 @@ public class StudyServices {
     }
 
     /**
-     * loadStudentList input: course.coursePk output: person ArrayList (only
-     * students) -> isMembership returns true / false, if student is member of
-     * given course
+     * loadStudentList
+     * input: course.coursePk
+     * output: person ArrayList (only students) -> .isMembership returns true / false,
+     * if student is member of given course
      */
     @WebMethod(operationName = "loadStudentList")
     public OutputPayloadPerson loadStudentList(@WebParam(name = "parameter") InputPayloadCourse parameter) {
@@ -468,8 +427,9 @@ public class StudyServices {
     }
 
     /**
-     * addOrUpdateGrade Input: course.coursePk, person.personPk, grade (Integer)
-     * Output: true / false
+     * addOrUpdateGrade
+     * input: course.coursePk, person.personPk, grade (Integer)
+     * output: true / false
      */
     @WebMethod(operationName = "addOrUpdateGrade")
     public Boolean addOrUpdateGrade(@WebParam(name = "courseParam") InputPayloadCourse courseParam, @WebParam(name = "personParam") InputPayloadPerson personParam, @WebParam(name = "grade") Integer grade) {
@@ -519,11 +479,12 @@ public class StudyServices {
     }
 
     /**
-     * addOrUpdatePerson input: person (all parameters exept password and pk
-     * (both optional)) case 1 no primary key / with password -> person will be
-     * created (password required!) case 2 with primary key / no password ->
-     * person will be updated (password stays the same) case 3 with primary key
-     * / with password -> person will be updated completely output: true / false
+     * addOrUpdatePerson
+     * input: person (all parameters exept password and pk (both optional))
+     *  * no primary key / with password -> person will be created (password required!)
+     *  * with primary key / no password -> person will be updated (password stays the same)
+     *  * with primary key / with password -> person will be updated completely
+     * output: true / false
      */
     @WebMethod(operationName = "addOrUpdatePerson")
     public Boolean addOrUpdatePerson(@WebParam(name = "parameter") InputPayloadPerson parameter) {
@@ -534,18 +495,16 @@ public class StudyServices {
         Session s = sf.openSession();
         Transaction tx = null;
 
-        // person needs to have all params (exept pk) to add or update
         Person p = new Person();
         p.setLastname(parameter.getLastname());
         p.setName(parameter.getName());
         p.setUsername(parameter.getUsername());
         p.setRole(parameter.getRole());
 
-        // password needs to be set -> get stored password from db to have password parameter in p
-//        if (parameter.getPassword() != null) {  
-        if (!parameter.getPassword().equals("")) { // <---- TOMMY changed: er testet jetzt auf leeren string, nicht mehr auf null.
+        if (!parameter.getPassword().equals("")) {
             p.setPassword(parameter.getPassword());
         } else {
+            // get stored password from db to have password parameter in p
             OutputPayloadPerson opl = loadPersonDetails(parameter);
             p.setPassword(opl.getPassword());
         }
@@ -575,19 +534,21 @@ public class StudyServices {
         return done;
     }
 
+    
     /**
      * ************************************
      * methods for backend use only
      *************************************
      */
+    
     /**
      * FOR BACKEND USE ONLY loadMembershipData (previous: studentGetGrade)
-     * input: course.coursePk, person.personPk Output: personCourseMembership
-     * (all parameters) turn public to test
+     * input: course.coursePk, person.personPk
+     * output: personCourseMembership (all parameters)
+     * turn public to test
      */
     private PersonCourseMembership loadMembershipData(@WebParam(name = "courseParam") InputPayloadCourse courseParam, @WebParam(name = "personParam") InputPayloadPerson personParam) {
 
-        //OutputPayloadPersonCourseMembership opl = new OutputPayloadPersonCourseMembership();
         PersonCourseMembership membership = new PersonCourseMembership();
 
         SessionFactory sf = HibernateUtil.getSessionFactory();
@@ -598,8 +559,8 @@ public class StudyServices {
 
             tx = s.beginTransaction();
             String hql = "FROM PersonCourseMembership M WHERE M.course.coursePk = :cid AND M.person.personPk = :pid";
-            Query query = s.createQuery(hql);                   //HQL Query zuweisen
-            query.setParameter("cid", courseParam.getCoursePk());                    //Wert für die id einfügen (gegen SQL Injection!)
+            Query query = s.createQuery(hql);
+            query.setParameter("cid", courseParam.getCoursePk());
             query.setParameter("pid", personParam.getPersonPk());
             List results = query.list();
 
@@ -619,8 +580,10 @@ public class StudyServices {
     }
 
     /**
-     * FOR BACKEND USE ONLY getAllStudents input: none output: ArrayList of
-     * Persons turn public to test
+     * FOR BACKEND USE ONLY getAllStudents
+     * input: none
+     * output: ArrayList of persons
+     * turn public to test
      */
     private ArrayList<Person> getAllStudents() {
 
@@ -663,8 +626,10 @@ public class StudyServices {
     }
 
     /**
-     * FOR BACKEND USE ONLY getLecturer input: course.coursePk ouput: String
-     * containing first and last name of lecturer turn public to test
+     * FOR BACKEND USE ONLY getLecturer
+     * input: course.coursePk
+     * ouput: String containing first and last name of lecturer
+     * turn public to test
      */
     private String getLecturer(@WebParam(name = "parameter") InputPayloadCourse parameter) {
 

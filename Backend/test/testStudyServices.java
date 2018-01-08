@@ -10,7 +10,6 @@ import at.ws.Input.InputPayloadCourse;
 import at.ws.Input.InputPayloadPerson;
 import at.ws.Output.OutputPayloadCourse;
 import at.ws.Output.OutputPayloadPerson;
-import at.ws.Output.OutputPayloadPersonCourseMembership;
 import at.ws.StudyServices;
 import java.util.ArrayList;
 import org.junit.Before;
@@ -33,17 +32,6 @@ public class testStudyServices {
     
     public ExpectedException exception = ExpectedException.none();
 	
-// tests old login version  
-/*    @Test
-    public void testLogin() throws Exception {
-        Integer expected = 7;
-        InputPayloadLogin parameter = new InputPayloadLogin();
-        parameter.setPassword("1234");
-        parameter.setUsername("urbauer");
-        OutputPayloadLogin result = ss.login(parameter);
-        assertEquals(expected, result.getUserid());
-
-    } */
     @Test
     public void testLoadPersonDetails() throws Exception {
         String expectedUsername = "judith";
@@ -72,7 +60,7 @@ public class testStudyServices {
 
     }
     
-    @Test
+/*    @Test
     public void testAddOrUpdateCourse() throws Exception {
         String title = "Backend Basics";
         String description = "all about php";
@@ -92,8 +80,8 @@ public class testStudyServices {
         
         boolean result = ss.addOrUpdateCourse(courseParam, personParam);
         assertEquals(true, result);
-
-    }
+    } */
+    
 /*    @Test
     public void testDeleteCourse() throws Exception {
         Integer coursePk = 36;
@@ -119,7 +107,7 @@ public class testStudyServices {
         //assertEquals(null, result);   // to test result at incorrect login username or password
     }
     
-    /*@Test
+/*  @Test
     public void testLoadMembershipData() throws Exception {
         Integer expectedGrade = 1;
         Integer personPk = 9;  // values to test: tommy+feb(10,8)->exp:1, judith+frameworks(9, 7)->exp: 1, urbauer+frameworks(7, 7)->exp: null
